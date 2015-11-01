@@ -8,7 +8,6 @@ namespace tryfsharpforms
 	{
 		public App ()
 		{
-			var lib = new tryfsharplib.ConvertCurrency (1,1);
 			// The root page of your application
 			MainPage = new NavigationPage(new HomePage());
 		}

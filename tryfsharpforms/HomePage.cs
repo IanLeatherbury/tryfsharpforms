@@ -22,7 +22,10 @@ namespace tryfsharpforms
 						Text = "Basic Financial Calculations",
 						Command = navigateCommand,
 						CommandParameter = typeof(BasicCalc)},
-				new TextCell { Text = "Units of Measure" },
+				new TextCell { 
+						Text = "Units of Measure",
+						Command = navigateCommand,
+						CommandParameter = typeof(UnitsOfMeasurePage)},
 				new TextCell { Text = "Exploring Historical Stock Prices" },
 				new TextCell { Text = "Analyzing Stock Prices" },
 				new TextCell { Text = "Charting and Comparing Prices" }
@@ -53,8 +56,6 @@ namespace tryfsharpforms
 				new TextCell { Text = "Assessing the Mexican Banking System" },
 			};
 
-
-			var flib = new ConvertCurrency (1,1);
 			Content = new TableView{ 
 				Root = new TableRoot{
 					gettingStartedSection,
@@ -65,10 +66,6 @@ namespace tryfsharpforms
 				},
 				Intent = TableIntent.Menu	
 			};
-
-
 		}
 	}
 }
-
-
