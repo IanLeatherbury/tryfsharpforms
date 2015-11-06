@@ -1,0 +1,345 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <ProjectGuid>{A296CA71-1A32-4427-A2D8-B5E12A1960EF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>SampleBrowser</RootNamespace>
+    <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
+    <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
+    <AndroidResgenClass>Resource</AndroidResgenClass>
+    <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
+    <AndroidApplication>True</AndroidApplication>
+    <AndroidUseLatestPlatformSdk>True</AndroidUseLatestPlatformSdk>
+    <AssemblyName>SampleBrowser</AssemblyName>
+    <TargetFrameworkVersion>v4.4</TargetFrameworkVersion>
+    <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AndroidLinkMode>None</AndroidLinkMode>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
+    <ConsolePause>false</ConsolePause>
+    <AndroidSupportedAbis>armeabi;armeabi-v7a;x86</AndroidSupportedAbis>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Syncfusion.Compression.Portable">
+      <HintPath>..\..\lib\pcl\Syncfusion.Compression.Portable.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Pdf.Portable">
+      <HintPath>..\..\lib\pcl\Syncfusion.Pdf.Portable.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.XlsIO.Portable">
+      <HintPath>..\..\lib\pcl\Syncfusion.XlsIO.Portable.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="Mono.Android" />
+    <Reference Include="System.Data.Services.Client" />
+    <Reference Include="Syncfusion.GridCommon.Portable">
+      <HintPath>..\..\lib\pcl\Syncfusion.GridCommon.Portable.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Android.Support.v4">
+      <HintPath>Dll\Xamarin.Android.Support.v4.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfGridConverter.Android">
+      <HintPath>..\..\lib\android\Syncfusion.SfGridConverter.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfBarcode.Android">
+      <HintPath>..\..\lib\android\Syncfusion.SfBarcode.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfChart.Android">
+      <HintPath>..\..\lib\android\Syncfusion.SfChart.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfTreeMap.Android">
+      <HintPath>..\..\lib\android\Syncfusion.SfTreeMap.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfMaps.Android">
+      <HintPath>..\..\lib\android\Syncfusion.SfMaps.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfBusyIndicator.Android">
+      <HintPath>..\..\lib\android\Syncfusion.SfBusyIndicator.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfRangeSlider.Android">
+      <HintPath>..\..\lib\android\Syncfusion.SfRangeSlider.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfGauge.Android">
+      <HintPath>..\..\lib\android\Syncfusion.SfGauge.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfNumericTextBox.Android">
+      <HintPath>..\..\lib\android\Syncfusion.SfNumericTextBox.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Linq.Android">
+      <HintPath>..\..\lib\android\Syncfusion.Linq.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfDataGrid.Android">
+      <HintPath>..\..\lib\android\Syncfusion.SfDataGrid.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfAutoComplete.Android">
+      <HintPath>..\..\lib\android\Syncfusion.SfAutoComplete.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfNavigationDrawer.Android">
+      <HintPath>..\..\lib\android\Syncfusion.SfNavigationDrawer.Android.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MainActivity.cs" />
+    <Compile Include="Resources\Resource.designer.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Common\SampleActivityFragment.cs" />
+    <Compile Include="Common\SampleBase.cs" />
+    <Compile Include="Common\SampleLayout.cs" />
+    <Compile Include="Common\SampleActivity.cs" />
+    <Compile Include="Common\SamplePage.cs" />
+    <Compile Include="Common\PropertyWindow.cs" />
+    <Compile Include="Common\AboutPageFragment.cs" />
+    <Compile Include="Samples\Barcode\Codabar.cs" />
+    <Compile Include="Samples\Barcode\Code11.cs" />
+    <Compile Include="Samples\Barcode\Code128A.cs" />
+    <Compile Include="Samples\Barcode\Code128B.cs" />
+    <Compile Include="Samples\Barcode\Code128C.cs" />
+    <Compile Include="Samples\Barcode\Code32.cs" />
+    <Compile Include="Samples\Barcode\Code39.cs" />
+    <Compile Include="Samples\Barcode\Code39Extended.cs" />
+    <Compile Include="Samples\Barcode\Code93.cs" />
+    <Compile Include="Samples\Barcode\Code93Extended.cs" />
+    <Compile Include="Samples\Barcode\DataMatrix.cs" />
+    <Compile Include="Samples\Barcode\QRCode.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Samples\Chart\Axis\AutoScrolling.cs" />
+    <Compile Include="Samples\Chart\Axis\Category.cs" />
+    <Compile Include="Samples\Chart\Axis\Date.cs" />
+    <Compile Include="Samples\Chart\Axis\MultipleAxis.cs" />
+    <Compile Include="Samples\Chart\Axis\Numerical.cs" />
+    <Compile Include="Samples\Chart\Axis\StripLines.cs" />
+    <Compile Include="Samples\Chart\MainPage.cs" />
+    <Compile Include="Samples\Chart\Series\Area.cs" />
+    <Compile Include="Samples\Chart\Series\Bar.cs" />
+    <Compile Include="Samples\Chart\Series\Bubble.cs" />
+    <Compile Include="Samples\Chart\Series\Candle.cs" />
+    <Compile Include="Samples\Chart\Series\Column.cs" />
+    <Compile Include="Samples\Chart\Series\DataPointSelection.cs" />
+    <Compile Include="Samples\Chart\Series\Doughnut.cs" />
+    <Compile Include="Samples\Chart\Series\Funnel.cs" />
+    <Compile Include="Samples\Chart\Series\Line.cs" />
+    <Compile Include="Samples\Chart\Series\LiveUpdate.cs" />
+    <Compile Include="Samples\Chart\Series\OHLC.cs" />
+    <Compile Include="Samples\Chart\Series\PieSeries.cs" />
+    <Compile Include="Samples\Chart\Series\Pyramid.cs" />
+    <Compile Include="Samples\Chart\Series\RangeColumn.cs" />
+    <Compile Include="Samples\Chart\Series\Scatter.cs" />
+    <Compile Include="Samples\Chart\Series\SemiDoughnut.cs" />
+    <Compile Include="Samples\Chart\Series\SemiPie.cs" />
+    <Compile Include="Samples\Chart\Series\Spline.cs" />
+    <Compile Include="Samples\Chart\Series\SplineArea.cs" />
+    <Compile Include="Samples\Chart\Series\StackingArea.cs" />
+    <Compile Include="Samples\Chart\Series\StackingArea100.cs" />
+    <Compile Include="Samples\Chart\Series\StackingBar.cs" />
+    <Compile Include="Samples\Chart\Series\StackingBar100.cs" />
+    <Compile Include="Samples\Chart\Series\StackingColumn.cs" />
+    <Compile Include="Samples\Chart\Series\StackingColumn100.cs" />
+    <Compile Include="Samples\Chart\Series\Trackball.cs" />
+    <Compile Include="Samples\Chart\Series\ZoomingAndPanning.cs" />
+    <Compile Include="Samples\CircularGauge\CircularGauge.cs" />
+    <Compile Include="Samples\DataGrid\CustomGrouping.cs" />
+    <Compile Include="Samples\DataGrid\CustomSorting.cs" />
+    <Compile Include="Samples\DataGrid\Exporting.cs" />
+    <Compile Include="Samples\DataGrid\FrozenView.cs" />
+    <Compile Include="Samples\DataGrid\Helpers\CustomComparer.cs" />
+    <Compile Include="Samples\DataGrid\Model\CustomerDetails.cs" />
+    <Compile Include="Samples\DataGrid\Model\CustomersRepository.cs" />
+    <Compile Include="Samples\DataGrid\Model\SalesByDate.cs" />
+    <Compile Include="Samples\DataGrid\Model\SalesInfoRepository.cs" />
+    <Compile Include="Samples\TreeMap\FlatCollection.cs" />
+    <Compile Include="Samples\BusyIndicator\BusyIndicator.cs" />
+    <Compile Include="Samples\RangeSlider\Equalizer.cs" />
+    <Compile Include="Samples\RangeSlider\GettingStarted.cs" />
+    <Compile Include="Samples\RangeSlider\SeparatorView.cs" />
+    <Compile Include="Samples\RangeSlider\Slider.cs" />
+    <Compile Include="Samples\LinearGauge\LinearGauge.cs" />
+    <Compile Include="Samples\DigitalGauge\DigitalGauge.cs" />
+    <Compile Include="Samples\NumericTextBox\NumericTextBox.cs" />
+    <Compile Include="Samples\DataGrid\AutoRowHeight.cs" />
+    <Compile Include="Samples\DataGrid\DataVirtualization.cs" />
+    <Compile Include="Samples\DataGrid\Filtering.cs" />
+    <Compile Include="Samples\DataGrid\Formatting.cs" />
+    <Compile Include="Samples\DataGrid\GridGettingStarted.cs" />
+    <Compile Include="Samples\DataGrid\Grouping.cs" />
+    <Compile Include="Samples\DataGrid\IncrementalLoading.cs" />
+    <Compile Include="Samples\DataGrid\RenderingDynamicData.cs" />
+    <Compile Include="Samples\DataGrid\Selection.cs" />
+    <Compile Include="Samples\DataGrid\Sorting.cs" />
+    <Compile Include="Samples\DataGrid\Styles.cs" />
+    <Compile Include="Samples\DataGrid\Model\BankInfo.cs" />
+    <Compile Include="Samples\DataGrid\Model\BankRepository.cs" />
+    <Compile Include="Samples\DataGrid\Model\BookInfo.cs" />
+    <Compile Include="Samples\DataGrid\Model\BookRepository.cs" />
+    <Compile Include="Samples\DataGrid\Model\Employee.cs" />
+    <Compile Include="Samples\DataGrid\Model\EmployeeDetails.cs" />
+    <Compile Include="Samples\DataGrid\Model\EmployeeInfo.cs" />
+    <Compile Include="Samples\DataGrid\Model\EmployeeInfoRespository.cs" />
+    <Compile Include="Samples\DataGrid\Model\EmployeeInformation.cs" />
+    <Compile Include="Samples\DataGrid\Model\EmployeeInformationRepository.cs" />
+    <Compile Include="Samples\DataGrid\Model\OrderInfo.cs" />
+    <Compile Include="Samples\DataGrid\Model\OrderInfoRepository.cs" />
+    <Compile Include="Samples\DataGrid\Model\ProductInfo.cs" />
+    <Compile Include="Samples\DataGrid\Model\ProductInfoRepository.cs" />
+    <Compile Include="Samples\DataGrid\Model\ProductRepository.cs" />
+    <Compile Include="Samples\DataGrid\Model\Products.cs" />
+    <Compile Include="Samples\DataGrid\Model\StockData.cs" />
+    <Compile Include="Samples\DataGrid\NorthwindService\Reference.cs" />
+    <Compile Include="Samples\DataGrid\Styles\Blue.cs" />
+    <Compile Include="Samples\DataGrid\Styles\Dark.cs" />
+    <Compile Include="Samples\DataGrid\Styles\Green.cs" />
+    <Compile Include="Samples\DataGrid\Styles\Red.cs" />
+    <Compile Include="Samples\DataGrid\TemplateColumn\FormattedCell.cs" />
+    <Compile Include="Samples\DataGrid\TemplateColumn\StockCell.cs" />
+    <Compile Include="Samples\DataGrid\ViewModel\ViewModel.cs" />
+    <Compile Include="Samples\Maps\BubbleVisualization.cs" />
+    <Compile Include="Samples\Maps\ColorMappings.cs" />
+    <Compile Include="Samples\Maps\DataMarkers.cs" />
+    <Compile Include="Samples\AutoComplete\AutoComplete.cs" />
+    <Compile Include="Samples\Maps\Models\PopulationMarker.cs" />
+    <Compile Include="Samples\NavigationDrawer\RoundedImageView.cs" />
+    <Compile Include="Samples\NavigationDrawer\NavigationDrawer.cs" />
+    <Compile Include="Samples\AutoComplete\Countrylist.cs" />
+    <Compile Include="SplashActivity.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AboutResources.txt" />
+    <None Include="Assets\AboutAssets.txt" />
+    <None Include="Properties\AndroidManifest.xml" />
+    <None Include="Samples\DataGrid\NorthwindService\Reference.datasvcmap" />
+    <None Include="Samples\DataGrid\NorthwindService\service.edmx" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\values\Strings.xml" />
+    <AndroidResource Include="Resources\values\styles.axml" />
+    <AndroidResource Include="Resources\anim\slide.xml" />
+    <AndroidResource Include="Resources\anim\slide2.xml" />
+    <AndroidResource Include="Resources\anim\slideleft.xml" />
+    <AndroidResource Include="Resources\anim\slideright.xml" />
+    <AndroidResource Include="Resources\layout\aboutpage.xml" />
+    <AndroidResource Include="Resources\layout\listitem_layout.xml" />
+    <AndroidResource Include="Resources\layout\property_header.xml" />
+    <AndroidResource Include="Resources\layout\samplelist_layout.xml" />
+    <AndroidResource Include="Resources\layout\SamplePage.xml" />
+    <AndroidResource Include="Resources\layout\showcase_layout.xml" />
+    <AndroidResource Include="Resources\xml\samplelist.xml" />
+    <AndroidResource Include="Resources\drawable\listpopup.xml" />
+    <AndroidResource Include="Resources\drawable\divider_gradient.xml" />
+    <AndroidResource Include="Resources\drawable\settings.png" />
+    <AndroidResource Include="Resources\drawable\menu.png" />
+    <AndroidResource Include="Resources\drawable\tick.png" />
+    <AndroidResource Include="Resources\drawable\gauge.png" />
+    <AndroidResource Include="Resources\drawable\chart.png" />
+    <AndroidResource Include="Resources\drawable\treemap.png" />
+    <AndroidResource Include="Resources\drawable\icon.png" />
+    <AndroidResource Include="Resources\layout\layout.xml" />
+    <AndroidResource Include="Resources\drawable\busy.png" />
+    <AndroidResource Include="Resources\drawable\range.png" />
+    <AndroidResource Include="Resources\drawable\mount.png" />
+    <AndroidResource Include="Resources\drawable\linear.png" />
+    <AndroidResource Include="Resources\drawable\digital.png" />
+    <AndroidResource Include="Resources\drawable\acc_icon.png" />
+    <AndroidResource Include="Resources\drawable\bluelogo.png" />
+    <AndroidResource Include="Resources\drawable\datagrid.png" />
+    <AndroidResource Include="Resources\drawable\GreenUp.png" />
+    <EmbeddedResource Include="Resources\drawable\Image0.png" />
+    <EmbeddedResource Include="Resources\drawable\Image1.png" />
+    <EmbeddedResource Include="Resources\drawable\Image10.png" />
+    <EmbeddedResource Include="Resources\drawable\Image11.png" />
+    <EmbeddedResource Include="Resources\drawable\Image12.png" />
+    <EmbeddedResource Include="Resources\drawable\Image13.png" />
+    <EmbeddedResource Include="Resources\drawable\Image14.png" />
+    <EmbeddedResource Include="Resources\drawable\Image15.png" />
+    <EmbeddedResource Include="Resources\drawable\Image16.png" />
+    <EmbeddedResource Include="Resources\drawable\Image17.png" />
+    <EmbeddedResource Include="Resources\drawable\Image18.png" />
+    <EmbeddedResource Include="Resources\drawable\Image19.png" />
+    <EmbeddedResource Include="Resources\drawable\Image2.png" />
+    <EmbeddedResource Include="Resources\drawable\Image20.png" />
+    <EmbeddedResource Include="Resources\drawable\Image21.png" />
+    <EmbeddedResource Include="Resources\drawable\Image22.png" />
+    <EmbeddedResource Include="Resources\drawable\Image23.png" />
+    <EmbeddedResource Include="Resources\drawable\Image24.png" />
+    <EmbeddedResource Include="Resources\drawable\Image25.png" />
+    <EmbeddedResource Include="Resources\drawable\Image26.png" />
+    <EmbeddedResource Include="Resources\drawable\Image27.png" />
+    <EmbeddedResource Include="Resources\drawable\Image28.png" />
+    <EmbeddedResource Include="Resources\drawable\Image3.png" />
+    <EmbeddedResource Include="Resources\drawable\Image4.png" />
+    <EmbeddedResource Include="Resources\drawable\Image5.png" />
+    <EmbeddedResource Include="Resources\drawable\Image6.png" />
+    <EmbeddedResource Include="Resources\drawable\Image7.png" />
+    <EmbeddedResource Include="Resources\drawable\Image8.png" />
+    <EmbeddedResource Include="Resources\drawable\Image9.png" />
+    <AndroidResource Include="Resources\drawable\RedDown.png" />
+    <AndroidResource Include="Resources\drawable\SortingDown.png" />
+    <AndroidResource Include="Resources\drawable\SortingUp.png" />
+    <AndroidResource Include="Resources\drawable\flag.png" />
+    <AndroidResource Include="Resources\drawable\inbox.png" />
+    <AndroidResource Include="Resources\drawable\outbox.png" />
+    <AndroidResource Include="Resources\drawable\power.png" />
+    <AndroidResource Include="Resources\drawable\profile.png" />
+    <AndroidResource Include="Resources\drawable\trash.png" />
+    <AndroidResource Include="Resources\drawable\autocomplete.png" />
+    <AndroidResource Include="Resources\drawable\burgericon.png" />
+    <AndroidResource Include="Resources\drawable\user.png" />
+    <AndroidResource Include="Resources\drawable\maps.png" />
+    <AndroidResource Include="Resources\drawable\pin.png" />
+    <AndroidResource Include="Resources\drawable\numeric.png" />
+    <AndroidResource Include="Resources\drawable\slider.png" />
+    <AndroidResource Include="Resources\drawable\selection.xml" />
+    <AndroidResource Include="Resources\drawable\excelexport.png" />
+    <AndroidResource Include="Resources\drawable\pdfexport.png" />
+    <AndroidResource Include="Resources\drawable\splash.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\splash.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\splash.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\splash.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="Resources\drawable-hdpi\" />
+    <Folder Include="Resources\drawable-mdpi\" />
+    <Folder Include="Resources\drawable-xhdpi\" />
+    <Folder Include="Resources\drawable-xxhdpi\" />
+    <Folder Include="Resources\drawable-xxxhdpi\" />
+    <Folder Include="Samples\NumericTextBox\" />
+    <Folder Include="Samples\DataGrid\" />
+    <Folder Include="Samples\Maps\" />
+    <Folder Include="Samples\NavigationDrawer\" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\barcode.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\world1.shp" />
+    <AndroidAsset Include="Assets\world1.dbf" />
+    <AndroidAsset Include="Assets\usa_state.shp" />
+    <AndroidAsset Include="Assets\usa_state.dbf" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\drawable\SyncfusionLogo.jpg" />
+  </ItemGroup>
+</Project>

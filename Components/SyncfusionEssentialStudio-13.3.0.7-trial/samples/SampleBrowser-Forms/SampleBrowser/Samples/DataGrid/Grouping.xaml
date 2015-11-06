@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<local:SamplePage x:Class="SampleBrowser.Grouping"
+                  xmlns="http://xamarin.com/schemas/2014/forms"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                  xmlns:local="clr-namespace:SampleBrowser;assembly=SampleBrowser"
+                  xmlns:sfgrid="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms">
+
+    <local:SamplePage.BindingContext>
+        <local:GroupingViewModel x:Name="viewModel" />
+    </local:SamplePage.BindingContext>
+
+    <local:SamplePage.ContentView>
+        <sfgrid:SfDataGrid x:Name="dataGrid"
+                           AllowSorting="true"
+                           AutoGenerateColumns="false"
+                           ColumnSizer="Star"
+                           SelectionMode="Single">
+
+            <sfgrid:SfDataGrid.HeaderRowHeight>
+                <OnPlatform Android="40"
+                            WinPhone="55"
+                            iOS="40"
+                            x:TypeArguments="x:Double" />
+            </sfgrid:SfDataGrid.HeaderRowHeight>
+
+            <sfgrid:SfDataGrid.RowHeight>
+                <OnPlatform Android="50"
+                            WinPhone="60"
+                            iOS="50"
+                            x:TypeArguments="x:Double" />
+            </sfgrid:SfDataGrid.RowHeight>
+
+            <sfgrid:SfDataGrid.Columns>
+
+                <sfgrid:GridTextColumn CellTextSize="12"
+                                       HeaderCellTextSize="12"
+                                       HeaderFontAttribute="Bold"
+                                       HeaderText="Product ID"
+                                       HeaderTextAlignment="Start"
+                                       MappingName="ProductID"
+                                       Padding="5,0,5,0"
+                                       TextAlignment="End" />
+
+                <sfgrid:GridTextColumn CellTextSize="12"
+                                       HeaderCellTextSize="12"
+                                       HeaderFontAttribute="Bold"
+                                       HeaderText="User Rating"
+                                       HeaderTextAlignment="Start"
+                                       MappingName="UserRating"
+                                       Padding="5,0,5,0"
+                                       TextAlignment="End" />
+
+                <sfgrid:GridTextColumn Width="90"
+                                       CellTextSize="12"
+                                       HeaderCellTextSize="12"
+                                       HeaderFontAttribute="Bold"
+                                       HeaderText="Product Model"
+                                       HeaderTextAlignment="Start"
+                                       MappingName="ProductModel"
+                                       Padding="5, 0, 0, 0"
+                                       TextAlignment="Start" />
+
+                <sfgrid:GridTextColumn CellTextSize="12"
+                                       HeaderCellTextSize="12"
+                                       HeaderFontAttribute="Bold"
+                                       HeaderText="Product Type"
+                                       HeaderTextAlignment="Start"
+                                       MappingName="ProductType"
+                                       Padding="5, 0, 0, 0"
+                                       TextAlignment="Start" />
+                <sfgrid:GridSwitchColumn CellTextSize="12"
+                                         HeaderCellTextSize="12"
+                                         HeaderFontAttribute="Bold"
+                                         HeaderText="Availability"
+                                         HeaderTextAlignment="Start"
+                                         MappingName="Availability"
+                                         Padding="5, 0, 0, 0"
+                                         TextAlignment="Start" />
+            </sfgrid:SfDataGrid.Columns>
+
+            <sfgrid:SfDataGrid.GroupColumnDescriptions>
+                <sfgrid:GroupColumnDescription ColumnName="ProductType" />
+            </sfgrid:SfDataGrid.GroupColumnDescriptions>
+
+        </sfgrid:SfDataGrid>
+    </local:SamplePage.ContentView>
+
+</local:SamplePage>

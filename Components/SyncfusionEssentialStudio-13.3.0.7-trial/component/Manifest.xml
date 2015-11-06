@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<component format="1" id="SyncfusionEssentialStudio">
+  <name>Syncfusion Essential Studio</name>
+  <publisher>Syncfusion, Inc.</publisher>
+  <publisher-url>http://www.syncfusion.com</publisher-url>
+  <version>13.3.0.7</version>
+  <summary>Syncfusion Essential Studio is a collection of user interface and file format manipulation components for Xamarin.iOS, Xamarin.Android and Xamarin.Forms.</summary>
+  <packages>
+    <package id="Xamarin.Forms" version="1.4.4.6392 " framework="ios" />
+    <package id="Xamarin.Forms" version="1.4.4.6392 " framework="android" />
+  </packages>
+  <screenshots>
+    <img src="screenshots/CandleChart.png" title="CandleChart" />
+    <img src="screenshots/CombinationChart.png" title="CombinationChart" />
+    <img src="screenshots/DataGrid.png" title="DataGrid" />
+    <img src="screenshots/lineargauge.png" title="lineargauge" />
+    <img src="screenshots/DocIO.png" title="DocIO" />
+    <img src="screenshots/PDF.png" title="PDF" />
+    <img src="screenshots/XlsIO.png" title="XlsIO" />
+    <img src="screenshots/PieChart.png" title="PieChart" />
+    <img src="screenshots/ServerMonitor.png" title="ServerMonitor" />
+    <img src="screenshots/Treemap.png" title="Treemap" />
+    <img src="screenshots/autocomplete.png" title="autocomplete" />
+    <img src="screenshots/Barcode.png" title="Barcode" />
+    <img src="screenshots/busyindicator.png" title="busyindicator" />
+    <img src="screenshots/CircularGauge.png" title="CircularGauge" />
+    <img src="screenshots/numerictextbox.png" title="numerictextbox" />
+    <img src="screenshots/rangeslider.png" title="rangeslider" />
+    <img src="screenshots/digitalgauge.png" title="digitalgauge" />
+  </screenshots>
+  <samples>
+    <sample id="SampleBrowser-Android">
+      <name>Android Samples</name>
+      <summary>Android Samples</summary>
+    </sample>
+    <sample id="SampleBrowser-iOS">
+      <name>iOS Samples</name>
+      <summary>iOS Samples</summary>
+    </sample>
+    <sample id="Invoice-Forms">
+      <name>FormsInvoice Samples</name>
+      <summary>Showcases the use of XlsIO, DocIO and PDF libraries</summary>
+    </sample>
+    <sample id="ServerMonitor-Forms">
+      <name>FormsServerMonitor Samples</name>
+      <summary>Showcases the use of Chart and Gauge controls</summary>
+    </sample>
+    <sample id="SampleBrowser-Forms">
+      <name>Forms Samples</name>
+      <summary>Forms Samples</summary>
+    </sample>
+  </samples>
+</component>

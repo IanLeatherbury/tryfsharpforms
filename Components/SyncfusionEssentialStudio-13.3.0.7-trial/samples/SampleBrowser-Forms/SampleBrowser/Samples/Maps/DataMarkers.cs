@@ -1,0 +1,34 @@
+#region Copyright Syncfusion Inc. 2001-2015.
+// Copyright Syncfusion Inc. 2001-2015. All rights reserved.
+// Use of this code is subject to the terms of our license.
+// A copy of the current license can be obtained at any time by e-mailing
+// licensing@syncfusion.com. Any infringement will be prosecuted under
+// applicable laws. 
+#endregion
+using System;
+using Syncfusion.SfMaps.XForms;
+using System.Collections.Generic;
+
+namespace SampleBrowser
+{
+	public class DataMarkers : SamplePage
+	{
+		SfMaps maps;
+		public DataMarkers ()
+		{
+
+			maps = new SfMaps ();
+			ShapeFileLayer layer = new ShapeFileLayer ();
+			layer.Uri ="world1.shp";
+
+			maps.Layers.Add (layer);
+			Content = maps;
+		}
+
+		public SfMaps GetView()
+		{
+			return maps;
+		}
+	}
+}
+

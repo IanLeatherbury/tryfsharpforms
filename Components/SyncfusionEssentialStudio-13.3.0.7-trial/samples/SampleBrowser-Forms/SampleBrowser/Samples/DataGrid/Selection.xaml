@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<local:SamplePage x:Class="SampleBrowser.Selection"
+                  xmlns="http://xamarin.com/schemas/2014/forms"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                  xmlns:local="clr-namespace:SampleBrowser;assembly=SampleBrowser"
+                  xmlns:sfgrid="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms">
+
+    <local:SamplePage.BindingContext>
+        <local:SelectionViewModel x:Name="viewModel" />
+    </local:SamplePage.BindingContext>
+
+    <local:SamplePage.ContentView>
+        <sfgrid:SfDataGrid x:Name="dataGrid"
+                           AutoGenerateColumns="False"
+                           ColumnSizer="Star"
+                           SelectedIndex="1"
+                           SelectionMode="Single">
+
+            <sfgrid:SfDataGrid.HeaderRowHeight>
+                <OnPlatform Android="40"
+                            WinPhone="55"
+                            iOS="40"
+                            x:TypeArguments="x:Double" />
+            </sfgrid:SfDataGrid.HeaderRowHeight>
+
+
+            <sfgrid:SfDataGrid.Columns>
+
+                <sfgrid:GridTextColumn CellTextSize="12"
+                                       HeaderCellTextSize="12"
+                                       HeaderFontAttribute="Bold"
+                                       HeaderText="Order ID"
+                                       HeaderTextAlignment="Start"
+                                       MappingName="OrderID"
+                                       Padding="5,0,5,0"
+                                       TextAlignment="End" />
+
+                <sfgrid:GridTextColumn CellTextSize="12"
+                                       HeaderCellTextSize="12"
+                                       HeaderFontAttribute="Bold"
+                                       HeaderText="Employee ID"
+                                       HeaderTextAlignment="Start"
+                                       MappingName="EmployeeID"
+                                       Padding="5,0,5,0"
+                                       TextAlignment="End" />
+
+                <sfgrid:GridTextColumn CellTextSize="12"
+                                       HeaderCellTextSize="12"
+                                       HeaderFontAttribute="Bold"
+                                       HeaderText="Customer ID"
+                                       HeaderTextAlignment="Start"
+                                       MappingName="CustomerID"
+                                       Padding="5, 0, 0, 0"
+                                       TextAlignment="Start" />
+
+                <sfgrid:GridTextColumn CellTextSize="12"
+                                       HeaderCellTextSize="12"
+                                       HeaderFontAttribute="Bold"
+                                       HeaderText="First Name"
+                                       HeaderTextAlignment="Start"
+                                       MappingName="FirstName"
+                                       Padding="5, 0, 0, 0"
+                                       TextAlignment="Start" />
+
+                <sfgrid:GridTextColumn CellTextSize="12"
+                                       HeaderCellTextSize="12"
+                                       HeaderFontAttribute="Bold"
+                                       HeaderText="Last Name"
+                                       HeaderTextAlignment="Start"
+                                       MappingName="LastName"
+                                       Padding="5, 0, 0, 0"
+                                       TextAlignment="Start" />
+
+            </sfgrid:SfDataGrid.Columns>
+
+        </sfgrid:SfDataGrid>
+    </local:SamplePage.ContentView>
+
+    <local:SamplePage.PropertyView>
+        <Grid ColumnSpacing="10" Padding="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Label x:Name="selectionText"
+                   Grid.Row="0"
+                   Grid.Column="0"
+                   HorizontalOptions="Start"
+                   Text="Set Selection Mode"
+                   VerticalOptions="Center">
+                <Label.FontSize>
+                    <OnPlatform Android="15"
+                                WinPhone="20"
+                                iOS="15"
+                                x:TypeArguments="x:Double" />
+                </Label.FontSize>
+            </Label>
+            <local:PickerExt x:Name="SelectionPicker"
+                             Title="Choose"
+                             Grid.Row="0"
+                             Grid.Column="1"
+                             HorizontalOptions="Start"
+                             SelectedIndexChanged="OnSelectionChanged"
+                             WidthRequest="150">
+
+                <local:PickerExt.Items>
+                    <x:String>None</x:String>
+                    <x:String>Single</x:String>
+                    <x:String>SingleDeselect</x:String>
+                    <x:String>Multiple</x:String>
+                </local:PickerExt.Items>
+            </local:PickerExt>
+        </Grid>
+    </local:SamplePage.PropertyView>
+
+</local:SamplePage>

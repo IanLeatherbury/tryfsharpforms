@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<local:SamplePage x:Class="SampleBrowser.CustomGrouping"
+                  xmlns="http://xamarin.com/schemas/2014/forms"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                  xmlns:data="clr-namespace:Syncfusion.Data.Portable;assembly=Syncfusion.Data.Portable"
+                  xmlns:local="clr-namespace:SampleBrowser;assembly=SampleBrowser"
+                  xmlns:sfgrid="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms">
+
+    <local:SamplePage.Resources>
+        <ResourceDictionary>
+            <local:GroupDataTimeConverter x:Key="customGroupDateTimeConverter" />
+            <local:CustomSortComparer x:Key="customSortComparer" />
+        </ResourceDictionary>
+    </local:SamplePage.Resources>
+
+    <local:SamplePage.BindingContext>
+        <local:SalesInfoViewModel x:Name="viewModel" />
+    </local:SamplePage.BindingContext>
+
+    <local:SamplePage.ContentView>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Row="0"
+                   Grid.Column="0"
+                   BackgroundColor="White"
+                   FontSize="12"
+                   Text="This sample showcases the custom grouping capabilities in SfDataGrid. The SfDataGrid supports custom grouping which enables you to implement custom grouping logic if the standard grouping techniques does not meet your requirements. Below sample is grouped based on the total amount of sales in two quarters."
+                   TextColor="Black" />
+            <sfgrid:SfDataGrid x:Name="dataGrid"
+                               Grid.Row="1"
+                               Grid.Column="0"
+                               AutoGenerateColumns="false"
+                               ColumnSizer="Star"
+                               SelectionMode="Single">
+
+                <sfgrid:SfDataGrid.HeaderRowHeight>
+                    <OnPlatform Android="40"
+                                WinPhone="55"
+                                iOS="40"
+                                x:TypeArguments="x:Double" />
+                </sfgrid:SfDataGrid.HeaderRowHeight>
+
+                <sfgrid:SfDataGrid.SortComparers>
+                    <data:SortComparer Comparer="{StaticResource customSortComparer}" PropertyName="Total" />
+                </sfgrid:SfDataGrid.SortComparers>
+
+                <sfgrid:SfDataGrid.GroupColumnDescriptions>
+                    <sfgrid:GroupColumnDescription ColumnName="Total" Converter="{StaticResource customGroupDateTimeConverter}" />
+                </sfgrid:SfDataGrid.GroupColumnDescriptions>
+
+                <sfgrid:SfDataGrid.Columns>
+                    <sfgrid:GridTextColumn CellTextSize="12"
+                                           HeaderCellTextSize="12"
+                                           HeaderFontAttribute="Bold"
+                                           HeaderTextAlignment="Start"
+                                           MappingName="Name"
+                                           Padding="5,0,0,0"
+                                           TextAlignment="Start" />
+
+                    <sfgrid:GridTextColumn CellTextSize="12"
+                                           Format="C"
+                                           HeaderCellTextSize="12"
+                                           HeaderFontAttribute="Bold"
+                                           HeaderTextAlignment="Start"
+                                           MappingName="QS1"
+                                           Padding="5,0,5,0"
+                                           TextAlignment="End" />
+
+                    <sfgrid:GridTextColumn CellTextSize="12"
+                                           Format="C"
+                                           HeaderCellTextSize="12"
+                                           HeaderFontAttribute="Bold"
+                                           HeaderTextAlignment="Start"
+                                           MappingName="QS2"
+                                           Padding="5,0,5,0"
+                                           TextAlignment="End" />
+
+                    <sfgrid:GridTextColumn CellTextSize="12"
+                                           Format="C"
+                                           HeaderCellTextSize="12"
+                                           HeaderFontAttribute="Bold"
+                                           HeaderText="Total Sale"
+                                           HeaderTextAlignment="Start"
+                                           MappingName="Total"
+                                           Padding="5,0,5,0"
+                                           TextAlignment="End" />
+
+                </sfgrid:SfDataGrid.Columns>
+
+            </sfgrid:SfDataGrid>
+
+        </Grid>
+    </local:SamplePage.ContentView>
+
+</local:SamplePage>

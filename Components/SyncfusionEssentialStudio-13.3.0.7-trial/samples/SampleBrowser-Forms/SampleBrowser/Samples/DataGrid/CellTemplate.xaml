@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<SamplePage x:Class="SampleBrowser.CellTemplate"
+            xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:local="clr-namespace:SampleBrowser;assembly=SampleBrowser"
+            xmlns:sfgrid="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms">
+
+    <local:SamplePage.BindingContext>
+        <local:CellTemplateViewModel x:Name="viewModel" />
+    </local:SamplePage.BindingContext>
+
+    <local:SamplePage.ContentView>
+
+        <sfgrid:SfDataGrid x:Name="dataGrid"
+                           AutoGenerateColumns="false"
+                           ColumnSizer="Star"
+                           RowHeight="153"
+                           SelectionMode="Single">
+
+            <sfgrid:SfDataGrid.HeaderRowHeight>
+                <OnPlatform Android="50"
+                            WinPhone="60"
+                            iOS="50"
+                            x:TypeArguments="x:Double" />
+            </sfgrid:SfDataGrid.HeaderRowHeight>
+
+            <sfgrid:SfDataGrid.Columns>
+
+                <sfgrid:GridTemplateColumn CellTextSize="12"
+                                           HeaderCellTextSize="12"
+                                           HeaderFontAttribute="Bold"
+                                           HeaderText="Employee Details"
+                                           MappingName="Name">
+                    <sfgrid:GridTemplateColumn.HeaderCellTextSize>
+                        <OnIdiom Phone="12"
+                                 Tablet="15"
+                                 x:TypeArguments="x:Double" />
+                    </sfgrid:GridTemplateColumn.HeaderCellTextSize>
+                    <sfgrid:GridTemplateColumn.CellTemplate>
+
+                        <DataTemplate>
+                            <Grid Padding="10" RowSpacing="20">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Image Grid.Row="0"
+                                       Grid.Column="0"
+                                       Source="{Binding Image}"
+                                       VerticalOptions="StartAndExpand" />
+                                <Grid Grid.Row="0"
+                                      Grid.Column="1"
+                                      HeightRequest="130"
+                                      RowSpacing="1"
+                                      VerticalOptions="Start">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Label Grid.Row="0"
+                                           Grid.Column="0"
+                                           Text="{Binding Name}"
+                                           TextColor="Black">
+                                        <Label.FontSize>
+                                            <OnIdiom Phone="10"
+                                                     Tablet="12"
+                                                     x:TypeArguments="x:Double" />
+                                        </Label.FontSize>
+                                    </Label>
+                                    <Label Grid.Row="1"
+                                           Grid.Column="0"
+                                           Text="{Binding EmployeeID}"
+                                           TextColor="Black">
+                                        <Label.FontSize>
+                                            <OnIdiom Phone="10"
+                                                     Tablet="12"
+                                                     x:TypeArguments="x:Double" />
+                                        </Label.FontSize>
+                                    </Label>
+                                    <Label Grid.Row="2"
+                                           Grid.Column="0"
+                                           Text="{Binding Designation}"
+                                           TextColor="Black">
+                                        <Label.FontSize>
+                                            <OnIdiom Phone="10"
+                                                     Tablet="12"
+                                                     x:TypeArguments="x:Double" />
+                                        </Label.FontSize>
+                                    </Label>
+                                    <Label Grid.Row="3"
+                                           Grid.Column="0"
+                                           Text="{Binding Country}"
+                                           TextColor="Black">
+                                        <Label.FontSize>
+                                            <OnIdiom Phone="10"
+                                                     Tablet="12"
+                                                     x:TypeArguments="x:Double" />
+                                        </Label.FontSize>
+                                    </Label>
+                                    <Label Grid.Row="4"
+                                           Grid.Column="0"
+                                           Text="{Binding Telephone}"
+                                           TextColor="Black">
+                                        <Label.FontSize>
+                                            <OnIdiom Phone="10"
+                                                     Tablet="12"
+                                                     x:TypeArguments="x:Double" />
+                                        </Label.FontSize>
+                                    </Label>
+                                </Grid>
+
+                                <Label Grid.Row="0"
+                                       Grid.Column="2"
+                                       Text="{Binding About}"
+                                       TextColor="Black">
+                                    <Label.FontSize>
+                                        <OnIdiom Phone="10"
+                                                 Tablet="12"
+                                                 x:TypeArguments="x:Double" />
+                                    </Label.FontSize>
+                                </Label>
+                            </Grid>
+                        </DataTemplate>
+
+                    </sfgrid:GridTemplateColumn.CellTemplate>
+                </sfgrid:GridTemplateColumn>
+
+            </sfgrid:SfDataGrid.Columns>
+        </sfgrid:SfDataGrid>
+
+    </local:SamplePage.ContentView>
+
+</SamplePage>

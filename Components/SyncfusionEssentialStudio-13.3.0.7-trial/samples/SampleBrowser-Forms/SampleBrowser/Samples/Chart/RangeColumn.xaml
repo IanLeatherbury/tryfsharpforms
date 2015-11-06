@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<local:SamplePage
+             xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
+              xmlns:local="clr-namespace:SampleBrowser;assembly=SampleBrowser"
+              xmlns="http://xamarin.com/schemas/2014/forms"
+              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              x:Class="SampleBrowser.RangeColumn">
+
+  <local:SamplePage.BindingContext>
+    <local:ViewModel/>
+  </local:SamplePage.BindingContext>
+
+  <local:SamplePage.ContentView>
+    
+    <chart:SfChart x:Name="Chart" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+      <chart:SfChart.BindingContext>
+        <local:ViewModel/>
+      </chart:SfChart.BindingContext>
+
+      <chart:SfChart.PrimaryAxis>
+        <chart:CategoryAxis LabelPlacement="BetweenTicks"/>
+      </chart:SfChart.PrimaryAxis>
+
+      <chart:SfChart.SecondaryAxis>
+        <chart:NumericalAxis ShowMajorGridLines="false"/>
+      </chart:SfChart.SecondaryAxis>
+
+      <chart:SfChart.Series>
+        <chart:RangeColumnSeries ItemsSource="{Binding RangeColumnData}" XBindingPath="Name" High="High" Low="Low">
+          <chart:RangeColumnSeries.DataMarker>
+            <chart:ChartDataMarker/>
+          </chart:RangeColumnSeries.DataMarker>
+        </chart:RangeColumnSeries>
+      </chart:SfChart.Series>
+
+    </chart:SfChart>
+
+  </local:SamplePage.ContentView>
+
+</local:SamplePage>

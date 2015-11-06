@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="50dp">
+    <RelativeLayout
+        android:clickable="true"
+        android:id="@+id/textParent"
+        android:layout_width="wrap_content"
+        android:background="@drawable/selection"
+        android:layout_height="match_parent"
+        android:gravity="left">
+        <TextView
+            android:id="@+id/title_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:layout_marginLeft="30dp"
+            android:layout_centerVertical="true"
+            android:textSize="20dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#fff" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:clickable="true"
+        android:id="@+id/imageButton"
+        android:layout_marginRight="10dp"
+        android:layout_width="40dp"
+        android:background="@drawable/selection"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true">
+        <ImageView
+            android:layout_width="20dp"
+            android:clickable="false"
+            android:layout_height="20dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/tick" />
+    </RelativeLayout>
+</RelativeLayout>

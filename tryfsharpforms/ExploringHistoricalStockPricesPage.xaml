@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+	xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	x:Class="tryfsharpforms.ExploringHistoricalStockPricesPage" >
+
+	<ContentPage.Content>
+		<chart:SfChart x:Name="Chart">
+
+<!--		Primary Axis-->
+			<chart:SfChart.PrimaryAxis>
+			  <chart:CategoryAxis LabelRotationAngle = "-45">
+			    <chart:CategoryAxis.Title>
+			      <chart:ChartAxisTitle Text ="Date"/>
+			    </chart:CategoryAxis.Title>
+			  </chart:CategoryAxis>
+			</chart:SfChart.PrimaryAxis>
+<!--		Secondary Axis-->
+			<chart:SfChart.SecondaryAxis>
+			  <chart:NumericalAxis>
+			    <chart:NumericalAxis.Title>
+			      <chart:ChartAxisTitle Text ="Price"/>
+			    </chart:NumericalAxis.Title>
+			  </chart:NumericalAxis>
+			</chart:SfChart.SecondaryAxis>
+<!--			Line Graph-->
+      <chart:SfChart.Series>
+        <chart:LineSeries StrokeWidth="3" ItemsSource="{Binding StockData}" XBindingPath="Date" YBindingPath="Close">
+          <chart:LineSeries.DataMarker>
+            <chart:ChartDataMarker>
+              <chart:ChartDataMarker.LabelStyle>
+                <chart:DataMarkerLabelStyle Angle ="315"/>
+              </chart:ChartDataMarker.LabelStyle>
+            </chart:ChartDataMarker>
+          </chart:LineSeries.DataMarker>
+        </chart:LineSeries>
+      </chart:SfChart.Series>
+<!--      End Line Graph-->
+		</chart:SfChart>
+	</ContentPage.Content>
+</ContentPage>

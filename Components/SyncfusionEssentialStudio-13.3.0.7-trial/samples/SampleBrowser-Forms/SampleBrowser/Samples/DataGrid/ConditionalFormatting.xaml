@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<local:SamplePage x:Class="SampleBrowser.ConditionalFormatting"
+                  xmlns="http://xamarin.com/schemas/2014/forms"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                  xmlns:data="clr-namespace:Syncfusion.Data.Portable;assembly=Syncfusion.Data.Portable"
+                  xmlns:local="clr-namespace:SampleBrowser;assembly=SampleBrowser"
+                  xmlns:sfgrid="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms">
+
+    <local:SamplePage.Resources>
+        <ResourceDictionary>
+            <local:StyleConverterforQS2 x:Key="customstyle_QS2" />
+            <local:StyleConverterforQS3 x:Key="customstyle_QS3" />
+            <local:StyleConverterforQS4 x:Key="customstyle_QS4" />
+            <local:StyleConverterforQS1 x:Key="customstyle_QS1" />
+        </ResourceDictionary>
+    </local:SamplePage.Resources>
+
+
+    <local:SamplePage.BindingContext>
+        <local:SalesViewModel x:Name="viewModel" />
+    </local:SamplePage.BindingContext>
+
+    <local:SamplePage.ContentView>
+        <sfgrid:SfDataGrid x:Name="dataGrid"
+                           AllowSorting="true"
+                           AutoGenerateColumns="false"
+                           ColumnSizer="Star">
+
+            <sfgrid:SfDataGrid.HeaderRowHeight>
+                <OnPlatform Android="40"
+                            WinPhone="55"
+                            iOS="40"
+                            x:TypeArguments="x:Double" />
+            </sfgrid:SfDataGrid.HeaderRowHeight>
+
+            <sfgrid:SfDataGrid.Columns>
+                <sfgrid:GridTextColumn CellTextSize="12"
+                                       HeaderCellTextSize="12"
+                                       HeaderFontAttribute="Bold"
+                                       HeaderTextAlignment="Start"
+                                       MappingName="Name"
+                                       Padding="5,0,0,0"
+                                       TextAlignment="Start" />
+
+                <sfgrid:GridTextColumn CellTextSize="12"
+                                       Format="C"
+                                       HeaderCellTextSize="12"
+                                       HeaderFontAttribute="Bold"
+                                       HeaderTextAlignment="Start"
+                                       MappingName="QS1"
+                                       Padding="5,0,5,0"
+                                       TextAlignment="End">
+
+                    <sfgrid:GridTextColumn.CellStyle>
+                        <Style TargetType="sfgrid:GridCell">
+                            <Setter Property="Foreground" Value="{Binding QS1, Converter={StaticResource customstyle_QS1}}" />
+                        </Style>
+                    </sfgrid:GridTextColumn.CellStyle>
+
+                </sfgrid:GridTextColumn>
+
+                <sfgrid:GridTextColumn CellTextSize="12"
+                                       Format="C"
+                                       HeaderCellTextSize="12"
+                                       HeaderFontAttribute="Bold"
+                                       HeaderTextAlignment="Start"
+                                       MappingName="QS2"
+                                       Padding="5,0,5,0"
+                                       TextAlignment="End">
+                    <sfgrid:GridTextColumn.CellStyle>
+                        <Style TargetType="sfgrid:GridCell">
+                            <Setter Property="BackgroundColor" Value="{Binding QS2, Converter={StaticResource customstyle_QS2}}" />
+                            <Setter Property="Foreground" Value="White" />
+
+                        </Style>
+                    </sfgrid:GridTextColumn.CellStyle>
+                </sfgrid:GridTextColumn>
+
+                <sfgrid:GridTextColumn CellTextSize="12"
+                                       Format="C"
+                                       HeaderCellTextSize="12"
+                                       HeaderFontAttribute="Bold"
+                                       HeaderTextAlignment="Start"
+                                       MappingName="QS3"
+                                       Padding="5,0,5,0"
+                                       TextAlignment="End">
+                    <sfgrid:GridTextColumn.CellStyle>
+                        <Style TargetType="sfgrid:GridCell">
+                            <Setter Property="BackgroundColor" Value="{Binding QS3, Converter={StaticResource customstyle_QS3}}" />
+                        </Style>
+                    </sfgrid:GridTextColumn.CellStyle>
+                </sfgrid:GridTextColumn>
+
+                <sfgrid:GridTextColumn CellTextSize="12"
+                                       Format="C"
+                                       HeaderCellTextSize="12"
+                                       HeaderFontAttribute="Bold"
+                                       HeaderTextAlignment="Start"
+                                       MappingName="QS4"
+                                       Padding="5,0,5,0"
+                                       TextAlignment="End">
+                    <sfgrid:GridTextColumn.CellStyle>
+                        <Style TargetType="sfgrid:GridCell">
+                            <Setter Property="BackgroundColor" Value="{Binding QS4, Converter={StaticResource customstyle_QS4}}" />
+                            <Setter Property="Foreground" Value="White" />
+                        </Style>
+                    </sfgrid:GridTextColumn.CellStyle>
+                </sfgrid:GridTextColumn>
+
+            </sfgrid:SfDataGrid.Columns>
+        </sfgrid:SfDataGrid>
+    </local:SamplePage.ContentView>
+
+</local:SamplePage>

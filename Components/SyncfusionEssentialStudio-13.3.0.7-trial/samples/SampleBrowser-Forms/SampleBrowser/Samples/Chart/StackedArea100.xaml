@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<local:SamplePage
+             xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
+              xmlns:local="clr-namespace:SampleBrowser;assembly=SampleBrowser"
+              xmlns="http://xamarin.com/schemas/2014/forms"
+              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              x:Class="SampleBrowser.StackedArea100">
+
+  <local:SamplePage.BindingContext>
+    <local:ViewModel/>
+  </local:SamplePage.BindingContext>
+
+  <local:SamplePage.ContentView>
+
+    <chart:SfChart x:Name="Chart" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+      <chart:SfChart.BindingContext>
+        <local:ViewModel/>
+      </chart:SfChart.BindingContext>
+
+      <chart:SfChart.PrimaryAxis>
+        <chart:CategoryAxis EdgeLabelsDrawingMode="Shift"/>
+      </chart:SfChart.PrimaryAxis>
+
+      <chart:SfChart.SecondaryAxis>
+        <chart:NumericalAxis EdgeLabelsDrawingMode="Shift"/>
+      </chart:SfChart.SecondaryAxis>
+
+      <chart:SfChart.Series>
+            <chart:StackingArea100Series StrokeWidth = "5" Color = "#90FEBE17" StrokeColor ="#FFFEBE17" Opacity="0.5"/>
+            <chart:StackingArea100Series StrokeWidth = "5" Color = "#994F4838" StrokeColor ="#FF4F4838" Opacity="0.5"/>
+            <chart:StackingArea100Series StrokeWidth = "5" Color = "#99C15146" StrokeColor ="#FFC15146" Opacity="0.5"/>
+      </chart:SfChart.Series>
+
+    </chart:SfChart>
+
+  </local:SamplePage.ContentView>
+
+</local:SamplePage>

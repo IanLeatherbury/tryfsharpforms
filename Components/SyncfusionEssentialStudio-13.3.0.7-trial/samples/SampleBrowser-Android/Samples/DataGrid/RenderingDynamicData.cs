@@ -1,0 +1,66 @@
+#region Copyright Syncfusion Inc. 2001-2015.
+// Copyright Syncfusion Inc. 2001-2015. All rights reserved.
+// Use of this code is subject to the terms of our license.
+// A copy of the current license can be obtained at any time by e-mailing
+// licensing@syncfusion.com. Any infringement will be prosecuted under
+// applicable laws. 
+#endregion
+using System;
+using Syncfusion.SfDataGrid;
+using Android.Graphics;
+using Android.Views;
+
+namespace SampleBrowser
+{
+	public class RenderingDynamicData:SamplePage
+	{
+		SfDataGrid sfGrid;
+
+		public override Android.Views.View GetSampleContent (Android.Content.Context context)
+		{
+			sfGrid = new SfDataGrid (context);
+
+			GridTextColumn stockColumn = new GridTextColumn ();
+			stockColumn.UserCellType = typeof(StockCell);
+			stockColumn.LoadUIView = true;
+			stockColumn.MappingName = "StockChange";
+			stockColumn.HeaderText = "Stock Change";
+			stockColumn.AllowSorting = false;
+			sfGrid.Columns.Add (stockColumn);
+			sfGrid.AlternatingRowColor = Color.Rgb (206, 206, 206);
+			sfGrid.AutoGeneratingColumn += GridAutoGenerateColumns;
+			sfGrid.ItemsSource = new RenderingDynamicDataViewModel ().Stocks;
+			return sfGrid;
+		}
+
+		void GridAutoGenerateColumns (object sender, AutoGeneratingColumnArgs e)
+		{
+			if (e.Column.MappingName == "LastTrade") {
+				e.Column.HeaderText = "Last Trade";
+				e.Column.TextAlignment = GravityFlags.Center;
+			} else if (e.Column.MappingName == "Change") {
+				e.Column.TextAlignment = GravityFlags.Right;
+			} else if (e.Column.MappingName == "PreviousClose") {
+				e.Column.HeaderText = "Previous Close";
+				e.Column.TextAlignment = GravityFlags.Center;
+			} else if (e.Column.MappingName == "Open") {
+				e.Column.TextAlignment = GravityFlags.Center;
+			} else if (e.Column.MappingName == "Account") {
+				e.Column.TextAlignment = GravityFlags.CenterVertical;
+			} else if (e.Column.MappingName == "Symbol") {
+				e.Column.TextAlignment = GravityFlags.CenterVertical;
+			} else if (e.Column.MappingName == "Volume") {
+				e.Column.TextAlignment = GravityFlags.Center;
+			}
+		}
+
+		public override void Destroy ()
+		{
+			this.sfGrid.AutoGeneratingColumn -= GridAutoGenerateColumns;
+			sfGrid.Dispose ();
+			sfGrid = null;
+		}
+
+	}
+}
+

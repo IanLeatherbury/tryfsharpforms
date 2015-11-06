@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<local:SamplePage
+              xmlns:local="clr-namespace:SampleBrowser;assembly=SampleBrowser"
+              xmlns="http://xamarin.com/schemas/2014/forms"
+              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              x:Class="SampleBrowser.Barcode">
+
+  <local:SamplePage.ContentView>
+    <StackLayout>
+      <Label x:Name="SampleTitle" Text="Barcode"
+             FontSize="Large"
+             HorizontalOptions="Center"
+             VerticalOptions="Center">
+      </Label>
+      <Label></Label>
+      <Label x:Name="Description" Text="This sample demonstrates the ability of Essential PDF to render barcodes on PDF documents in the form of graphical objects. Essential PDF supports 1D / linear barcodes and 2D barcode."
+             FontSize="Medium"
+             HorizontalOptions="Center"
+             VerticalOptions="Center">
+      </Label>
+      <Label></Label>
+      <Button x:Name="btnGenerate" Text="Generate PDF"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Clicked="OnButtonClicked" />
+
+    </StackLayout>
+  </local:SamplePage.ContentView>
+
+  <local:SamplePage.PropertyView>
+
+  </local:SamplePage.PropertyView>
+</local:SamplePage>

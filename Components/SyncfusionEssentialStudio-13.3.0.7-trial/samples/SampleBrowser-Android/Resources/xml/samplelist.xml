@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Samples>
+
+  <Group Title="Chart" ImageId="chart" Type="updated">
+    <Sample Name="Line" Title="Line" Type="updated"/>
+    <Sample Name="Spline" Title="Spline"/>
+    <Sample Name="Column" Title="Column"/>
+    <Sample Name="Bar" Title="Bar"/>
+    <Sample Name="Area" Title="Area"/>
+    <Sample Name="SplineArea" Title="Spline Area"/>
+    <Sample Name="Pie" Title="Pie"/>
+    <Sample Name="SemiPie" Title="Semi Pie" Type="new"/>
+    <Sample Name="Doughnut" Title="Doughnut"/>
+    <Sample Name="SemiDoughnut" Title="Semi Doughnut" Type="new"/>
+    <Sample Name="Pyramid" Title="Pyramid" Type="new"/>
+    <Sample Name="Funnel" Title="Funnel" Type="new"/>
+    <Sample Name="Bubble" Title="Bubble"/>
+    <Sample Name="Scatter" Title="Scatter"/>
+    <Sample Name="RangeColumn" Title="Range Column"/>
+    <Sample Name="Candle" Title="Candle"/>
+    <Sample Name="OHLC" Title="OHLC"/>
+    <Sample Name="StackingColumn" Title="Stacked Column"/>
+    <Sample Name="StackingColumn100" Title="100% Stacked Column"/>
+    <Sample Name="StackingBar" Title="Stacked Bar"/>
+    <Sample Name="StackingBar100" Title="100% Stacked Bar"/>
+    <Sample Name="StackingArea" Title="Stacked Area"/>
+    <Sample Name="StackingArea100" Title="100% Stacked Area"/>
+    <Sample Name="LiveUpdate" Title="Live Update"/>
+    <Sample Name="Category" Title="Category Axis"/>
+    <Sample Name="Date" Title="DateTime Axis"/>
+    <Sample Name="Numerical" Title="Numerical Axis"/>
+    <Sample Name="MultipleAxis" Title="Multiple Axes"/>
+    <Sample Name="StripLines" Title="Strip Lines"/>
+    <Sample Name="Trackball" Title="Trackball" />
+    <Sample Name="DataPointSelection" Title="Data Point Selection"/>
+    <Sample Name="ZoomingandPanning" Title="Zooming and Panning"/>
+    <Sample Name="AutoScrolling" Title="Auto Scrolling"/>
+  </Group>
+  <Group Title="DataGrid" ImageId="datagrid" Type="Updated">
+    <Sample Name="GridGettingStarted" Title="Getting Started"/>
+    <Sample Name="Sorting" Title="Sorting"/>
+    <Sample Name="Filtering" Title="Filtering"/>
+    <Sample Name="FrozenView" Title="FrozenView" />
+    <Sample Name="Grouping" Title="Grouping"/>
+    <Sample Name="Selection" Title="Selection"/>
+    <Sample Name="Formatting" Title="Formatting"/>
+    <Sample Name="Styles" Title="Styles"/>
+    <Sample Name="AutoRowHeight" Title="Auto Row Height"/>
+    <Sample Name="Exporting" Title="Exporting" Type="new" />
+    <Sample Name="RenderingDynamicData" Title="Rendering Dyanamic Data"/>
+    <Sample Name="IncrementalLoading" Title="Incremental Loading"/>
+    <Sample Name="DataVirtualization" Title="Data Virtualization"/>
+  </Group>
+  <Group Title="Gauge" ImageId="gauge" >
+    <Sample Name="CircularGauge" Title="CircularGauge"/>
+    <Sample Name="LinearGauge" Title="LinearGauge"/>
+    <Sample Name="DigitalGauge" Title="DigitalGauge"/>
+  </Group>
+  <Group Title="TreeMap" ImageId="treemap" >
+    <Sample Name="FlatCollection" Title="FlatCollection"/>
+  </Group>
+  <Group Title="Maps" ImageId="maps" >
+    <Sample Name="DataMarkers" Title="Getting Started" />
+    <Sample Name="BubbleVisualization" Title="BubbleVisualization" />
+    <Sample Name="ColorMappings" Title="ColorMappings" />
+  </Group>
+  <Group Title="Barcode" ImageId="barcode" >
+    <Sample Name="QRCode" Title="QRCode"/>
+    <Sample Name="DataMatrix" Title="DataMatrix"/>
+    <Sample Name="Code39" Title="Code39"/>
+    <Sample Name="Code39Extended" Title="Code39Extended"/>
+    <Sample Name="Code93" Title="Code93"/>
+    <Sample Name="Code93Extended" Title="Code93Extended"/>
+    <Sample Name="Codabar" Title="Codabar"/>
+    <Sample Name="Code11" Title="Code11"/>
+    <Sample Name="Code32" Title="Code32"/>
+    <Sample Name="Code128A" Title="Code128A"/>
+    <Sample Name="Code128B" Title="Code128B"/>
+    <Sample Name="Code128C" Title="Code128C"/>
+  </Group>
+  <Group Title="NavigationDrawer" ImageId="slider" >
+    <Sample Name="NavigationDrawer" Title="Getting Started" />
+  </Group>
+  <Group Title="AutoComplete" ImageId="autocomplete" >
+    <Sample Name="AutoComplete" Title="Getting Started" />
+    <Sample Name="JobSearchSample" Title="JobSearch Sample" />
+  </Group>
+  <Group Title="NumericTextBox" ImageId="numeric" >
+    <Sample Name="NumericTextBox" Title="Getting Started" />
+  </Group>
+  <Group Title="RangeSlider" ImageId="range" Type="Preview">
+    <Sample Name="GettingStarted" Title="GettingStarted" />
+    <Sample Name="Slider" Title="SliderView" />
+    <Sample Name="Equalizer" Title="Equalizer" />
+  </Group>
+  <Group Title="BusyIndicator" ImageId="busy">
+    <Sample Name="BusyIndicator" Title="BusyIndicator" />
+  </Group>
+  
+</Samples>

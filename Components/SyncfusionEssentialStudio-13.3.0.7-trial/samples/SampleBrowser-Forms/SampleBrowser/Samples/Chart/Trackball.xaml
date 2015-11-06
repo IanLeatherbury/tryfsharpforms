@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<local:SamplePage
+             xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
+              xmlns:local="clr-namespace:SampleBrowser;assembly=SampleBrowser"
+              xmlns="http://xamarin.com/schemas/2014/forms"
+              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              x:Class="SampleBrowser.Trackball">
+
+  <local:SamplePage.BindingContext>
+    <local:ViewModel/>
+  </local:SamplePage.BindingContext>
+
+  <local:SamplePage.ContentView>
+    <StackLayout>
+      <chart:SfChart x:Name="Chart" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+        <chart:SfChart.BindingContext>
+          <local:ViewModel/>
+        </chart:SfChart.BindingContext>
+
+        <chart:SfChart.PrimaryAxis>
+          <chart:NumericalAxis/>
+        </chart:SfChart.PrimaryAxis>
+
+        <chart:SfChart.SecondaryAxis>
+          <chart:NumericalAxis/>
+        </chart:SfChart.SecondaryAxis>
+
+        <chart:SfChart.Series>
+          <chart:LineSeries ItemsSource="{Binding LineSeries1}" XBindingPath="Value" YBindingPath="Size">
+          </chart:LineSeries>
+
+          <chart:LineSeries ItemsSource="{Binding LineSeries2}" XBindingPath="Value" YBindingPath="Size">
+          </chart:LineSeries>
+
+          <chart:LineSeries ItemsSource="{Binding LineSeries3}" XBindingPath="Value" YBindingPath="Size">
+          </chart:LineSeries>
+
+        </chart:SfChart.Series>
+        <chart:SfChart.ChartBehaviors>
+          <chart:ChartTrackballBehavior x:Name="chartTrackball"/>
+        </chart:SfChart.ChartBehaviors>
+      </chart:SfChart>
+
+            <Label Text = "Press and hold to enable trackball." HorizontalOptions="Center"></Label>
+    </StackLayout>
+  </local:SamplePage.ContentView>
+  <local:SamplePage.PropertyView>
+    <StackLayout>
+        <Label Text="Label Display Mode"></Label>
+       <local:PickerExt x:Name="labelDisplayMode">
+            <local:PickerExt.Items>
+                <x:String>Floating Point</x:String> 
+                <x:String>Nearest Point</x:String>
+            </local:PickerExt.Items>
+        </local:PickerExt> 
+      </StackLayout>
+  </local:SamplePage.PropertyView>
+
+</local:SamplePage>

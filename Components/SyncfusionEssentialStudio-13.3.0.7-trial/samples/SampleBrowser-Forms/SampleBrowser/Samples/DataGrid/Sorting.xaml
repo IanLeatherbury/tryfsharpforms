@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<local:SamplePage x:Class="SampleBrowser.Sorting"
+                  xmlns="http://xamarin.com/schemas/2014/forms"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                  xmlns:local="clr-namespace:SampleBrowser;assembly=SampleBrowser"
+                  xmlns:sfgrid="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms">
+
+    <local:SamplePage.BindingContext>
+        <local:SortingViewModel x:Name="viewModel" />
+    </local:SamplePage.BindingContext>
+
+    <local:SamplePage.ContentView>
+        <sfgrid:SfDataGrid x:Name="dataGrid"
+                           AllowSorting="True"
+                           AutoGenerateColumns="false"
+                           ColumnSizer="Star"
+                           SelectionMode="Single">
+
+            <sfgrid:SfDataGrid.HeaderRowHeight>
+                <OnPlatform Android="40"
+                            WinPhone="55"
+                            iOS="40"
+                            x:TypeArguments="x:Double" />
+            </sfgrid:SfDataGrid.HeaderRowHeight>
+
+            <sfgrid:SfDataGrid.SortColumnDescriptions>
+                <sfgrid:SortColumnDescription ColumnName="ProductID" SortDirection="Descending" />
+            </sfgrid:SfDataGrid.SortColumnDescriptions>
+
+            <sfgrid:SfDataGrid.Columns>
+                <sfgrid:GridTextColumn CellTextSize="12"
+                                       HeaderCellTextSize="12"
+                                       HeaderFontAttribute="Bold"
+                                       HeaderText="Supplier ID"
+                                       HeaderTextAlignment="Start"
+                                       MappingName="SupplierID"
+                                       Padding="5,0,5,0"
+                                       TextAlignment="End" />
+                <sfgrid:GridTextColumn CellTextSize="12"
+                                       HeaderCellTextSize="12"
+                                       HeaderFontAttribute="Bold"
+                                       HeaderText="Product ID"
+                                       HeaderTextAlignment="Start"
+                                       MappingName="ProductID"
+                                       Padding="5,0,5,0"
+                                       TextAlignment="End" />
+                <sfgrid:GridTextColumn CellTextSize="12"
+                                       HeaderCellTextSize="12"
+                                       HeaderFontAttribute="Bold"
+                                       HeaderText="Product Name"
+                                       HeaderTextAlignment="Start"
+                                       MappingName="ProductName"
+                                       Padding="5,0,0,0"
+                                       TextAlignment="Start" />
+                <sfgrid:GridTextColumn CellTextSize="12"
+                                       HeaderCellTextSize="12"
+                                       HeaderFontAttribute="Bold"
+                                       HeaderText="Quantity"
+                                       HeaderTextAlignment="Start"
+                                       MappingName="Quantity"
+                                       Padding="5,0,5,0"
+                                       TextAlignment="End" />
+                <sfgrid:GridTextColumn CellTextSize="12"
+                                       Format="C"
+                                       HeaderCellTextSize="12"
+                                       HeaderFontAttribute="Bold"
+                                       HeaderText="Unit Price"
+                                       HeaderTextAlignment="Start"
+                                       MappingName="UnitPrice"
+                                       Padding="5,0,5,0"
+                                       TextAlignment="End" />
+
+            </sfgrid:SfDataGrid.Columns>
+        </sfgrid:SfDataGrid>
+    </local:SamplePage.ContentView>
+
+</local:SamplePage>

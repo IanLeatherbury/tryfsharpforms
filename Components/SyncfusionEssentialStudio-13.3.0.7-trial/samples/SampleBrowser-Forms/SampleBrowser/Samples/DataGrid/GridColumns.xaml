@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<local:SamplePage x:Class="SampleBrowser.GridColumns"
+                  xmlns="http://xamarin.com/schemas/2014/forms"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                  xmlns:local="clr-namespace:SampleBrowser;assembly=SampleBrowser"
+                  xmlns:sfgrid="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms">
+
+    <local:SamplePage.BindingContext>
+        <local:GridColumnsViewModel x:Name="viewModel" />
+    </local:SamplePage.BindingContext>
+
+    <local:SamplePage.ContentView>
+        <sfgrid:SfDataGrid x:Name="dataGrid"
+                           AutoGenerateColumns="false"
+                           ColumnSizer="Star"
+                           SelectionMode="Single">
+
+            <sfgrid:SfDataGrid.RowHeight>
+                <OnPlatform Android="50"
+                            WinPhone="60"
+                            iOS="50"
+                            x:TypeArguments="x:Double" />
+            </sfgrid:SfDataGrid.RowHeight>
+
+            <sfgrid:SfDataGrid.HeaderRowHeight>
+                <OnPlatform Android="40"
+                            WinPhone="55"
+                            iOS="40"
+                            x:TypeArguments="x:Double" />
+            </sfgrid:SfDataGrid.HeaderRowHeight>
+
+            <sfgrid:SfDataGrid.Columns>
+                <sfgrid:GridImageColumn CellTextSize="12"
+                                        HeaderCellTextSize="12"
+                                        HeaderFontAttribute="Bold"
+                                        HeaderText="Dealer"
+                                        HeaderTextAlignment="Start"
+                                        MappingName="DealerImage"
+                                        Padding="5,0,5,0" />
+
+                <sfgrid:GridTextColumn CellTextSize="12"
+                                       HeaderCellTextSize="12"
+                                       HeaderFontAttribute="Bold"
+                                       HeaderText="Product ID"
+                                       HeaderTextAlignment="Start"
+                                       MappingName="ProductID"
+                                       Padding="5,0,5,0"
+                                       TextAlignment="End" />
+
+                <sfgrid:GridTextColumn CellTextSize="12"
+                                       HeaderCellTextSize="12"
+                                       HeaderFontAttribute="Bold"
+                                       HeaderText="Dealer Name"
+                                       HeaderTextAlignment="Start"
+                                       MappingName="DealerName"
+                                       Padding="5,0,0,0"
+                                       TextAlignment="Start" />
+
+                <sfgrid:GridSwitchColumn CellTextSize="12"
+                                         HeaderCellTextSize="12"
+                                         HeaderFontAttribute="Bold"
+                                         HeaderText="Is Online"
+                                         HeaderTextAlignment="Start"
+                                         MappingName="IsOnline"
+                                         Padding="5,0,0,0"
+                                         TextAlignment="Start" />
+
+                <sfgrid:GridTextColumn CellTextSize="12"
+                                       Format="C"
+                                       HeaderCellTextSize="12"
+                                       HeaderFontAttribute="Bold"
+                                       HeaderText="Product Price"
+                                       HeaderTextAlignment="Start"
+                                       MappingName="ProductPrice"
+                                       Padding="5,0,5,0"
+                                       TextAlignment="End" />
+            </sfgrid:SfDataGrid.Columns>
+
+        </sfgrid:SfDataGrid>
+    </local:SamplePage.ContentView>
+
+</local:SamplePage>

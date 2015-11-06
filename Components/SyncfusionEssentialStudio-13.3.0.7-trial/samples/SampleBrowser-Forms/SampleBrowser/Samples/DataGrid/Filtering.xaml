@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<local:SamplePage x:Class="SampleBrowser.Filtering"
+                  xmlns="http://xamarin.com/schemas/2014/forms"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                  xmlns:local="clr-namespace:SampleBrowser;assembly=SampleBrowser"
+                  xmlns:sfgrid="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms">
+
+    <local:SamplePage.BindingContext>
+        <local:FilteringViewModel x:Name="viewModel" />
+    </local:SamplePage.BindingContext>
+
+    <local:SamplePage.ContentView>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <local:SearchBarExt x:Name="filterText"
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                IsVisible="true"
+                                Placeholder="Search here to Filter"
+                                TextChanged="OnFilterTextChanged">
+                <local:SearchBarExt.HeightRequest>
+                    <OnPlatform Android="50"
+                                WinPhone="80"
+                                iOS="50"
+                                x:TypeArguments="x:Double" />
+                </local:SearchBarExt.HeightRequest>
+            </local:SearchBarExt>
+
+            <sfgrid:SfDataGrid x:Name="dataGrid"
+                               Grid.Row="1"
+                               Grid.Column="0"
+                               AutoGenerateColumns="false"
+                               ColumnSizer="Star"
+                               SelectionMode="Single">
+
+                <sfgrid:SfDataGrid.HeaderRowHeight>
+                    <OnPlatform Android="40"
+                                WinPhone="55"
+                                iOS="40"
+                                x:TypeArguments="x:Double" />
+                </sfgrid:SfDataGrid.HeaderRowHeight>
+
+                <sfgrid:SfDataGrid.Columns>
+                    <sfgrid:GridTextColumn CellTextSize="12"
+                                           HeaderCellTextSize="12"
+                                           HeaderFontAttribute="Bold"
+                                           HeaderText="Customer ID"
+                                           HeaderTextAlignment="Start"
+                                           MappingName="CustomerID"
+                                           Padding="5,0,5,0"
+                                           TextAlignment="End" />
+
+                    <sfgrid:GridTextColumn CellTextSize="12"
+                                           HeaderCellTextSize="12"
+                                           HeaderFontAttribute="Bold"
+                                           HeaderText="Book ID"
+                                           HeaderTextAlignment="Start"
+                                           MappingName="BookID"
+                                           Padding="5,0,5,0"
+                                           TextAlignment="End" />
+
+                    <sfgrid:GridTextColumn CellTextSize="12"
+                                           HeaderCellTextSize="12"
+                                           HeaderFontAttribute="Bold"
+                                           HeaderText="First Name"
+                                           HeaderTextAlignment="Start"
+                                           MappingName="FirstName"
+                                           Padding="5, 0, 0, 0"
+                                           TextAlignment="Start" />
+
+                    <sfgrid:GridTextColumn CellTextSize="12"
+                                           HeaderCellTextSize="12"
+                                           HeaderFontAttribute="Bold"
+                                           HeaderText="Last Name"
+                                           HeaderTextAlignment="Start"
+                                           MappingName="LastName"
+                                           Padding="5, 0, 0, 0"
+                                           TextAlignment="Start" />
+
+                    <sfgrid:GridTextColumn CellTextSize="12"
+                                           HeaderCellTextSize="12"
+                                           HeaderFontAttribute="Bold"
+                                           HeaderText="Book Name"
+                                           HeaderTextAlignment="Start"
+                                           MappingName="BookName"
+                                           Padding="5, 0, 0, 0"
+                                           TextAlignment="Start" />
+
+                </sfgrid:SfDataGrid.Columns>
+
+            </sfgrid:SfDataGrid>
+        </Grid>
+    </local:SamplePage.ContentView>
+
+    <local:SamplePage.PropertyView>
+        <Grid ColumnSpacing="10" Padding="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Label x:Name="filterlabel"
+                   Grid.Row="0"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="2"
+                   FontSize="15"
+                   HorizontalOptions="Start"
+                   Text="Filter Options"
+                   VerticalOptions="Center" />
+
+            <local:PickerExt x:Name="ColumnsList"
+                             Grid.Row="1"
+                             Grid.Column="0"
+                             HorizontalOptions="Start"
+                             SelectedIndexChanged="OnColumnsSelectionChanged"
+                             WidthRequest="200">
+                <local:PickerExt.Items>
+                    <x:String>All Columns</x:String>
+                    <x:String>CustomerID</x:String>
+                    <x:String>BookID</x:String>
+                    <x:String>FirstName</x:String>
+                    <x:String>LastName</x:String>
+                    <x:String>BookName</x:String>
+                </local:PickerExt.Items>
+            </local:PickerExt>
+
+            <local:PickerExt x:Name="OptionsList"
+                             Grid.Row="1"
+                             Grid.Column="1"
+                             HorizontalOptions="Start"
+                             IsVisible="False"
+                             SelectedIndexChanged="OnFilterOptionsChanged"
+                             WidthRequest="200">
+                <local:PickerExt.Items>
+                    <x:String>Equals</x:String>
+                    <x:String>NotEquals</x:String>
+                    <x:String>Contains</x:String>
+                </local:PickerExt.Items>
+            </local:PickerExt>
+        </Grid>
+    </local:SamplePage.PropertyView>
+
+</local:SamplePage>

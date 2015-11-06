@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<local:SamplePage
+             xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
+              xmlns:local="clr-namespace:SampleBrowser;assembly=SampleBrowser"
+              xmlns="http://xamarin.com/schemas/2014/forms"
+              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              x:Class="SampleBrowser.DataPointSelection">
+
+  <local:SamplePage.BindingContext>
+    <local:ViewModel/>
+  </local:SamplePage.BindingContext>
+
+  <local:SamplePage.ContentView>
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition ></RowDefinition>
+        <RowDefinition Height ="Auto"></RowDefinition>
+      </Grid.RowDefinitions>
+      <chart:SfChart x:Name="Chart" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" SelectionChanged = "chart_SelectionChanged">
+
+        <chart:SfChart.BindingContext>
+          <local:ViewModel/>
+        </chart:SfChart.BindingContext>
+
+        <chart:SfChart.PrimaryAxis>
+          <chart:CategoryAxis >
+            <chart:CategoryAxis.Title>
+              <chart:ChartAxisTitle Text ="Month"/>
+            </chart:CategoryAxis.Title>
+          </chart:CategoryAxis>
+        </chart:SfChart.PrimaryAxis>
+
+        <chart:SfChart.SecondaryAxis>
+          <chart:NumericalAxis>
+            <chart:NumericalAxis.Title>
+              <chart:ChartAxisTitle Text ="Sales"/>
+            </chart:NumericalAxis.Title>
+            <chart:NumericalAxis.LabelStyle>
+              <chart:ChartAxisLabelStyle LabelFormat = "$##.##"/>
+            </chart:NumericalAxis.LabelStyle>
+          </chart:NumericalAxis>
+        </chart:SfChart.SecondaryAxis>
+
+        <chart:SfChart.Series>
+          <chart:ColumnSeries ItemsSource="{Binding SelectionData}" Label = "Column Series" XBindingPath="Name" YBindingPath="Value" SelectedDataPointIndex = "2"
+                EnableDataPointSelection = "true"/>
+        </chart:SfChart.Series>
+
+      </chart:SfChart>
+    <StackLayout Padding="0,0,0,5" Grid.Row="1">
+      <Label HorizontalOptions="Center" x:Name="label"></Label>
+      </StackLayout>
+    </Grid>
+  </local:SamplePage.ContentView>
+
+</local:SamplePage>

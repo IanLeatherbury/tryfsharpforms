@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<local:SamplePage x:Class="SampleBrowser.CustomSorting"
+                  xmlns="http://xamarin.com/schemas/2014/forms"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                  xmlns:data="clr-namespace:Syncfusion.Data.Portable;assembly=Syncfusion.Data.Portable"
+                  xmlns:local="clr-namespace:SampleBrowser;assembly=SampleBrowser"
+                  xmlns:sfgrid="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms">
+
+    <local:SamplePage.Resources>
+        <ResourceDictionary>
+            <local:CustomerInfo x:Key="Comparer" />
+        </ResourceDictionary>
+    </local:SamplePage.Resources>
+
+    <local:SamplePage.BindingContext>
+        <local:CustomerViewModel x:Name="viewModel" />
+    </local:SamplePage.BindingContext>
+
+    <local:SamplePage.ContentView>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Row="0"
+                   Grid.Column="0"
+                   BackgroundColor="White"
+                   FontSize="12"
+                   Text="This sample showcases the custom sorting capabilities in SfDataGrid. The SfDataGrid supports custom sorting which enables you to implement custom sorting logic if the standard sorting techniques does not meet your requirements. Below sample is sorted based on the length of the First Name."
+                   TextColor="Black" />
+            <sfgrid:SfDataGrid x:Name="dataGrid"
+                               Grid.Row="1"
+                               Grid.Column="0"
+                               AllowSorting="true"
+                               AutoGenerateColumns="false"
+                               ColumnSizer="Star"
+                               SelectionMode="Single">
+
+                <sfgrid:SfDataGrid.HeaderRowHeight>
+                    <OnPlatform Android="40"
+                                WinPhone="55"
+                                iOS="40"
+                                x:TypeArguments="x:Double" />
+                </sfgrid:SfDataGrid.HeaderRowHeight>
+
+                <sfgrid:SfDataGrid.Columns>
+
+                    <sfgrid:GridTextColumn CellTextSize="12"
+                                           HeaderCellTextSize="12"
+                                           HeaderFontAttribute="Bold"
+                                           HeaderText="Customer ID"
+                                           HeaderTextAlignment="Start"
+                                           MappingName="CustomerID"
+                                           Padding="5, 0, 0, 0"
+                                           TextAlignment="Start" />
+                    <sfgrid:GridTextColumn CellTextSize="12"
+                                           HeaderCellTextSize="12"
+                                           HeaderFontAttribute="Bold"
+                                           HeaderText="First Name"
+                                           HeaderTextAlignment="Start"
+                                           MappingName="FirstName"
+                                           Padding="5, 0, 0, 0"
+                                           TextAlignment="Start" />
+                    <sfgrid:GridTextColumn CellTextSize="12"
+                                           HeaderCellTextSize="12"
+                                           HeaderFontAttribute="Bold"
+                                           HeaderText="Last Name"
+                                           HeaderTextAlignment="Start"
+                                           MappingName="LastName"
+                                           Padding="5, 0, 0, 0"
+                                           TextAlignment="Start" />
+                    <sfgrid:GridTextColumn CellTextSize="12"
+                                           HeaderCellTextSize="12"
+                                           HeaderFontAttribute="Bold"
+                                           HeaderText="Gender"
+                                           HeaderTextAlignment="Start"
+                                           MappingName="Gender"
+                                           Padding="5, 0, 0, 0"
+                                           TextAlignment="Start" />
+                    <sfgrid:GridTextColumn CellTextSize="12"
+                                           HeaderCellTextSize="12"
+                                           HeaderFontAttribute="Bold"
+                                           HeaderText="City"
+                                           HeaderTextAlignment="Start"
+                                           MappingName="City"
+                                           Padding="5, 0, 0, 0"
+                                           TextAlignment="Start" />
+
+                </sfgrid:SfDataGrid.Columns>
+
+                <sfgrid:SfDataGrid.SortComparers>
+                    <data:SortComparer Comparer="{StaticResource Comparer}" PropertyName="FirstName" />
+                </sfgrid:SfDataGrid.SortComparers>
+
+                <sfgrid:SfDataGrid.SortColumnDescriptions>
+                    <sfgrid:SortColumnDescription ColumnName="FirstName" SortDirection="Descending" />
+                </sfgrid:SfDataGrid.SortColumnDescriptions>
+
+            </sfgrid:SfDataGrid>
+        </Grid>
+    </local:SamplePage.ContentView>
+
+</local:SamplePage>

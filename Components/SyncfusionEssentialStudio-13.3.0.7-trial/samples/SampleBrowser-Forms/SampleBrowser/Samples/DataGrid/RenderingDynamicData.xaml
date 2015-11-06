@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<local:SamplePage x:Class="SampleBrowser.RenderingDynamicData"
+                  xmlns="http://xamarin.com/schemas/2014/forms"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                  xmlns:local="clr-namespace:SampleBrowser;assembly=SampleBrowser"
+                  xmlns:sfgrid="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms">
+
+    <local:SamplePage.BindingContext>
+        <local:RenderingDynamicDataViewModel x:Name="viewModel" />
+    </local:SamplePage.BindingContext>
+
+    <local:SamplePage.Resources>
+        <ResourceDictionary>
+            <local:ChangeForegroundConverter x:Key="changeForegroundConverter" />
+            <local:ChangeBackgroundConverter x:Key="changeBackgroundConverter" />
+            <local:ImageConverter x:Key="imageConverter" />
+        </ResourceDictionary>
+    </local:SamplePage.Resources>
+
+    <local:SamplePage.ContentView>
+        <sfgrid:SfDataGrid x:Name="dataGrid"
+                           AutoGenerateColumns="false"
+                           ColumnSizer="Star"
+                           SelectionMode="Single">
+
+            <sfgrid:SfDataGrid.HeaderRowHeight>
+                <OnPlatform Android="40"
+                            WinPhone="55"
+                            iOS="40"
+                            x:TypeArguments="x:Double" />
+            </sfgrid:SfDataGrid.HeaderRowHeight>
+
+            <sfgrid:SfDataGrid.Columns>
+                <sfgrid:GridTemplateColumn CellTextSize="12"
+                                           HeaderCellTextSize="12"
+                                           HeaderFontAttribute="Bold"
+                                           HeaderText="Stock Change"
+                                           HeaderTextAlignment="Start"
+                                           MappingName="StockChange"
+                                           Padding="5,0,5,0">
+                    <sfgrid:GridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Row="0"
+                                       Grid.Column="0"
+                                       Source="{Binding StockChange,
+                                                        Converter={StaticResource imageConverter}}" />
+                                <Label x:Name="changeValue"
+                                       Grid.Row="0"
+                                       Grid.Column="1"
+                                       Text="{Binding StockChange}"
+                                       TextColor="Black"
+                                       XAlign="Center"
+                                       YAlign="Center">
+                                    <Label.FontSize>
+                                        <OnPlatform Android="12"
+                                                    WinPhone="14"
+                                                    iOS="12"
+                                                    x:TypeArguments="x:Double" />
+                                    </Label.FontSize>
+                                </Label>
+                            </Grid>
+                        </DataTemplate>
+                    </sfgrid:GridTemplateColumn.CellTemplate>
+                </sfgrid:GridTemplateColumn>
+
+                <sfgrid:GridTextColumn CellTextSize="12"
+                                       HeaderCellTextSize="12"
+                                       HeaderFontAttribute="Bold"
+                                       HeaderTextAlignment="Start"
+                                       MappingName="Open"
+                                       Padding="5,0,5,0"
+                                       TextAlignment="End" />
+
+                <sfgrid:GridTextColumn CellTextSize="12"
+                                       HeaderCellTextSize="12"
+                                       HeaderFontAttribute="Bold"
+                                       HeaderText="Previous Close"
+                                       HeaderTextAlignment="Start"
+                                       MappingName="PreviousClose"
+                                       Padding="5,0,5,0"
+                                       TextAlignment="End" />
+
+                <sfgrid:GridTemplateColumn CellTextSize="12"
+                                           HeaderCellTextSize="12"
+                                           HeaderFontAttribute="Bold"
+                                           HeaderText="Last Trade"
+                                           HeaderTextAlignment="Start"
+                                           MappingName="LastTrade"
+                                           Padding="5,0,5,0"
+                                           TextAlignment="End">
+                    <sfgrid:GridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Label x:Name="lasttradeValue"
+                                   Text="{Binding LastTrade}"
+                                   TextColor="{Binding LastTrade,
+                                                       Converter={StaticResource changeForegroundConverter}}"
+                                   XAlign="Center"
+                                   YAlign="Center">
+                                <Label.FontSize>
+                                    <OnPlatform Android="12"
+                                                WinPhone="14"
+                                                iOS="12"
+                                                x:TypeArguments="x:Double" />
+                                </Label.FontSize>
+                            </Label>
+                        </DataTemplate>
+                    </sfgrid:GridTemplateColumn.CellTemplate>
+                </sfgrid:GridTemplateColumn>
+
+                <sfgrid:GridTextColumn CellTextSize="12"
+                                       HeaderCellTextSize="12"
+                                       HeaderFontAttribute="Bold"
+                                       HeaderTextAlignment="Start"
+                                       MappingName="Symbol"
+                                       Padding="5, 0, 0, 0"
+                                       TextAlignment="Start" />
+            </sfgrid:SfDataGrid.Columns>
+
+        </sfgrid:SfDataGrid>
+    </local:SamplePage.ContentView>
+</local:SamplePage>

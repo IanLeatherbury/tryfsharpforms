@@ -1,0 +1,404 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
+    <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <ProjectGuid>{46735CD5-C786-40F0-B629-B59FA1B3EE0D}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>SampleBrowser</RootNamespace>
+    <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
+    <AssemblyName>SampleBrowser</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhoneSimulator\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <MtouchArch>i386</MtouchArch>
+    <MtouchLink>None</MtouchLink>
+    <MtouchDebug>true</MtouchDebug>
+    <MtouchProfiling>true</MtouchProfiling>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhoneSimulator\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <MtouchArch>i386</MtouchArch>
+    <ConsolePause>false</ConsolePause>
+    <MtouchLink>None</MtouchLink>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhone\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <MtouchArch>ARMv7, ARM64</MtouchArch>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <MtouchUseRefCounting>true</MtouchUseRefCounting>
+    <IpaPackageName></IpaPackageName>
+    <MtouchI18n></MtouchI18n>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhone\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <MtouchArch>ARMv7, ARM64</MtouchArch>
+    <ConsolePause>false</ConsolePause>
+    <CodesignKey>iPhone Developer</CodesignKey>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Ad-Hoc|iPhone' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhone\Ad-Hoc</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <MtouchArch>ARMv7, ARM64</MtouchArch>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <IpaIncludeArtwork>true</IpaIncludeArtwork>
+    <CodesignKey>iPhone Distribution</CodesignKey>
+    <CodesignProvision>Automatic:AdHoc</CodesignProvision>
+    <BuildIpa>true</BuildIpa>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'AppStore|iPhone' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhone\AppStore</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <MtouchArch>ARMv7, ARM64</MtouchArch>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <CodesignProvision>Automatic:AppStore</CodesignProvision>
+    <CodesignKey>iPhone Distribution</CodesignKey>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="Xamarin.iOS" />
+    <Reference Include="Syncfusion.Compression.Portable">
+      <HintPath>..\..\lib\pcl\Syncfusion.Compression.Portable.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Pdf.Portable">
+      <HintPath>..\..\lib\pcl\Syncfusion.Pdf.Portable.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.XlsIO.Portable">
+      <HintPath>..\..\lib\pcl\Syncfusion.XlsIO.Portable.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfGridConverter.iOS">
+      <HintPath>..\..\lib\ios-unified\Syncfusion.SfGridConverter.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfMaps.iOS">
+      <HintPath>..\..\lib\ios-unified\Syncfusion.SfMaps.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfChart.iOS">
+      <HintPath>..\..\lib\ios-unified\Syncfusion.SfChart.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfBusyIndicator.iOS">
+      <HintPath>..\..\lib\ios-unified\Syncfusion.SfBusyIndicator.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfGauge.iOS">
+      <HintPath>..\..\lib\ios-unified\Syncfusion.SfGauge.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfRangeSlider.iOS">
+      <HintPath>..\..\lib\ios-unified\Syncfusion.SfRangeSlider.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfNumericTextBox.iOS">
+      <HintPath>..\..\lib\ios-unified\Syncfusion.SfNumericTextBox.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfAutoComplete.iOS">
+      <HintPath>..\..\lib\ios-unified\Syncfusion.SfAutoComplete.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfTreeMap.iOS">
+      <HintPath>..\..\lib\ios-unified\Syncfusion.SfTreeMap.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfBarcode.iOS">
+      <HintPath>..\..\lib\ios-unified\Syncfusion.SfBarcode.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfDataGrid.iOS">
+      <HintPath>..\..\lib\ios-unified\Syncfusion.SfDataGrid.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Linq.iOS">
+      <HintPath>..\..\lib\ios-unified\Syncfusion.Linq.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.GridCommon.Portable">
+      <HintPath>..\..\lib\pcl\Syncfusion.GridCommon.Portable.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.Services.Client" />
+    <Reference Include="Syncfusion.SfNavigationDrawer.iOS">
+      <HintPath>..\..\lib\ios-unified\Syncfusion.SfNavigationDrawer.iOS.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Contents.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <InterfaceDefinition Include="Resources\LaunchScreen.xib" />
+    <InterfaceDefinition Include="MainStoryboard_iPhone.storyboard" />
+    <InterfaceDefinition Include="MainStoryboard_iPad.storyboard" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Info.plist" />
+    <None Include="Entitlements.plist" />
+    <None Include="Samples\DataGrid\NorthwindService\Reference.datasvcmap" />
+    <None Include="Samples\DataGrid\NorthwindService\service.edmx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Main.cs" />
+    <Compile Include="AppDelegate.cs" />
+    <Compile Include="SampleBrowserViewController.cs" />
+    <Compile Include="SampleBrowserViewController.designer.cs">
+      <DependentUpon>SampleBrowserViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InitialTabBarController.cs" />
+    <Compile Include="AboutViewController.cs" />
+    <Compile Include="AllControlsViewController.cs" />
+    <Compile Include="AllControlsViewCell.cs" />
+    <Compile Include="Samples\Barcode\CodaBarBarcode.cs" />
+    <Compile Include="Samples\Barcode\Code11Barcode.cs" />
+    <Compile Include="Samples\Barcode\Code128ABarcode.cs" />
+    <Compile Include="Samples\Barcode\Code128BBarcode.cs" />
+    <Compile Include="Samples\Barcode\Code128CBarcode.cs" />
+    <Compile Include="Samples\Barcode\Code32Barcode.cs" />
+    <Compile Include="Samples\Barcode\Code39Barcode.cs" />
+    <Compile Include="Samples\Barcode\Code39ExtendedBarcode.cs" />
+    <Compile Include="Samples\Barcode\Code93Barcode.cs" />
+    <Compile Include="Samples\Barcode\Code93ExtendedBarcode.cs" />
+    <Compile Include="Samples\Barcode\DataMatrixBarcode.cs" />
+    <Compile Include="Samples\Barcode\QRBarcode.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Samples\DataGrid\CustomGrouping.cs" />
+    <Compile Include="Samples\DataGrid\CustomSorting.cs" />
+    <Compile Include="Samples\DataGrid\FrozenView.cs" />
+    <Compile Include="Samples\DataGrid\Helpers\CustomComparer.cs" />
+    <Compile Include="Samples\DataGrid\Model\CustomerDetails.cs" />
+    <Compile Include="Samples\DataGrid\Model\CustomersRepository.cs" />
+    <Compile Include="Samples\DataGrid\Model\SalesByDate.cs" />
+    <Compile Include="Samples\DataGrid\Model\SalesInfoRepository.cs" />
+    <Compile Include="SampleViewController.cs" />
+    <Compile Include="Control.cs" />
+    <Compile Include="SampleView.cs" />
+    <Compile Include="OptionViewController.cs" />
+    <Compile Include="Samples\Chart\Column.cs" />
+    <Compile Include="SampleTableViewCell.cs" />
+    <Compile Include="Samples\Chart\Area.cs" />
+    <Compile Include="Samples\Chart\AutoScrolling.cs" />
+    <Compile Include="Samples\Chart\Bar.cs" />
+    <Compile Include="Samples\Chart\Bubble.cs" />
+    <Compile Include="Samples\Chart\Candle.cs" />
+    <Compile Include="Samples\Chart\Category.cs" />
+    <Compile Include="Samples\Chart\ChartSelection.cs" />
+    <Compile Include="Samples\Chart\Date.cs" />
+    <Compile Include="Samples\Chart\Doughnut.cs" />
+    <Compile Include="Samples\Chart\Line.cs" />
+    <Compile Include="Samples\Chart\LiveUpate.cs" />
+    <Compile Include="Samples\Chart\MultipleAxis.cs" />
+    <Compile Include="Samples\Chart\Numerical.cs" />
+    <Compile Include="Samples\Chart\OHLC.cs" />
+    <Compile Include="Samples\Chart\Pie.cs" />
+    <Compile Include="Samples\Chart\SampleControl.cs" />
+    <Compile Include="Samples\Chart\Spline.cs" />
+    <Compile Include="Samples\Chart\StackingArea.cs" />
+    <Compile Include="Samples\Chart\StackingArea100.cs" />
+    <Compile Include="Samples\Chart\StackingBar.cs" />
+    <Compile Include="Samples\Chart\StackingBar100.cs" />
+    <Compile Include="Samples\Chart\StackingColumn.cs" />
+    <Compile Include="Samples\Chart\StackingColumn100.cs" />
+    <Compile Include="Samples\Chart\Scatter.cs" />
+    <Compile Include="Samples\Chart\ChartZooming.cs" />
+    <Compile Include="Samples\BusyIndicator\BusyIndicator.cs" />
+    <Compile Include="Samples\BusyIndicator\PickerChangedEventArgs.cs" />
+    <Compile Include="Samples\BusyIndicator\PickerModel.cs" />
+    <Compile Include="Samples\Gauge\DigitalGauge.cs" />
+    <Compile Include="Samples\Gauge\CircularGauge.cs" />
+    <Compile Include="Samples\Gauge\LinearGauge.cs" />
+    <Compile Include="Samples\RangeSlider\RangeSliderGettingStarted.cs" />
+    <Compile Include="Samples\RangeSlider\Orientation.cs" />
+    <Compile Include="Samples\RangeSlider\Slider.cs" />
+    <Compile Include="Samples\NumericTextBox\NumericTextBox.cs" />
+    <Compile Include="Samples\AutoComplete\AutoComplete.cs" />
+    <Compile Include="Samples\Maps\DataMarkers.cs" />
+    <Compile Include="Samples\Maps\ColorMapping.cs" />
+    <Compile Include="Samples\Maps\BubbleVisualization.cs" />
+    <Compile Include="Samples\TreeMap\GettingStarted.cs" />
+    <Compile Include="Samples\Chart\RangeColumn.cs" />
+    <Compile Include="Samples\Chart\SplineArea.cs" />
+    <Compile Include="Samples\Chart\StripLine.cs" />
+    <Compile Include="Samples\Chart\Trackball.cs" />
+    <Compile Include="Samples\DataGrid\AutoRowHeight.cs" />
+    <Compile Include="Samples\DataGrid\DataVirtualization.cs" />
+    <Compile Include="Samples\DataGrid\Exporting.cs" />
+    <Compile Include="Samples\DataGrid\Filtering.cs" />
+    <Compile Include="Samples\DataGrid\Formatting.cs" />
+    <Compile Include="Samples\DataGrid\GridGettingStarted.cs" />
+    <Compile Include="Samples\DataGrid\Grouping.cs" />
+    <Compile Include="Samples\DataGrid\IncrementalLoading.cs" />
+    <Compile Include="Samples\DataGrid\RenderingDynamicData.cs" />
+    <Compile Include="Samples\DataGrid\Selection.cs" />
+    <Compile Include="Samples\DataGrid\Sorting.cs" />
+    <Compile Include="Samples\DataGrid\Styles.cs" />
+    <Compile Include="Samples\DataGrid\Model\BankInfo.cs" />
+    <Compile Include="Samples\DataGrid\Model\BankRepository.cs" />
+    <Compile Include="Samples\DataGrid\Model\BookInfo.cs" />
+    <Compile Include="Samples\DataGrid\Model\BookRepository.cs" />
+    <Compile Include="Samples\DataGrid\Model\Employee.cs" />
+    <Compile Include="Samples\DataGrid\Model\EmployeeDetails.cs" />
+    <Compile Include="Samples\DataGrid\Model\EmployeeInfo.cs" />
+    <Compile Include="Samples\DataGrid\Model\EmployeeInfoRespository.cs" />
+    <Compile Include="Samples\DataGrid\Model\EmployeeInformation.cs" />
+    <Compile Include="Samples\DataGrid\Model\EmployeeInformationRepository.cs" />
+    <Compile Include="Samples\DataGrid\Model\OrderDetailsRepository.cs" />
+    <Compile Include="Samples\DataGrid\Model\OrderInfo.cs" />
+    <Compile Include="Samples\DataGrid\Model\ProductInfo.cs" />
+    <Compile Include="Samples\DataGrid\Model\ProductInfoRepository.cs" />
+    <Compile Include="Samples\DataGrid\Model\ProductRepository.cs" />
+    <Compile Include="Samples\DataGrid\Model\Products.cs" />
+    <Compile Include="Samples\DataGrid\Model\StockData.cs" />
+    <Compile Include="Samples\DataGrid\NorthwindService\Reference.cs" />
+    <Compile Include="Samples\DataGrid\NorthwindService\Reference1.cs" />
+    <Compile Include="Samples\DataGrid\Styles\Blue.cs" />
+    <Compile Include="Samples\DataGrid\Styles\Dark.cs" />
+    <Compile Include="Samples\DataGrid\Styles\Green.cs" />
+    <Compile Include="Samples\DataGrid\Styles\Red.cs" />
+    <Compile Include="Samples\DataGrid\TemplateColumnCell\LinearGuageCell.cs" />
+    <Compile Include="Samples\DataGrid\TemplateColumnCell\StockCell.cs" />
+    <Compile Include="Samples\DataGrid\ViewModel\AutoRowHeightViewModel.cs" />
+    <Compile Include="Samples\DataGrid\ViewModel\IncrementalLoadingViewModel.cs" />
+    <Compile Include="Samples\NavigationDrawer\MainPageView.cs" />
+    <Compile Include="Samples\NavigationDrawer\NavigationDrawer.cs" />
+    <Compile Include="Samples\NavigationDrawer\TableSource.cs" />
+    <Compile Include="Samples\AutoComplete\Countrylist.cs" />
+    <Compile Include="Samples\Chart\Funnel.cs" />
+    <Compile Include="Samples\Chart\Pyramid.cs" />
+    <Compile Include="Samples\Chart\SemiDoughnut.cs" />
+    <Compile Include="Samples\Chart\SemiPie.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="Resources\Images\" />
+    <Folder Include="Samples\" />
+    <Folder Include="Samples\Chart\" />
+    <Folder Include="Samples\BusyIndicator\" />
+    <Folder Include="Samples\RangeSlider\" />
+    <Folder Include="Samples\Gauge\" />
+    <Folder Include="Samples\NumericTextBox\" />
+    <Folder Include="Samples\AutoComplete\" />
+    <Folder Include="Samples\DataGrid\" />
+    <Folder Include="Samples\NavigationDrawer\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Images\About%402x.png" />
+    <BundleResource Include="Resources\Images\Barcode.png" />
+    <BundleResource Include="Resources\Images\Barcode%402x.png" />
+    <BundleResource Include="Resources\Images\BusyIndicator.png" />
+    <BundleResource Include="Resources\Images\BusyIndicator%402x.png" />
+    <BundleResource Include="Resources\Images\Chart.png" />
+    <BundleResource Include="Resources\Images\Chart%402x.png" />
+    <BundleResource Include="Resources\Images\Gauge.png" />
+    <BundleResource Include="Resources\Images\Gauge%402x.png" />
+    <BundleResource Include="Resources\Images\Option.png" />
+    <BundleResource Include="Resources\Images\Option%402x.png" />
+    <BundleResource Include="Resources\Images\RangeSlider.png" />
+    <BundleResource Include="Resources\Images\RangeSlider%402x.png" />
+    <BundleResource Include="Resources\Images\Treemap.png" />
+    <BundleResource Include="Resources\Images\Treemap%402x.png" />
+    <BundleResource Include="Resources\Images\first.png" />
+    <BundleResource Include="Resources\Images\menu%402x.png" />
+    <BundleResource Include="Resources\Images\second.png" />
+    <BundleResource Include="Resources\Images\About.png" />
+    <BundleResource Include="Resources\Images\Allcontrols%402x.png" />
+    <BundleResource Include="Resources\Images\Allcontrols.png" />
+    <BundleResource Include="Resources\ControlList.plist" />
+    <BundleResource Include="Resources\SampleList.plist" />
+    <BundleResource Include="Resources\Images\mount.png" />
+    <BundleResource Include="Resources\Images\NumericTextBox%402x.png" />
+    <BundleResource Include="Resources\Images\NumericTextBox.png" />
+    <BundleResource Include="Resources\Images\AutoComplete.png" />
+    <BundleResource Include="Resources\Images\AutoComplete%402x.png" />
+    <BundleResource Include="Resources\Images\DataGrid.png" />
+    <BundleResource Include="usa_state.shp" />
+    <BundleResource Include="world1.shp" />
+    <BundleResource Include="Resources\Images\inbox.png" />
+    <BundleResource Include="Resources\Images\outbox.png" />
+    <BundleResource Include="Resources\Images\power.png" />
+    <BundleResource Include="Resources\Images\profile.png" />
+    <BundleResource Include="Resources\Images\sentitem.png" />
+    <BundleResource Include="Resources\Images\trash.png" />
+    <BundleResource Include="Resources\Images\User.png" />
+    <BundleResource Include="Resources\Images\Maps%402x.png" />
+    <BundleResource Include="Resources\Images\Maps.png" />
+    <BundleResource Include="pin.png" />
+    <BundleResource Include="Resources\Images\NavigationDrawer.png" />
+    <BundleResource Include="Resources\Images\NavigationDrawer%402x.png" />
+    <BundleResource Include="Resources\Icon-76%402x.png" />
+    <BundleResource Include="Resources\Icon-76.png" />
+    <BundleResource Include="Resources\Icon-60%402x.png" />
+    <BundleResource Include="Resources\Icon-72.png" />
+    <BundleResource Include="Resources\Icon-72%402x.png" />
+    <BundleResource Include="Resources\Icon.png" />
+    <BundleResource Include="Resources\Icon%402x.png" />
+    <BundleResource Include="Resources\Default.png" />
+    <BundleResource Include="Resources\Default%402x.png" />
+    <BundleResource Include="Resources\Default-568h%402x.png" />
+    <BundleResource Include="Resources\Default-Portrait.png" />
+    <BundleResource Include="Resources\Default-Landscape.png" />
+    <BundleResource Include="Resources\Default-Portrait%402x.png" />
+    <BundleResource Include="Resources\Default-Landscape%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Images\menu.png" />
+    <EmbeddedResource Include="Resources\Images\GreenUp.png" />
+    <EmbeddedResource Include="Resources\Images\Image0.png" />
+    <EmbeddedResource Include="Resources\Images\Image1.png" />
+    <EmbeddedResource Include="Resources\Images\Image10.png" />
+    <EmbeddedResource Include="Resources\Images\Image11.png" />
+    <EmbeddedResource Include="Resources\Images\Image12.png" />
+    <EmbeddedResource Include="Resources\Images\Image13.png" />
+    <EmbeddedResource Include="Resources\Images\Image14.png" />
+    <EmbeddedResource Include="Resources\Images\Image15.png" />
+    <EmbeddedResource Include="Resources\Images\Image16.png" />
+    <EmbeddedResource Include="Resources\Images\Image17.png" />
+    <EmbeddedResource Include="Resources\Images\Image18.png" />
+    <EmbeddedResource Include="Resources\Images\Image19.png" />
+    <EmbeddedResource Include="Resources\Images\Image2.png" />
+    <EmbeddedResource Include="Resources\Images\Image20.png" />
+    <EmbeddedResource Include="Resources\Images\Image21.png" />
+    <EmbeddedResource Include="Resources\Images\Image22.png" />
+    <EmbeddedResource Include="Resources\Images\Image23.png" />
+    <EmbeddedResource Include="Resources\Images\Image24.png" />
+    <EmbeddedResource Include="Resources\Images\Image25.png" />
+    <EmbeddedResource Include="Resources\Images\Image26.png" />
+    <EmbeddedResource Include="Resources\Images\Image27.png" />
+    <EmbeddedResource Include="Resources\Images\Image28.png" />
+    <EmbeddedResource Include="Resources\Images\Image3.png" />
+    <EmbeddedResource Include="Resources\Images\Image4.png" />
+    <EmbeddedResource Include="Resources\Images\Image5.png" />
+    <EmbeddedResource Include="Resources\Images\Image6.png" />
+    <EmbeddedResource Include="Resources\Images\Image7.png" />
+    <EmbeddedResource Include="Resources\Images\Image8.png" />
+    <EmbeddedResource Include="Resources\Images\Image9.png" />
+    <EmbeddedResource Include="Resources\Images\RedDown.png" />
+    <BundleResource Include="Resources\Images\pdfexport.png" />
+    <BundleResource Include="Resources\Images\excelexport.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Images\SyncfusionLogo.jpg" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<local:SamplePage
+             xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
+              xmlns:local="clr-namespace:SampleBrowser;assembly=SampleBrowser"
+              xmlns="http://xamarin.com/schemas/2014/forms"
+              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              x:Class="SampleBrowser.AutoScrolling">
+
+  <local:SamplePage.BindingContext>
+    <local:ViewModel/>
+  </local:SamplePage.BindingContext>
+
+  <local:SamplePage.ContentView>
+    <StackLayout>
+      <chart:SfChart x:Name="Chart" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+        <chart:SfChart.BindingContext>
+          <local:ViewModel/>
+        </chart:SfChart.BindingContext>
+
+        <chart:SfChart.ChartBehaviors>
+          <chart:ChartZoomPanBehavior EnablePanning = "true" EnableZooming = "false"/>
+        </chart:SfChart.ChartBehaviors>
+
+        <chart:SfChart.PrimaryAxis>
+          <chart:DateTimeAxis >
+            <chart:DateTimeAxis.LabelStyle>
+              <chart:ChartAxisLabelStyle LabelFormat = "HH:mm:ss"/>
+            </chart:DateTimeAxis.LabelStyle>
+          </chart:DateTimeAxis>
+        </chart:SfChart.PrimaryAxis>
+
+        <chart:SfChart.SecondaryAxis>
+          <chart:NumericalAxis TickPosition = "Outside">
+            <chart:NumericalAxis.LabelStyle>
+              <chart:ChartAxisLabelStyle LabelsPosition = "Outside"/>
+            </chart:NumericalAxis.LabelStyle>
+          </chart:NumericalAxis>
+        </chart:SfChart.SecondaryAxis>
+
+        <chart:SfChart.Series>
+          <chart:ColumnSeries ItemsSource="{Binding data}" XBindingPath="date" YBindingPath="Value"/>
+        </chart:SfChart.Series>
+
+      </chart:SfChart>
+      
+      <Label HorizontalOptions="Start" Text = "In this demo, a data point is being added every 500 milliseconds. The Chart is then automatically scrolled to display the fixed range of data points at the end. You can also pan to view previous data points. In this sample the delta value is 5 seconds."></Label>
+    </StackLayout>
+  </local:SamplePage.ContentView>
+
+</local:SamplePage>

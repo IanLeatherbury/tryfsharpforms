@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<local:SamplePage
+              xmlns:local="clr-namespace:SampleBrowser;assembly=SampleBrowser"
+              xmlns="http://xamarin.com/schemas/2014/forms"
+              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              x:Class="SampleBrowser.TableFeatures">
+
+  <local:SamplePage.ContentView>
+    <StackLayout>
+
+      <Label x:Name="SampleTitle" Text="Table Features"
+             FontSize="Large"
+             HorizontalOptions="Center"
+             VerticalOptions="Center">
+      </Label>
+      <Label></Label>
+      <Label x:Name="Description" Text="The PdfLightTable class represents simple tables that are used for publishing structured data from an IEnumerable source. There are no real cells or rows in those tables, and all data is taken from the data source using the DataSource property."
+             FontSize="Medium"
+             HorizontalOptions="Center"
+             VerticalOptions="Center">
+      </Label>
+      <Label></Label>
+      <Button x:Name="btnGenerate"  Text="Generate PDF"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Clicked="OnButtonClicked" />
+
+    </StackLayout>
+  </local:SamplePage.ContentView>
+
+  <local:SamplePage.PropertyView>
+
+  </local:SamplePage.PropertyView>
+</local:SamplePage>
