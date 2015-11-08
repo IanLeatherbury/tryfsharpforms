@@ -42,8 +42,11 @@
     </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="FSharp.Core" />
-    <Reference Include="tryfsharpforms">
-      <HintPath>bin\Debug\tryfsharpforms.dll</HintPath>
+    <Reference Include="MathNet.Numerics">
+      <HintPath>..\packages\MathNet.Numerics.3.8.0\lib\net40\MathNet.Numerics.dll</HintPath>
+    </Reference>
+    <Reference Include="MathNet.Numerics.FSharp">
+      <HintPath>..\packages\MathNet.Numerics.FSharp.3.8.0\lib\net40\MathNet.Numerics.FSharp.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

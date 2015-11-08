@@ -15,9 +15,9 @@ namespace tryfsharpforms
 
 			ExploringHistoricalStockPrices.Charting stocks = new ExploringHistoricalStockPrices.Charting ();
 
-			var list = stocks.RecentPricesWithDates;
+			var list = stocks.RecentDatePrice;
 
-			BindingContext = new StocksViewModel ();
+			BindingContext = new StocksViewModel (list);
 		}
 	}
 }

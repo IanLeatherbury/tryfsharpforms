@@ -36,20 +36,28 @@ namespace tryfsharpforms
 				new TextCell { 
 					Text = "Analyzing Stock Prices",
 					Command = navigateCommand,
-					CommandParameter = typeof(AnalyzingStockPrices)
+					CommandParameter = typeof(AnalyzingStockPricesPage)
 				},
-				new TextCell { Text = "Charting and Comparing Prices" }
+				new TextCell { 
+					Text = "Charting and Comparing Prices",
+					Command = navigateCommand,
+					CommandParameter = typeof(ChartingAndComparingPricesPage)
+				}
 			};
-
-			var financialModelingSection = new TableSection ("Financial Modeling") { 
-				new TextCell { Text = "Using the Yahoo Finance Type Provider" },
-				new TextCell { Text = "Working with Financial Data" },
-			};
-
 			var pricingFinancialOptionsSection = new TableSection ("Pricing Financial Options") { 
-				new TextCell { Text = "Understanding European Options" },
-				new TextCell { Text = "Simulating and Analyzing Asset Prices" },
-				new TextCell { Text = "Pricing European Options" },
+				new TextCell { 
+					Text = "Understanding European Options",
+					Command = navigateCommand,
+					CommandParameter = typeof(UnderstandingEuropeanOptionsPage)
+				},
+				new TextCell { 
+					Text = "Simulating and Analyzing Asset Prices",
+					Command = navigateCommand,
+					CommandParameter = typeof(SimulatingAndAnalyzingAssetPricesPage)},
+				new TextCell { 
+					Text = "Pricing European Options",
+					Command = navigateCommand,
+					CommandParameter = typeof(PricingEuropeanOptionsPage)},
 			};
 
 			var modelingStockMarketInteractionsSection = new TableSection ("Modeling Market Interactions") { 
@@ -69,7 +77,6 @@ namespace tryfsharpforms
 			Content = new TableView { 
 				Root = new TableRoot {
 					gettingStartedSection,
-					financialModelingSection,
 					pricingFinancialOptionsSection,
 					modelingStockMarketInteractionsSection,
 					stressTestingTheBankingSystemSection

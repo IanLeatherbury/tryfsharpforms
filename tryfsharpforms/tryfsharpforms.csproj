@@ -42,7 +42,25 @@
     </Compile>
     <Compile Include="Models\DataPoints.cs" />
     <Compile Include="ViewModels\StocksViewModel.cs" />
-    <Compile Include="AnalyzingStockPrices.cs" />
+    <Compile Include="ChartingAndComparingPricesPage.xaml.cs">
+      <DependentUpon>ChartingAndComparingPricesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AnalyzingStockPricesPage.cs" />
+    <Compile Include="TestPage.xaml.cs">
+      <DependentUpon>TestPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ChartPage.xaml.cs">
+      <DependentUpon>ChartPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UnderstandingEuropeanOptionsPage.xaml.cs">
+      <DependentUpon>UnderstandingEuropeanOptionsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SimulatingAndAnalyzingAssetPricesPage.xaml.cs">
+      <DependentUpon>SimulatingAndAnalyzingAssetPricesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PricingEuropeanOptionsPage.xaml.cs">
+      <DependentUpon>PricingEuropeanOptionsPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.1.3.5.6335\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.1.3.5.6335\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
@@ -52,9 +70,6 @@
     </Reference>
     <Reference Include="Xamarin.Forms.Xaml">
       <HintPath>..\packages\Xamarin.Forms.1.3.5.6335\lib\portable-win+net45+wp80+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Xaml.dll</HintPath>
-    </Reference>
-    <Reference Include="tryfsharpforms">
-      <HintPath>..\tryfsharplib\bin\Debug\tryfsharpforms.dll</HintPath>
     </Reference>
     <Reference Include="tryfsharplib">
       <HintPath>..\tryfsharplib\bin\Debug\tryfsharplib.dll</HintPath>
@@ -68,6 +83,24 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="ExploringHistoricalStockPricesPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChartingAndComparingPricesPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TestPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChartPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UnderstandingEuropeanOptionsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SimulatingAndAnalyzingAssetPricesPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PricingEuropeanOptionsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

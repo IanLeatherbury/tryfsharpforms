@@ -25,8 +25,12 @@
 			  </chart:NumericalAxis>
 			</chart:SfChart.SecondaryAxis>
 <!--			Line Graph-->
+<!--        <chart:SfChart.Series>
+          <chart:ColumnSeries ItemsSource="{Binding MultipleSeriesData1}" XBindingPath="date" YBindingPath="Value"/>
+          <chart:SplineSeries ItemsSource="{Binding MultipleSeriesData2}" XBindingPath="date" YBindingPath="Value"/>
+        </chart:SfChart.Series>-->
       <chart:SfChart.Series>
-        <chart:LineSeries StrokeWidth="3" ItemsSource="{Binding StockData}" XBindingPath="Date" YBindingPath="Close">
+        <chart:LineSeries StrokeWidth="3" ItemsSource="{Binding StockData1}" XBindingPath="Date" YBindingPath="Close">
           <chart:LineSeries.DataMarker>
             <chart:ChartDataMarker>
               <chart:ChartDataMarker.LabelStyle>
@@ -35,6 +39,17 @@
             </chart:ChartDataMarker>
           </chart:LineSeries.DataMarker>
         </chart:LineSeries>
+
+        <chart:LineSeries StrokeWidth="3" ItemsSource="{Binding StockData2}" XBindingPath="Date" YBindingPath="Close">
+          <chart:LineSeries.DataMarker>
+            <chart:ChartDataMarker>
+              <chart:ChartDataMarker.LabelStyle>
+                <chart:DataMarkerLabelStyle Angle ="315"/>
+              </chart:ChartDataMarker.LabelStyle>
+            </chart:ChartDataMarker>
+          </chart:LineSeries.DataMarker>
+        </chart:LineSeries>
+
       </chart:SfChart.Series>
 <!--      End Line Graph-->
 		</chart:SfChart>
