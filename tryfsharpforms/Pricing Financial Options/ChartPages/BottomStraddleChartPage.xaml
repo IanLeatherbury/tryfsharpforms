@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="tryfsharpforms.BottomStraddleChartPage" xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms">
+	<ContentPage.Content>
+		<chart:SfChart x:Name="Chart">
+			<chart:SfChart.Title>
+				<chart:ChartTitle Text="Bottom Straddle" />
+			</chart:SfChart.Title>
+			<!--		Primary Axis-->
+			<chart:SfChart.PrimaryAxis>
+				<chart:CategoryAxis LabelRotationAngle="-45">
+					<chart:CategoryAxis.Title>
+						<chart:ChartAxisTitle Text="Actual Price" />
+					</chart:CategoryAxis.Title>
+				</chart:CategoryAxis>
+			</chart:SfChart.PrimaryAxis>
+			<!--		Secondary Axis-->
+			<chart:SfChart.SecondaryAxis>
+				<chart:NumericalAxis>
+					<chart:NumericalAxis.Title>
+						<chart:ChartAxisTitle Text="Option Price" />
+					</chart:NumericalAxis.Title>
+				</chart:NumericalAxis>
+			</chart:SfChart.SecondaryAxis>
+			<!--			Line Graph, 1st Series-->
+			<chart:SfChart.Series>
+				<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding PriceData}" XBindingPath="ActualPrice" YBindingPath="OptionPrice">
+					<chart:LineSeries.DataMarker>
+						<chart:ChartDataMarker>
+							<chart:ChartDataMarker.LabelStyle>
+								<chart:DataMarkerLabelStyle Angle="315" />
+							</chart:ChartDataMarker.LabelStyle>
+						</chart:ChartDataMarker>
+					</chart:LineSeries.DataMarker>
+				</chart:LineSeries>
+				<!--      End Line Graph-->
+			</chart:SfChart.Series>
+		</chart:SfChart>
+	</ContentPage.Content>
+</ContentPage>

@@ -149,5 +149,3 @@ module ChartingAndComparingPrices =
         member this.Stocks = recentDatePrice
         member this.AverageBy = avgBy
         member this.Average = avg
-//        let msft2012ToPresent = stockData "MSFT" (DateTime(2012,1,1)) DateTime.Now
-//        let msftMostRecent = msft2012ToPresent.Data |> Seq.head
