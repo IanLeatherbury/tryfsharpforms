@@ -12,12 +12,15 @@ namespace tryfsharpforms
 		Entry stock2 = new Entry{ Placeholder = "TSLA", Text = "AAPL" };
 		Button getDataButton = new Button{ Text = "Get Data!" };
 
+		Entry avgStock = new Entry { Placeholder = "FB", Text = "FB" };
+		Button avgstockButton = new Button{ Text = "Compare!" };
+
 		public ChartingAndComparingPricesPage ()
 		{
 			InitializeComponent ();
 
 			Content = new StackLayout { 
-				Padding = new Thickness(15),
+				Padding = new Thickness (15),
 				Children = {
 					new Label { 
 						Text = "Enter in 2 stock tickers to compare them",
@@ -26,14 +29,22 @@ namespace tryfsharpforms
 					},
 					stock1,
 					stock2,
-					getDataButton
+					getDataButton,
+					new Label { 
+						Text = "Compare a stock vs its Average",
+						HorizontalOptions = LayoutOptions.CenterAndExpand,
+						FontAttributes = FontAttributes.Bold,
+					},
+					avgStock,
+					avgstockButton
 				}
 			};
 
-			getDataButton.Clicked += OnButtonClicked;
+			getDataButton.Clicked += OnGetDataButtonClicked;
+			avgstockButton.Clicked += OnAvgStockButtonClicked;
 		}
 
-		void OnButtonClicked (object sender, EventArgs e)
+		void OnGetDataButtonClicked (object sender, EventArgs e)
 		{
 			var stockLookup1 = new ChartingAndComparingPrices.ComparingStocks (stock1.Text);
 			var stockList1 = stockLookup1.Stocks;
@@ -41,9 +52,16 @@ namespace tryfsharpforms
 			var stockLookup2 = new ChartingAndComparingPrices.ComparingStocks (stock2.Text);
 			var stockList2 = stockLookup2.Stocks;
 
-			Navigation.PushAsync (new ChartPage (stockList1, stockList2));
+			Navigation.PushAsync (new CompareTwoStocksChartPage (stockList1, stockList2));
+		}
 
+		void OnAvgStockButtonClicked (object sender, EventArgs e)
+		{
+			var stockLookup = new ChartingAndComparingPrices.ComparingStocks (avgStock.Text);
+			var stock = stockLookup.Stocks;
+			var average = stockLookup.Average;
 
+			Navigation.PushAsync (new ComparePriceVsAvgPage(stock, average));
 		}
 	}
 }

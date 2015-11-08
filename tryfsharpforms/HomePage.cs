@@ -57,7 +57,7 @@ namespace tryfsharpforms
 				new TextCell { 
 					Text = "Pricing European Options",
 					Command = navigateCommand,
-					CommandParameter = typeof(PricingEuropeanOptionsPage)},
+					CommandParameter = typeof(UnderstandingEuropeanOptionsPage)},
 			};
 
 			var modelingStockMarketInteractionsSection = new TableSection ("Modeling Market Interactions") { 

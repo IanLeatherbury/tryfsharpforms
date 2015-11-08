@@ -30,13 +30,16 @@ module UnitsOfMeasure =
         member this.Convert = convertUsdJpy
 
 module ExploringHistoricalStockPrices = 
-    type [<Measure>] USD
-    type [<Measure>] EUR
-
+    [<Measure>]
+    type USD
+    
+    [<Measure>]
+    type EUR
+    
     type Stocks = CsvProvider< "table.csv" >
     
     type Charting() = 
-        let msft = Stocks.Load("http://ichart.finance.yahoo.com/table.csv?s=MSFT") 
+        let msft = Stocks.Load("http://ichart.finance.yahoo.com/table.csv?s=MSFT")
         
         //use seq {} instead of List to expose IEnumberable in C# PCL
         let recentDatePrice = 
@@ -54,17 +57,20 @@ module ExploringHistoricalStockPrices =
         let recentPricesTyped = 
             seq<decimal<USD>> { 
                 for row in msft.Rows do
-                    if row.Date > System.DateTime.Now.AddDays(-30.0) then yield row.Close*1.0M<USD>
+                    if row.Date > System.DateTime.Now.AddDays(-30.0) then yield row.Close * 1.0M<USD>
             }
-
+        
         member this.RecentDatePrice = recentDatePrice
         member this.RecentPricesOnly = recentPrices
         member this.RecentPricesTyped = recentPricesTyped
 
 module AnalyzingStockPrices = 
-    type [<Measure>] USD
-    type [<Measure>] EUR
-
+    [<Measure>]
+    type USD
+    
+    [<Measure>]
+    type EUR
+    
     type StandardDeviationWithoutUnits() = 
         let charting = ExploringHistoricalStockPrices.Charting()
         // Get count and average price
@@ -77,7 +83,7 @@ module AnalyzingStockPrices =
         
         // Divide sum of squares by count and get square root
         member this.StandardDev = sqrt ((Seq.sum squares) / (float count))
-
+    
     type StandardDeviationWithUnits() = 
         let charting = ExploringHistoricalStockPrices.Charting()
         // Get count and average price
@@ -93,7 +99,6 @@ module AnalyzingStockPrices =
     
     type StandardDeviationMath() = 
         let charting = ExploringHistoricalStockPrices.Charting()
-
         //Obtain statistical information
         let stats = DescriptiveStatistics(charting.RecentPricesOnly)
         // Evaluate the following lines to see the result
@@ -105,36 +110,44 @@ module AnalyzingStockPrices =
 module ChartingAndComparingPrices = 
     //strongly type CSV. moved here for convenience.
     type Stocks = CsvProvider< "table.csv" >
-
+    
     type UrlConstructor() = 
-    // Helper method that returns a Yahoo! URL for specified stock and date range
-        let urlForDates ticker (startDate:DateTime) (endDate:DateTime) = 
-          let root = "http://ichart.finance.yahoo.com/table.csv"
-          sprintf "%s?s=%s&a=%i&b=%i&c=%i&d=%i&e=%i&f=%i" root ticker 
-              (startDate.Month - 1) startDate.Day startDate.Year 
-              (endDate.Month - 1) endDate.Day endDate.Year
-
+        
+        // Helper method that returns a Yahoo! URL for specified stock and date range
+        let urlForDates ticker (startDate : DateTime) (endDate : DateTime) = 
+            let root = "http://ichart.finance.yahoo.com/table.csv"
+            sprintf "%s?s=%s&a=%i&b=%i&c=%i&d=%i&e=%i&f=%i" root ticker (startDate.Month - 1) startDate.Day 
+                startDate.Year (endDate.Month - 1) endDate.Day endDate.Year
+        
         let urlFor ticker = 
-          let root = "http://ichart.finance.yahoo.com/table.csv"
-          sprintf "%s?s=%s&" root ticker 
-
-
-        let stockCsv(ticker: string) = 
-            Stocks.Load(urlFor ticker)
-
+            let root = "http://ichart.finance.yahoo.com/table.csv"
+            sprintf "%s?s=%s&" root ticker
+        
+        let stockCsv (ticker : string) = Stocks.Load(urlFor ticker)
         member this.LoadStock = stockCsv
-
-    type ComparingStocks(ticker: string) = 
+    
+    type ComparingStocks(ticker : string) = 
         let tickerRows = UrlConstructor().LoadStock(ticker).Rows
-
+        
         let recentDatePrice = 
-                seq { 
-                    for row in tickerRows do
-                        if row.Date > System.DateTime.Now.AddDays(-30.0) then yield row.Date, row.Close
-                }
+            seq { 
+                for row in tickerRows do
+                    if row.Date > System.DateTime.Now.AddDays(-30.0) then yield row.Date, row.Close
+            }
+        
+        let stats = 
+            DescriptiveStatistics(seq<float> { 
+                                      for row in tickerRows do
+                                          if row.Date > System.DateTime.Now.AddDays(-30.0) then yield float row.Close
+                                  })
+        
+        let avg = seq { for row in tickerRows do
+                                if row.Date > System.DateTime.Now.AddDays(-30.0) then yield row.Date, decimal stats.Mean }
+        
+        let avgBy = Seq.averageBy snd recentDatePrice 
 
         member this.Stocks = recentDatePrice
-        
-
+        member this.AverageBy = avgBy
+        member this.Average = avg
 //        let msft2012ToPresent = stockData "MSFT" (DateTime(2012,1,1)) DateTime.Now
 //        let msftMostRecent = msft2012ToPresent.Data |> Seq.head
