@@ -28,6 +28,7 @@ namespace tryfsharpforms
 			var data1 = new ObservableCollection<DoubleDataPoint> {
 			};
 
+
 			foreach(var tup in list1)
 			{
 				data1.Add (new DoubleDataPoint(tup.Item2, tup.Item1));

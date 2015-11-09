@@ -7,9 +7,11 @@ namespace tryfsharpforms
 {
 	public partial class ButterflyChartPage : ContentPage
 	{
-		public ButterflyChartPage ()
+		public ButterflyChartPage (IEnumerable<Tuple<double, double>> bfList)
 		{
 			InitializeComponent ();
+
+			BindingContext = new PriceViewModel (bfList);
 		}
 	}
 }

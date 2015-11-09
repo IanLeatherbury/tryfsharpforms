@@ -18,9 +18,13 @@
 					</chart:NumericalAxis.Title>
 				</chart:NumericalAxis>
 			</chart:SfChart.SecondaryAxis>
+			<!--			Toggle Legend-->
+			<chart:SfChart.Legend>
+				<chart:ChartLegend ToggleSeriesVisibility="true" />
+			</chart:SfChart.Legend>
 			<!--			Line Graph, 1st Series-->
 			<chart:SfChart.Series>
-				<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding PriceData1}" XBindingPath="ActualPrice" YBindingPath="OptionPrice">
+				<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding PriceData1}" Label="Call" XBindingPath="ActualPrice" YBindingPath="OptionPrice">
 					<chart:LineSeries.DataMarker>
 						<chart:ChartDataMarker>
 							<chart:ChartDataMarker.LabelStyle>
@@ -30,7 +34,7 @@
 					</chart:LineSeries.DataMarker>
 				</chart:LineSeries>
 				<!--				Line Graph 2nd Series-->
-				<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding PriceData2}" XBindingPath="ActualPrice" YBindingPath="OptionPrice">
+				<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding PriceData2}" Label="Put" XBindingPath="ActualPrice" YBindingPath="OptionPrice">
 					<chart:LineSeries.DataMarker>
 						<chart:ChartDataMarker>
 							<chart:ChartDataMarker.LabelStyle>
