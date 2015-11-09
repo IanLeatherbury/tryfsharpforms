@@ -7,7 +7,7 @@ namespace tryfsharpforms
 {
 	public class StocksViewModel
 	{
-		ExploringHistoricalStockPrices.Charting stocks = new ExploringHistoricalStockPrices.Charting ();
+		ExploringHistoricalStockPrices.Charting stocks = new ExploringHistoricalStockPrices.Charting (10.0);
 //		ChartingAndComparingPrices.UrlConstructor(
 
 		public ObservableCollection<DataPoints> StockData { get; set; }
@@ -18,8 +18,6 @@ namespace tryfsharpforms
 
 		public StocksViewModel (IEnumerable<Tuple<DateTime, decimal>> list)
 		{
-//			var list = stocks.RecentDatePrice;
-
 			var data = new ObservableCollection<DataPoints> {
 			};
 
@@ -33,8 +31,6 @@ namespace tryfsharpforms
 
 		public StocksViewModel (IEnumerable<Tuple<DateTime, decimal>> list1, IEnumerable<Tuple<DateTime, decimal>> list2)
 		{
-			//			var list = stocks.RecentDatePrice;
-
 			var data1 = new ObservableCollection<DataPoints> {
 			};
 

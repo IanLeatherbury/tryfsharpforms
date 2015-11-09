@@ -13,7 +13,7 @@ namespace tryfsharpforms
 		{
 			InitializeComponent ();
 
-			ExploringHistoricalStockPrices.Charting stocks = new ExploringHistoricalStockPrices.Charting ();
+			ExploringHistoricalStockPrices.Charting stocks = new ExploringHistoricalStockPrices.Charting (30.0);
 
 			var list = stocks.RecentDatePrice;
 

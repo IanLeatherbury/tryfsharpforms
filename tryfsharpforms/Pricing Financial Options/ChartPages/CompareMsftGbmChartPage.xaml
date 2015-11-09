@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="tryfsharpforms.CompareMsftGbmChartPage" xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms">
+	<ContentPage.Content>
+		<chart:SfChart x:Name="Chart">
+			<!--		Primary Axis-->
+			<chart:SfChart.PrimaryAxis>
+				<chart:CategoryAxis LabelRotationAngle="-45">
+					<chart:CategoryAxis.Title>
+						<chart:ChartAxisTitle Text="Date" />
+					</chart:CategoryAxis.Title>
+				</chart:CategoryAxis>
+			</chart:SfChart.PrimaryAxis>
+			<!--		Secondary Axis-->
+			<chart:SfChart.SecondaryAxis>
+				<chart:NumericalAxis>
+					<chart:NumericalAxis.Title>
+						<chart:ChartAxisTitle Text="Price" />
+					</chart:NumericalAxis.Title>
+				</chart:NumericalAxis>
+			</chart:SfChart.SecondaryAxis>
+			<!--			Toggle Legend-->
+			<chart:SfChart.Legend>
+				<chart:ChartLegend ToggleSeriesVisibility="true" />
+			</chart:SfChart.Legend>
+			<!--			Line Graph, 1st Series-->
+			<chart:SfChart.Series>
+				<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding MyData1}" Label="Actual" XBindingPath="Date" YBindingPath="Price">
+				</chart:LineSeries>
+				<!--				Line Graph 2nd Series-->
+				<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding MyData2}" Label="Simulated" XBindingPath="Date" YBindingPath="Price">
+				</chart:LineSeries>
+				<!--      End Line Graph-->
+			</chart:SfChart.Series>
+		</chart:SfChart>
+	</ContentPage.Content>
+</ContentPage>

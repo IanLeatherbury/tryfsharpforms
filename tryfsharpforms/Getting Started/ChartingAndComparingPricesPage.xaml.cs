@@ -46,10 +46,10 @@ namespace tryfsharpforms
 
 		void OnGetDataButtonClicked (object sender, EventArgs e)
 		{
-			var stockLookup1 = new ChartingAndComparingPrices.ComparingStocks (stock1.Text);
+			var stockLookup1 = new ChartingAndComparingPrices.ComparingStocks (stock1.Text, new DateTime(2014,1,1), DateTime.Now);
 			var stockList1 = stockLookup1.Stocks;
 
-			var stockLookup2 = new ChartingAndComparingPrices.ComparingStocks (stock2.Text);
+			var stockLookup2 = new ChartingAndComparingPrices.ComparingStocks (stock2.Text, new DateTime(2014,1,1), DateTime.Now);
 			var stockList2 = stockLookup2.Stocks;
 
 			Navigation.PushAsync (new CompareTwoStocksChartPage (stockList1, stockList2));
@@ -57,7 +57,7 @@ namespace tryfsharpforms
 
 		void OnAvgStockButtonClicked (object sender, EventArgs e)
 		{
-			var stockLookup = new ChartingAndComparingPrices.ComparingStocks (avgStock.Text);
+			var stockLookup = new ChartingAndComparingPrices.ComparingStocks (avgStock.Text, new DateTime(2014,1,1), DateTime.Now);
 			var stock = stockLookup.Stocks;
 			var average = stockLookup.Average;
 

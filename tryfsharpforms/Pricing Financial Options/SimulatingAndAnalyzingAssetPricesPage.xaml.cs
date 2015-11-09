@@ -11,6 +11,7 @@ namespace tryfsharpforms
 	public partial class SimulatingAndAnalyzingAssetPricesPage : ContentPage
 	{
 		Button generateButton = new Button{Text = "Generate!"};
+		Button compareMsftButton = new Button {Text = "Compare"};
 
 		public ObservableCollection<DoubleDataPoint> RandomWalkCollection { get; set; }
 
@@ -26,18 +27,31 @@ namespace tryfsharpforms
 						HorizontalOptions = LayoutOptions.CenterAndExpand,
 						FontAttributes = FontAttributes.Bold, 
 					},
-					generateButton
+					generateButton,
+					new Label { 
+						Text = "Compare Msft against GBM",
+						HorizontalOptions = LayoutOptions.CenterAndExpand,
+						FontAttributes = FontAttributes.Bold, 
+					},
+					compareMsftButton
 				}
 			};
 
 			generateButton.Clicked += GenerateButton_Clicked;
+			compareMsftButton.Clicked += CompareMsftButton_Clicked;
+		}
+
+		void CompareMsftButton_Clicked (object sender, EventArgs e)
+		{
+			SimulatingAndAnalyzingAssetPrices.RandomWalk rw = new SimulatingAndAnalyzingAssetPrices.RandomWalk (10.0);
+			Navigation.PushAsync (new CompareMsftGbmChartPage (rw.MsftActual, rw.MsftSimulated));
 		}
 
 		void GenerateButton_Clicked (object sender, EventArgs e)
 		{
 			SimulatingAndAnalyzingAssetPrices.RandomWalk rw = new SimulatingAndAnalyzingAssetPrices.RandomWalk (10.0);
 
-			Navigation.PushAsync(new BrownianMotionChartPage(rw.BrownianSeq));
+			Navigation.PushAsync(new BrownianMotionChartPage(rw.BrownianSeq, rw.BrownianSeq1, rw.BrownianSeq2));
 		}
 	}
 }

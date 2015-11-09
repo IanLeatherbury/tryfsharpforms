@@ -9,6 +9,7 @@ namespace tryfsharpforms
 		public ObservableCollection<DoubleDataPoint> PriceData { get; set; }
 		public ObservableCollection<DoubleDataPoint> PriceData1 { get; set; }
 		public ObservableCollection<DoubleDataPoint> PriceData2 { get; set; }
+		public ObservableCollection<DoubleDataPoint> PriceData3 { get; set; }
 
 		public PriceViewModel (IEnumerable<Tuple<double, double>> list)
 		{
@@ -45,6 +46,41 @@ namespace tryfsharpforms
 			}
 
 			PriceData2 = data2;
+		}
+
+		public PriceViewModel (IEnumerable<Tuple<double, double>> list1, IEnumerable<Tuple<double, double>> list2,
+			IEnumerable<Tuple<double, double>> list3)
+		{
+			var data1 = new ObservableCollection<DoubleDataPoint> {
+			};
+
+
+			foreach(var tup in list1)
+			{
+				data1.Add (new DoubleDataPoint(tup.Item2, tup.Item1));
+			}
+
+			PriceData1 = data1;
+
+			var data2 = new ObservableCollection<DoubleDataPoint> {
+			};
+
+			foreach(var tup in list2)
+			{
+				data2.Add (new DoubleDataPoint(tup.Item2, tup.Item1));
+			}
+
+			PriceData2 = data2;
+
+			var data3 = new ObservableCollection<DoubleDataPoint> {
+			};
+
+			foreach(var tup in list3)
+			{
+				data3.Add (new DoubleDataPoint(tup.Item2, tup.Item1));
+			}
+
+			PriceData3 = data3;
 		}
 	}
 }
