@@ -2,6 +2,7 @@
 
 open FSharp.Data
 open MathNet.Numerics.Statistics
+open MathNet.Numerics.Distributions
 open System
 
 // Ported from http://www.tryfsharp.org/Learn/financial-computing
@@ -60,7 +61,7 @@ module ExploringHistoricalStockPrices =
                     if row.Date > System.DateTime.Now.AddDays(-30.0) then yield row.Close * 1.0M<USD>
             }
         
-        member this.RecentDatePrice = recentDatePrice 
+        member this.RecentDatePrice = recentDatePrice
         member this.RecentPricesOnly = recentPrices
         member this.RecentPricesTyped = recentPricesTyped
 
@@ -124,7 +125,6 @@ module ChartingAndComparingPrices =
             sprintf "%s?s=%s&" root ticker
         
         let stockCsv (ticker : string) = Stocks.Load(urlFor ticker)
-
         member this.LoadStock = stockCsv
         member this.UrlForDates = Stocks.Load(urlForDates ticker startDate endDate)
     
@@ -143,15 +143,17 @@ module ChartingAndComparingPrices =
                                           if row.Date > System.DateTime.Now.AddDays(-30.0) then yield float row.Close
                                   })
         
-        let avg = seq { for row in tickerRows do
-                                if row.Date > System.DateTime.Now.AddDays(-30.0) then yield row.Date, decimal stats.Mean }
+        let avg = 
+            seq { 
+                for row in tickerRows do
+                    if row.Date > System.DateTime.Now.AddDays(-30.0) then yield row.Date, decimal stats.Mean
+            }
         
-        let avgBy = Seq.averageBy snd recentDatePrice 
-
+        let avgBy = Seq.averageBy snd recentDatePrice
         let urlConstructor = new UrlConstructor(tick, startDate, endDate)
         let myUrl = urlConstructor.UrlForDates
-
 
         member this.Stocks = recentDatePrice
         member this.AverageBy = avgBy
         member this.Average = avg
+

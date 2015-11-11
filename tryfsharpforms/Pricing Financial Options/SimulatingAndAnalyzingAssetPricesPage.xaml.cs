@@ -10,8 +10,9 @@ namespace tryfsharpforms
 {
 	public partial class SimulatingAndAnalyzingAssetPricesPage : ContentPage
 	{
-		Button generateButton = new Button{Text = "Generate!"};
-		Button compareMsftButton = new Button {Text = "Compare"};
+		Button generateButton = new Button{ Text = "Generate!" };
+		Button compareMsftButton = new Button { Text = "Compare" };
+		Button compareMsftHistoricalGbmButton = new Button { Text = "Compare" };
 
 		public ObservableCollection<DoubleDataPoint> RandomWalkCollection { get; set; }
 
@@ -33,12 +34,26 @@ namespace tryfsharpforms
 						HorizontalOptions = LayoutOptions.CenterAndExpand,
 						FontAttributes = FontAttributes.Bold, 
 					},
-					compareMsftButton
+					compareMsftButton,
+					new Label { 
+						Text = "Use historical data for better drift/volatility",
+						HorizontalOptions = LayoutOptions.CenterAndExpand,
+						FontAttributes = FontAttributes.Bold, 
+					},
+					compareMsftHistoricalGbmButton
 				}
 			};
 
 			generateButton.Clicked += GenerateButton_Clicked;
 			compareMsftButton.Clicked += CompareMsftButton_Clicked;
+			compareMsftHistoricalGbmButton.Clicked += CompareMsftHistoricalGbmButton_Clicked;
+		}
+
+		void CompareMsftHistoricalGbmButton_Clicked (object sender, EventArgs e)
+		{
+			SimulatingAndAnalyzingAssetPrices.RandomWalk rw = new SimulatingAndAnalyzingAssetPrices.RandomWalk (10.0);
+
+			Navigation.PushAsync (new CompareMsftHistoricalVolDriftChartPage (rw.MsftActual, rw.MsftHistoricalSimulated));
 		}
 
 		void CompareMsftButton_Clicked (object sender, EventArgs e)
@@ -51,7 +66,7 @@ namespace tryfsharpforms
 		{
 			SimulatingAndAnalyzingAssetPrices.RandomWalk rw = new SimulatingAndAnalyzingAssetPrices.RandomWalk (10.0);
 
-			Navigation.PushAsync(new BrownianMotionChartPage(rw.BrownianSeq, rw.BrownianSeq1, rw.BrownianSeq2));
+			Navigation.PushAsync (new BrownianMotionChartPage (rw.BrownianSeq, rw.BrownianSeq1, rw.BrownianSeq2));
 		}
 	}
 }

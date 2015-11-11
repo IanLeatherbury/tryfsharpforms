@@ -82,6 +82,17 @@
     <Compile Include="Models\DateTimeFloat.cs" />
     <Compile Include="Models\DateTimeDouble.cs" />
     <Compile Include="ViewModels\DateTimeDoubleViewModel.cs" />
+    <Compile Include="Pricing Financial Options\ChartPages\CompareMsftHistoricalVolDriftChartPage.xaml.cs">
+      <DependentUpon>CompareMsftHistoricalVolDriftChartPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pricing Financial Options\PricingEuropeanOptionsPage.xaml.cs">
+      <DependentUpon>PricingEuropeanOptionsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pricing Financial Options\ChartPages\BlackScholesChartPage.xaml.cs">
+      <DependentUpon>BlackScholesChartPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\BlackScholesViewModel.cs" />
+    <Compile Include="Models\DoubleDoubleDataPoint.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.1.3.5.6335\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.1.3.5.6335\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
@@ -135,6 +146,15 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="Pricing Financial Options\ChartPages\CompareMsftGbmChartPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pricing Financial Options\ChartPages\CompareMsftHistoricalVolDriftChartPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pricing Financial Options\PricingEuropeanOptionsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pricing Financial Options\ChartPages\BlackScholesChartPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
