@@ -3,18 +3,21 @@
 	<ContentPage.Content>
 		<chart:SfChart x:Name="Chart">
 			<chart:SfChart.Title>
-				<chart:ChartTitle Text="Brownian Motion" />
+				<chart:ChartTitle Text="Black-Scholes Equation for Msft" />
 			</chart:SfChart.Title>
 			<!--		Primary Axis-->
 			<chart:SfChart.PrimaryAxis>
-				<chart:CategoryAxis LabelRotationAngle="-45">
+				<chart:CategoryAxis LabelRotationAngle="-45" >
+				<chart:CategoryAxis.Title>
+						<chart:ChartAxisTitle Text="Exercise Price" />
+					</chart:CategoryAxis.Title>
 				</chart:CategoryAxis>
 			</chart:SfChart.PrimaryAxis>
 			<!--		Secondary Axis-->
 			<chart:SfChart.SecondaryAxis>
 				<chart:NumericalAxis>
 					<chart:CategoryAxis.Title>
-						<chart:ChartAxisTitle Text="Price" />
+						<chart:ChartAxisTitle Text="Option Price" />
 					</chart:CategoryAxis.Title>
 				</chart:NumericalAxis>
 			</chart:SfChart.SecondaryAxis>
