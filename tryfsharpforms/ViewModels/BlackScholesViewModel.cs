@@ -21,14 +21,9 @@ namespace tryfsharpforms
 
 				ObservableCollection<DoubleDoubleDataPoint> data = new ObservableCollection<DoubleDoubleDataPoint>();
 
-				int i = 0;
 				foreach (var l in line) {
 					
 					data.Add(new DoubleDoubleDataPoint (l.Item1, l.Item2));
-					i++;
-
-					if (i >= 41)
-						break;
 				}
 
 				dataArray [j] = data;
