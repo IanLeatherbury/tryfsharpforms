@@ -10,7 +10,7 @@ namespace tryfsharpforms
 	{
 		SfChart chart = new SfChart();
 
-		public BlackScholesChartPage (IEnumerable<Tuple<double,double>[]> list)
+		public BlackScholesChartPage (IEnumerable<IEnumerable<Tuple<double,double>>> list)
 		{
 			InitializeComponent ();
 

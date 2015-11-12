@@ -21,7 +21,7 @@ namespace tryfsharpforms
 				new TextCell { 
 					Text = "Basic Financial Calculations",
 					Command = navigateCommand,
-					CommandParameter = typeof(BasicCalc)
+					CommandParameter = typeof(BasicCalcPage)
 				},
 				new TextCell { 
 					Text = "Units of Measure",

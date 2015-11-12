@@ -83,7 +83,7 @@ module SimulatingAndAnalyzingAssetPrices =
         let brownianSeq1 = Seq.zip a rpSeq1
         let brownianSeq2 = Seq.zip a rpSeq2
         let msft2014Url = new ChartingAndComparingPrices.UrlConstructor("MSFT", (DateTime(2014, 1, 1)), DateTime.Now)
-        let msft2014 = msft2014Url.UrlForDates
+        let msft2014 = msft2014Url.LoadCsvFromUrl
         let first = msft2014.Rows |> Seq.minBy (fun itm -> itm.Date)
         let firstClose = float first.Close
         
@@ -125,12 +125,7 @@ module SimulatingAndAnalyzingAssetPrices =
         let driftMsft = (stats.Mean / tau) + (pown volatilityMsft 2) / 2.0
         // Obtain generated and real data
         let generated = simulateHistoricalPrices driftMsft volatilityMsft
-        //        let real = [ for item in msft2014.Rows -> item.Date.DayOfYear, item.Close ]
-        // Plot the data side-by-side
-        //        Chart.Combine
-        //            [ Chart.Line(generated, Name = "Generated")
-        //              Chart.Line(real, Name = "Real").WithLegend() ]
-        //
+
         member this.Rw = rw
         member this.Prices = prices
         member this.BrownianSeq = brownianSeq

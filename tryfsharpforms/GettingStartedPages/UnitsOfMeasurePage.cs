@@ -15,6 +15,7 @@ namespace tryfsharpforms
 		{
 
 			Content = new StackLayout { 
+				Padding = new Thickness(15),
 				Children = {
 					new Label { 
 						Text = "Strongly Typed Currency Converter",

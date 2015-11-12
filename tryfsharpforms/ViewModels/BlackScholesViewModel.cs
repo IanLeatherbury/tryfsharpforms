@@ -11,7 +11,7 @@ namespace tryfsharpforms
 	{
 		public ObservableCollection<DoubleDoubleDataPoint>[] DataArray { get; set;}
 
-		public BlackScholesViewModel (IEnumerable<Tuple<double, double>[]> lines)
+		public BlackScholesViewModel (IEnumerable<IEnumerable<Tuple<double, double>>> lines)
 		{
 			ObservableCollection<DoubleDoubleDataPoint>[] dataArray = new ObservableCollection<DoubleDoubleDataPoint>[21];
 

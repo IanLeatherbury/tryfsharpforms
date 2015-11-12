@@ -4,16 +4,17 @@ using Xamarin.Forms;
 
 namespace tryfsharpforms
 {
-	public class BasicCalc : ContentPage
+	public class BasicCalcPage : ContentPage
 	{
 		Entry rateEntry = new Entry { Placeholder = "79.8" };
 		Entry valueEntry = new Entry { Placeholder = "1000" };
 		Button calculateButton = new Button { Text = "Calculate!" };
 		Label amountLabel = new Label { HorizontalOptions = LayoutOptions.CenterAndExpand };
 
-		public BasicCalc ()
+		public BasicCalcPage ()
 		{
 			Content = new StackLayout { 
+				Padding = new Thickness(15),
 				Children = {
 					new Label { Text = "Currency Converter" },
 					new Label { Text = "Rate" },

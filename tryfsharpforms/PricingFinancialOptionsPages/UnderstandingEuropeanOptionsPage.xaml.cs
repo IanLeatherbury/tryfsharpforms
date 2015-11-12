@@ -8,11 +8,11 @@ namespace tryfsharpforms
 {
 	public partial class UnderstandingEuropeanOptionsPage : ContentPage
 	{
-		Entry callValueEntry = new Entry { Placeholder = "30", Text = "30" };
-		Entry putValueEntry = new Entry { Placeholder = "70", Text = "70" };
-		Entry bottomStraddleEntry = new Entry { Placeholder = "30", Text = "30" };
-		Entry butterflyLowPriceEntry = new Entry { Placeholder = "20", Text = "20" };
-		Entry butterflyHighPriceEntry = new Entry { Placeholder = "80", Text = "80" };
+		Entry callValueEntry = new Entry { Placeholder = "30", Text = "30", Keyboard = Keyboard.Numeric };
+		Entry putValueEntry = new Entry { Placeholder = "70", Text = "70", Keyboard = Keyboard.Numeric };
+		Entry bottomStraddleEntry = new Entry { Placeholder = "30", Text = "30", Keyboard = Keyboard.Numeric };
+		Entry butterflyLowPriceEntry = new Entry { Placeholder = "20", Text = "20", Keyboard = Keyboard.Numeric };
+		Entry butterflyHighPriceEntry = new Entry { Placeholder = "80", Text = "80", Keyboard = Keyboard.Numeric };
 		Button calcuatePayoffButton = new Button { Text = "Calculate Call Payoff!" };
 		Button calculateBottomStraddleButton = new Button { Text = "Calculate Bottom Straddle!" };
 		Button calculateButterflySpreadButton = new Button {Text = "Calculate Butterfly Spread!"};
