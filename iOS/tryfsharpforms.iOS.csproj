@@ -84,7 +84,6 @@
     <MtouchProfiling>true</MtouchProfiling>
     <IpaPackageName>
     </IpaPackageName>
-    <MtouchSdkVersion>9.1</MtouchSdkVersion>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System">
