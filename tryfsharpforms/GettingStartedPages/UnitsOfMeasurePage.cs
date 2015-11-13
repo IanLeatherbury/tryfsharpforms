@@ -1,6 +1,7 @@
 ﻿using System;
 
 using Xamarin.Forms;
+using HelloFSharpXamarinFormsPortable.FSharp;
 
 namespace tryfsharpforms
 {
@@ -38,7 +39,7 @@ namespace tryfsharpforms
 			if ((rateEntryEur.Text != null) && (valueEntryUsd.Text != null)) {
 				decimal rate = decimal.Parse (rateEntryEur.Text);
 				decimal value = decimal.Parse (valueEntryUsd.Text);
-				var flib = new tryfsharplib.ConvertCurrency.ConvertCurrency (rate, value);
+				var flib = new ConvertCurrency.ConvertCurrency (rate, value);
 
 				amountLabel.Text = "€" + flib.ConvertedCurrency.ToString ();
 			} else {

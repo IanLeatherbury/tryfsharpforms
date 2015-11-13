@@ -203,14 +203,15 @@
     <Reference Include="Syncfusion.SfTreeMap.iOS">
       <HintPath>..\Components\SyncfusionEssentialStudio-13.3.0.7-trial\lib\ios-unified\Syncfusion.SfTreeMap.iOS.dll</HintPath>
     </Reference>
-    <Reference Include="tryfsharplib">
-      <HintPath>..\tryfsharplib\bin\Debug\tryfsharplib.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\tryfsharpforms\tryfsharpforms.csproj">
       <Project>{4998DE32-970B-4B22-925B-3A838A96A4D2}</Project>
       <Name>tryfsharpforms</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FSharp\HelloFSharpXamarinFormsPortable.FSharp.fsproj">
+      <Project>{1B9989FF-645A-4CBD-BA59-DB5C201A6607}</Project>
+      <Name>HelloFSharpXamarinFormsPortable.FSharp</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

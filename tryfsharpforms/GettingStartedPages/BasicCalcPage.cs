@@ -1,5 +1,5 @@
 ﻿using System;
-using tryfsharplib;
+using HelloFSharpXamarinFormsPortable.FSharp;
 using Xamarin.Forms;
 
 namespace tryfsharpforms
@@ -34,7 +34,7 @@ namespace tryfsharpforms
 			if ((rateEntry.Text != null) && (valueEntry.Text != null)) {
 				decimal rate = decimal.Parse (rateEntry.Text);
 				decimal value = decimal.Parse (valueEntry.Text);
-				var flib = new tryfsharplib.ConvertCurrency.ConvertCurrency (rate, value);
+				var flib = new ConvertCurrency.ConvertCurrency (rate, value);
 
 				amountLabel.Text = flib.ConvertedCurrency.ToString ();
 			} else {

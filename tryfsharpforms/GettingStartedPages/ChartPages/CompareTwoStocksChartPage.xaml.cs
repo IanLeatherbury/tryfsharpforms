@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using tryfsharplib;
+using HelloFSharpXamarinFormsPortable.FSharp;
 
 using Xamarin.Forms;
 using Syncfusion.SfChart.XForms;

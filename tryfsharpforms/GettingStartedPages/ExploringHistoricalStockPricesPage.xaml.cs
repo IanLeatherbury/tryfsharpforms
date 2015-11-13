@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using tryfsharplib;
+using HelloFSharpXamarinFormsPortable.FSharp;
 
 using Xamarin.Forms;
 
@@ -43,7 +43,7 @@ namespace tryfsharpforms
 
 		void GetDataButton_Clicked (object sender, EventArgs e)
 		{
-			var stock = new tryfsharplib.ChartingAndComparingPrices.ComparingStocks (tickerEntry.Text, DateTime.Parse (startDateEntry.Text), DateTime.Now);
+			var stock = new ChartingAndComparingPrices.ComparingStocks (tickerEntry.Text, DateTime.Parse (startDateEntry.Text), DateTime.Now);
 
 			Navigation.PushAsync (new ExploringHistoricalStockPricesChartPage (stock.Stocks));
 		}

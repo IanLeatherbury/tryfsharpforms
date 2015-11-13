@@ -1,5 +1,5 @@
 ﻿using System;
-using tryfsharplib;
+using HelloFSharpXamarinFormsPortable.FSharp;
 
 using Xamarin.Forms;
 
@@ -7,9 +7,9 @@ namespace tryfsharpforms
 {
 	public class AnalyzingStockPricesPage : ContentPage
 	{
-		tryfsharplib.AnalyzingStockPrices.StandardDeviationWithoutUnits pricesNoUnits = new tryfsharplib.AnalyzingStockPrices.StandardDeviationWithoutUnits();
-		tryfsharplib.AnalyzingStockPrices.StandardDeviationWithUnits pricesUnits = new tryfsharplib.AnalyzingStockPrices.StandardDeviationWithUnits();
-		tryfsharplib.AnalyzingStockPrices.StandardDeviationMath stats = new tryfsharplib.AnalyzingStockPrices.StandardDeviationMath();
+		AnalyzingStockPrices.StandardDeviationWithoutUnits pricesNoUnits = new AnalyzingStockPrices.StandardDeviationWithoutUnits();
+		AnalyzingStockPrices.StandardDeviationWithUnits pricesUnits = new AnalyzingStockPrices.StandardDeviationWithUnits();
+		AnalyzingStockPrices.StandardDeviationMath stats = new AnalyzingStockPrices.StandardDeviationMath();
 
 		public AnalyzingStockPricesPage ()
 		{

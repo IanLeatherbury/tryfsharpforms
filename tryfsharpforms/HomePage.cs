@@ -1,5 +1,5 @@
 ﻿using System;
-using tryfsharplib;
+using HelloFSharpXamarinFormsPortable.FSharp;
 
 using Xamarin.Forms;
 

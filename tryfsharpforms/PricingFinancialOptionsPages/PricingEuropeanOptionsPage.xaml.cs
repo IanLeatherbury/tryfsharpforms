@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using tryfsharplib;
+using HelloFSharpXamarinFormsPortable.FSharp;
 
 using Xamarin.Forms;
 
@@ -39,7 +39,7 @@ namespace tryfsharpforms
 		{
 			
 
-			tryfsharplib.PricingEuropeanOptions.BlackScholes bs = new PricingEuropeanOptions.BlackScholes ();
+			PricingEuropeanOptions.BlackScholes bs = new PricingEuropeanOptions.BlackScholes ();
 
 //			msftBsLabel.Text = bs
 
