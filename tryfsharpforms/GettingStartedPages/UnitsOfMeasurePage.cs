@@ -1,7 +1,7 @@
 ﻿using System;
 
 using Xamarin.Forms;
-using HelloFSharpXamarinFormsPortable.FSharp;
+using tryfsharplib;
 
 namespace tryfsharpforms
 {

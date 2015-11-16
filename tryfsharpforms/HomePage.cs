@@ -1,5 +1,5 @@
 ﻿using System;
-using HelloFSharpXamarinFormsPortable.FSharp;
+using tryfsharplib;
 
 using Xamarin.Forms;
 
@@ -61,7 +61,11 @@ namespace tryfsharpforms
 			};
 
 			var modelingStockMarketInteractionsSection = new TableSection ("Modeling Market Interactions") { 
-				new TextCell { Text = "Analyzing Stock Markets" },
+				new TextCell { 
+					Text = "Analyzing Stock Markets",
+					Command = navigateCommand,
+					CommandParameter = typeof(AnalyzingStockMarketsPage)
+				},
 				new TextCell { Text = "Implementing the Kalman Filter" },
 				new TextCell { Text = "Training the Model" },
 				new TextCell { Text = "Analysing Market Interactions" },

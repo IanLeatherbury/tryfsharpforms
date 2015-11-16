@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tryfsharpforms.iOS", "iOS\t
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tryfsharpforms.Droid", "Droid\tryfsharpforms.Droid.csproj", "{E0EEFB76-7FA6-4D40-9913-5EC8B79D3EB7}"
 EndProject
-Project("{f2a71f9b-5d33-465a-a702-920d77279786}") = "HelloFSharpXamarinFormsPortable.FSharp", "FSharp\HelloFSharpXamarinFormsPortable.FSharp.fsproj", "{1B9989FF-645A-4CBD-BA59-DB5C201A6607}"
+Project("{f2a71f9b-5d33-465a-a702-920d77279786}") = "tryfsharplib", "FSharp\tryfsharplib.fsproj", "{1B9989FF-645A-4CBD-BA59-DB5C201A6607}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
