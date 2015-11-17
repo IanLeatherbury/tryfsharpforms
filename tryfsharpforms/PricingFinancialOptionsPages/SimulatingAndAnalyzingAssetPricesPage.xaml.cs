@@ -25,9 +25,8 @@ namespace tryfsharpforms
 
 			ai.IsVisible = true;
 			ai.IsEnabled = true;
-			ai.IsRunning = true;
+			ai.IsRunning = false;
 			ai.HorizontalOptions = LayoutOptions.CenterAndExpand;
-			ai.VerticalOptions = LayoutOptions.FillAndExpand;
 			ai.Color = Color.Black;
 
 			Content = sl;
@@ -93,5 +92,4 @@ namespace tryfsharpforms
 			Navigation.PushAsync (new CompareMsftHistoricalVolDriftChartPage (actual, sim));
 		}
 	}
-}
-
+}	
