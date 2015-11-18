@@ -1,5 +1,4 @@
 ﻿using System;
-using tryfsharplib;
 
 using Xamarin.Forms;
 
@@ -7,7 +6,6 @@ namespace tryfsharpforms
 {
 	public class HomePage : ContentPage
 	{
-		
 		public HomePage ()
 		{
 			// Define command for the items in the TableView.

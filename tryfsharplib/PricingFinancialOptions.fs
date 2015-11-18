@@ -82,36 +82,52 @@ module SimulatingAndAnalyzingAssetPrices =
         let brownianSeq = Seq.zip a rpSeq
         let brownianSeq1 = Seq.zip a rpSeq1
         let brownianSeq2 = Seq.zip a rpSeq2
-        let msft2014Url = new ChartingAndComparingPrices.UrlConstructor("MSFT", (DateTime(2014, 1, 1)), DateTime.Now)
-        let msft2014 = msft2014Url.LoadCsvFromUrl
-        let first = msft2014.Rows |> Seq.minBy (fun itm -> itm.Date)
-        let firstClose = float first.Close
-        
+
+        member this.RandomPrice(drift, volatility, dt, initial, (dist : Normal)) = randomPrice drift volatility dt initial (dist : Normal)
+        member this.Rw = rw
+        member this.Prices = prices
+        member this.BrownianSeq = brownianSeq
+        member this.BrownianSeq1 = brownianSeq1
+        member this.BrownianSeq2 = brownianSeq2
+
+    type GetMsftCsvData() = 
+        //get data for msft
+        let getMsftRows = async {
+            let msft2014Url = new ChartingAndComparingPrices.CsvConstructor("MSFT", (DateTime(2014, 1, 1)), DateTime.Now)
+            let! msft2014 = msft2014Url.loadCsvFromUrl()
+            return msft2014.Rows
+            }
+            
         /// Generates prices that can be compared with 'msft2014' data
-        let simulateHistoricalPrices drift volatility = 
+        let simulateHistoricalPrices (drift:float) volatility = 
             let dist = Normal(0.0, 1.0)
             
             let dates = 
-                [ for v in msft2014.Rows -> v.Date ]
+                [ for v in Async.RunSynchronously getMsftRows -> v.Date ]
                 |> List.rev
             
-            let randoms = randomPrice drift volatility 0.005 firstClose dist
+            let random = new RandomWalk(5.0) 
+
+            let first = Async.RunSynchronously getMsftRows |> Seq.minBy (fun itm -> itm.Date)
+            let firstClose = float first.Close
+            let randoms = random.RandomPrice(drift, volatility, 0.005, firstClose, dist)
+
             Seq.zip dates randoms
         
         let msft2014Actual = 
             let dates = 
-                [ for v in msft2014.Rows -> v.Date ]
+                [ for v in Async.RunSynchronously getMsftRows -> v.Date ]
                 |> List.rev
             
             let prices = 
-                [ for v in msft2014.Rows -> float v.Close ]
+                [ for v in Async.RunSynchronously getMsftRows -> float v.Close ]
                 |> List.rev
             
             Seq.zip dates prices
         
         // used to find historical drift / volatility
         let logRatios = 
-            msft2014.Rows
+            Async.RunSynchronously getMsftRows
             |> Seq.sortBy (fun v -> v.Date)
             |> Seq.pairwise
             |> Seq.map (fun (prev, next) -> log (float next.Close / float prev.Close))
@@ -125,12 +141,7 @@ module SimulatingAndAnalyzingAssetPrices =
         let driftMsft = (stats.Mean / tau) + (pown volatilityMsft 2) / 2.0
         // Obtain generated and real data
         let generated = simulateHistoricalPrices driftMsft volatilityMsft
-
-        member this.Rw = rw
-        member this.Prices = prices
-        member this.BrownianSeq = brownianSeq
-        member this.BrownianSeq1 = brownianSeq1
-        member this.BrownianSeq2 = brownianSeq2
+            
         member this.MsftSimulated = simulateHistoricalPrices 0.05 0.1
         member this.MsftActual = msft2014Actual
         member this.MsftHistoricalSimulated = generated
@@ -225,3 +236,4 @@ module PricingEuropeanOptions =
 
         member this.TimePriceValues = timePriceValues
 //    let bsPrices = for prices in timePriceValues -> Array.toSeq prices
+

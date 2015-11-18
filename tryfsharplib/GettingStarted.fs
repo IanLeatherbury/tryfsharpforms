@@ -118,29 +118,43 @@ module ChartingAndComparingPrices =
 
     //strongly type CSV. moved here for convenience.
     type Stocks = CsvProvider< "table.csv" >
-    
-    type UrlConstructor(ticker : string, startDate : DateTime, endDate : DateTime) = 
+    type Markets = CsvProvider< "marketTable.csv" >
+        
+    type CsvConstructor(ticker : string, startDate : DateTime, endDate : DateTime) = 
         
         // Helper method that returns a Yahoo! URL for specified stock and date range
         let urlForDates ticker (startDate : DateTime) (endDate : DateTime) = 
             let root = "http://ichart.finance.yahoo.com/table.csv"
             sprintf "%s?s=%s&a=%i&b=%i&c=%i&d=%i&e=%i&f=%i" root ticker (startDate.Month - 1) startDate.Day 
                 startDate.Year (endDate.Month - 1) endDate.Day endDate.Year
-        
+
         let urlFor ticker = 
             let root = "http://ichart.finance.yahoo.com/table.csv"
             sprintf "%s?s=%s&" root ticker
-        
+   
         //loads CSV for typing
-        let stockCsv (ticker : string, startDate : DateTime) = Stocks.Load(urlForDates ticker startDate System.DateTime.Now)
+        let stockCsv (ticker : string, startDate : DateTime) =
+            Stocks.Load(urlForDates ticker startDate System.DateTime.Now) 
 
         member this.LoadStockCsv = stockCsv
 
-        member this.LoadCsvFromUrl = Stocks.Load(urlForDates ticker startDate endDate)
+        member this.LoadCsvFromUrl() =
+            this.loadCsvFromUrl()
+            |> Async.StartAsTask
+
+        member internal this.loadCsvFromUrl() =
+            async {
+                let! data = Stocks.AsyncLoad(urlForDates ticker startDate endDate) 
+                return data }
+
+        member internal this.loadMarketCsvFromUrl() = 
+            async {
+                let! data = Markets.AsyncLoad(urlForDates ticker startDate endDate) 
+                return data }
     
     type ComparingStocks(tick : string, startDate : DateTime, endDate : DateTime) = 
 
-        let tickerRows = UrlConstructor(tick, startDate, endDate).LoadStockCsv(tick, startDate).Rows
+        let tickerRows = CsvConstructor(tick, startDate, endDate).LoadStockCsv(tick, startDate).Rows
 
         let recentDatePrice = 
             [
@@ -158,12 +172,8 @@ module ChartingAndComparingPrices =
         let avg = 
             seq { 
                 for row in tickerRows do
-                    if row.Date > System.DateTime.Now.AddDays(-30.0) then yield row.Date, decimal stats.Mean
+                    if row.Date > startDate then yield row.Date, decimal stats.Mean
             }
         
-//        let avgBy = Seq.averageBy snd recentDatePrice
-
         member this.Stocks = recentDatePrice 
-//        member this.AverageBy = avgBy
-        member this.Average = avg
-
+        member this.Average = avg                               
