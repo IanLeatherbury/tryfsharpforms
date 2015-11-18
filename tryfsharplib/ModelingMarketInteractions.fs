@@ -124,6 +124,61 @@ module AnalyzingStockMarkets =
             let results = results.Update(logChange, nextValue, nextVar)
             kalmanFilter (timeStep + 1) results dynamics
 
+            /// Represents 'expectation' step of the algorithm
+            /// (Run Kalman filter to get log-likelihood and values)
+        let expectationStep dynamics =
+            kalmanFilter 0 KalmanResult.Initial dynamics
+
+            /// Represents the 'maximization' step of the algorithm
+        /// (Compute new value of parameters to maximize likelihood)
+        let maximizationStep param (dynamics:Matrix<float>) =
+
+          // Transform hidden values into a matrix & get components
+          let hiddenVals = DenseMatrix.ofColumns param.Values //refactored from original: let hiddenVals = Matrix.CreateFromColumns(List.toArray param.Values)
+          let hiddenPrev = hiddenVals.[0 .., 0 .. observedCount - 2] 
+          let hiddenNext = hiddenVals.[0 .., 1 .. ] 
+
+          // Calculate variance between two neighboring elements
+          let crossVar = 
+            Seq.pairwise param.Variances
+            |> Seq.map (fun (pastVar, nextVar) -> 
+                (dynamics * pastVar).Transpose() * 
+                  ((dynamics * pastVar) * dynamics.Transpose()).Inverse() * 
+                    nextVar)
+            |> Seq.reduce (+) 
+
+          // Sum variance matrices excluding the last one
+          let vars = 
+            param.Variances 
+            |> Seq.take (observedCount - 1) |> Seq.reduce (+)
+
+          // Calculate new value of 'dynamics' parameter
+          let h1 = (hiddenPrev * hiddenNext.Transpose()) + crossVar
+          let h2 = (hiddenPrev * hiddenPrev.Transpose()) + vars
+          h1.Transpose() * h2.Inverse()
+
+          /// Repeatedly runs expectation and maximization step of
+        /// the EM algorithm to calculate the 'dynamics' parameter
+        let fitModel maxIter =
+
+          /// Inner recursive function that is called recursively
+          let rec updateModel oldParam (logliks:float list) iter =
+            // Run a single step of the EM algorithm
+            let results = expectationStep oldParam
+            let newParam = maximizationStep results oldParam
+
+            // Check for convergence
+            let logliks = results.LogLikelihood::logliks
+            match logliks with
+            | current::past::_ when current - past < 0.1 -> 
+                newParam, List.rev logliks, Some iter
+            | _ when iter > maxIter ->
+                newParam, List.rev logliks, None
+            | _ ->
+                updateModel newParam logliks (iter + 1)
+
+          // Start the estimation with the identity matrix
+          updateModel idMatrix [] 1
 
         member this.ChartData = chartData 
         member this.HistoricalData = historicalData
