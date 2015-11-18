@@ -8,7 +8,7 @@ namespace tryfsharpforms
 	{
 		public ObservableCollection<MarketAnalyticsModel>[] DataArray { get; set;}
 
-		public AnalyzingStockMarketsViewModel (IEnumerable<Tuple<string, IEnumerable<Tuple<int, decimal>>>> data)
+		public AnalyzingStockMarketsViewModel (IEnumerable<Tuple<string, IEnumerable<Tuple<double, double>>>> data)
 		{
 			ObservableCollection<MarketAnalyticsModel>[] dataArray = new ObservableCollection<MarketAnalyticsModel>[21];
 

@@ -33,6 +33,7 @@ namespace tryfsharpforms
 			var indicators = new AnalyzingStockMarkets.GetStockMarketIndicators ();
 
 			var cd = indicators.ChartData;
+			var hd = indicators.HistoricalData;
 
 			Navigation.PushAsync (new AnalyzingStockMarketsChartPage (cd));
 		}

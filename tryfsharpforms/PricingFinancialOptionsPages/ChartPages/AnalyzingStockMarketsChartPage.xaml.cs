@@ -8,7 +8,7 @@ namespace tryfsharpforms
 {
 	public partial class AnalyzingStockMarketsChartPage : ContentPage
 	{
-		public AnalyzingStockMarketsChartPage (IEnumerable<Tuple<string, IEnumerable<Tuple<int, decimal>>>> data)
+		public AnalyzingStockMarketsChartPage (IEnumerable<Tuple<string, IEnumerable<Tuple<double, double>>>> data)
 		{
 			InitializeComponent ();
 

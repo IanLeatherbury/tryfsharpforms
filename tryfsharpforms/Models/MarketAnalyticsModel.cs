@@ -6,11 +6,11 @@ namespace tryfsharpforms
 	{
 		public string Name { get; set; }
 
-		public int Day { get; set; }
+		public double Day { get; set; }
 
-		public decimal Price { get; set; }
+		public double Price { get; set; }
 
-		public MarketAnalyticsModel (string name, int day, decimal price)
+		public MarketAnalyticsModel (string name, double day, double price)
 		{
 			this.Name = name;
 			this.Day = day;
