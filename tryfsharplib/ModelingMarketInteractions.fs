@@ -203,11 +203,40 @@ module AnalyzingStockMarkets =
         let original = observedData.Row(index)
         let fitted = [ for v in res.Values -> v.[index] ] 
 
+        // interactions between pairs of stock markets
+        //TODO: Return a value and print them
+//        let marketInteractionsList() = 
+//            dynamics |> Matrix.iteri (fun i j v -> 
+//              if i <> j && (abs v > 0.2) then 
+//                let list = [names.[i], names.[j]]
+//                return list
+//        ()
+
+        // Get a list of interactions between stock markets
+        let interactions = 
+          [ for i in 0 .. indexCount - 1 do
+              for j in 0 .. indexCount - 1 do
+                if i <> j && (abs dynamics.[i, j]) > 0.2 then
+                  yield i, j ]
+
+        // Calculate X and Y positions of points for every stock market
+        let q = 6.28 / float indexCount
+        let indexPoints = [| for x in 0.0 .. q .. 6.28 -> sin x, cos x |]
+        let lines = [|for i,j in interactions -> indexPoints.[i], indexPoints.[j]|]
+
+        // Combine points with line charts that represent the interactions
+//        Chart.Combine
+//          [ yield Chart.Point(indexPoints)
+//            for i, j in interactions do
+//              yield Chart.Line [ indexPoints.[i]; indexPoints.[j] ] ]
+
         member this.ChartData = chartData 
         member this.HistoricalData = historicalData
         member this.LogLikelihood = simpleLine logliks
         member this.OriginalObservedData = simpleLine original
         member this.FittedData = simpleLine fitted
+        member this.IndexPoint = indexPoints
+        member this.Lines = lines
 
 
 
