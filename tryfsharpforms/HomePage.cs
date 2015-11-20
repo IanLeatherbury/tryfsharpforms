@@ -66,7 +66,10 @@ namespace tryfsharpforms
 				},
 				new TextCell { Text = "Implementing the Kalman Filter" },
 				new TextCell { Text = "Training the Model" },
-				new TextCell { Text = "Analysing Market Interactions" },
+				new TextCell { 
+					Text = "Analysing Market Interactions",
+					Command = navigateCommand,
+					CommandParameter = typeof(AnalyzingMarketInteractionsPage)}
 			};
 
 			var stressTestingTheBankingSystemSection = new TableSection ("Stress Testing the Banking System") { 

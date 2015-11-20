@@ -180,8 +180,23 @@ module AnalyzingStockMarkets =
           // Start the estimation with the identity matrix
           updateModel idMatrix [] 1
 
+          // Train the model with at most 50 iterations
+        let dynamics, logliks, converged = fitModel 50
+
+        // Report whether the training has converged
+        //TODO: Make a modal for this
+//        match converged with
+//        | Some iter -> printfn "Converged in iteration %i" iter
+//        | _ -> printfn "Not converged."
+        
+        
+        /// Adds implicit X component to data and plots a line chart
+        let simpleLine values = Seq.mapi (fun i v -> i,v) values
+
         member this.ChartData = chartData 
         member this.HistoricalData = historicalData
+        member this.LogLikelihood = simpleLine logliks
+
 
 
         
