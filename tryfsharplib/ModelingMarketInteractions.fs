@@ -193,10 +193,24 @@ module AnalyzingStockMarkets =
         /// Adds implicit X component to data and plots a line chart
         let simpleLine values = Seq.mapi (fun i v -> i,v) values
 
+        // Run the E step using the calculated 'dynamics'
+        let res = expectationStep dynamics
+
+        // Combine line charts with original data and with
+        // fitted data (for stock market with index 2)
+        let index = 2
+
+        let original = observedData.Row(index)
+        let fitted = [ for v in res.Values -> v.[index] ] 
+
         member this.ChartData = chartData 
         member this.HistoricalData = historicalData
         member this.LogLikelihood = simpleLine logliks
+        member this.OriginalObservedData = simpleLine original
+        member this.FittedData = simpleLine fitted
 
 
 
-        
+
+
+
