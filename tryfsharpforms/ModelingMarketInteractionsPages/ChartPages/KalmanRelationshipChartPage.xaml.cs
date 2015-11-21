@@ -11,7 +11,16 @@ namespace tryfsharpforms
 		{
 			InitializeComponent ();
 
-			BindingContext = new KalmanRelationshipViewModel (indexPoints, lines);
+			var vm = new KalmanRelationshipViewModel (indexPoints, lines);
+
+			BindingContext = vm;
+
+			Market0.Label = vm.Points [0] [0].Name;
+			Market1.Label = vm.Points [1] [0].Name;
+			Market2.Label = vm.Points [2] [0].Name;
+			Market3.Label = vm.Points [3] [0].Name;
+			Market4.Label = vm.Points [4] [0].Name;
+			Market5.Label = vm.Points [5] [0].Name;
 		}
 	}
 }

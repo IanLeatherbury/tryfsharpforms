@@ -7,14 +7,14 @@ namespace tryfsharpforms
 	{
 		public ObservableCollection<KalmanRelationshipModel>[] Lines { get; set; }
 
-		public ObservableCollection<KalmanRelationshipModel> Points { get; set; }
+		public ObservableCollection<KalmanRelationshipModel>[] Points { get; set; }
 
 		string[] markets = new string[6];
 
 		public KalmanRelationshipViewModel (Tuple<double,double>[] indexPoints, Tuple<Tuple<double,double>, Tuple<double, double>>[] lines)
 		{
 			ObservableCollection<KalmanRelationshipModel>[] linesArray = new ObservableCollection<KalmanRelationshipModel>[10];
-			ObservableCollection<KalmanRelationshipModel> points = new ObservableCollection<KalmanRelationshipModel> ();
+			ObservableCollection<KalmanRelationshipModel>[] pointsArray = new ObservableCollection<KalmanRelationshipModel>[9];
 			markets [0] = "AORD";
 			markets [1] = "FCHI";
 			markets [2] = "FTSE";
@@ -24,12 +24,16 @@ namespace tryfsharpforms
 
 			int i = 0;
 			foreach (var point in indexPoints) {
-				if (i <= 5)
-					points.Add (new KalmanRelationshipModel (point.Item1, point.Item2, markets [i]));
-				i++;
+				if (i <= 5) {
+					ObservableCollection<KalmanRelationshipModel> pointModel = new ObservableCollection<KalmanRelationshipModel> ();
+					pointModel.Add (new KalmanRelationshipModel (point.Item1, point.Item2, markets [i]));
+
+					pointsArray [i] = pointModel;
+					i++;
+				}
 			}
 
-			Points = points;
+			Points = pointsArray;
 
 			int j = 0;
 			foreach (var l in lines) {

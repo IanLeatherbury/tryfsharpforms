@@ -8,35 +8,54 @@
 			<!--		Primary Axis-->
 			<chart:SfChart.PrimaryAxis>
 				<chart:NumericalAxis LabelRotationAngle="-45">
-					<!--					<chart:CategoryAxis.Title>
-						<chart:ChartAxisTitle Text="Day" />
-					</chart:CategoryAxis.Title>-->
 				</chart:NumericalAxis>
 			</chart:SfChart.PrimaryAxis>
 			<!--		Secondary Axis-->
 			<chart:SfChart.SecondaryAxis>
 				<chart:NumericalAxis>
-					<!--					<chart:CategoryAxis.Title>
-						<chart:ChartAxisTitle Text="Price" />
-					</chart:CategoryAxis.Title>-->
 				</chart:NumericalAxis>
 			</chart:SfChart.SecondaryAxis>
 			<!--			Line Graph, 1st Series-->
 			<chart:SfChart.Series>
-				<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding Lines[0]}" XBindingPath="Xpoint" YBindingPath="Ypoint" />
-				<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding Lines[1]}" XBindingPath="Xpoint" YBindingPath="Ypoint" />
-				<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding Lines[2]}" XBindingPath="Xpoint" YBindingPath="Ypoint" />
-				<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding Lines[3]}" XBindingPath="Xpoint" YBindingPath="Ypoint" />
-				<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding Lines[4]}" XBindingPath="Xpoint" YBindingPath="Ypoint" />
-				<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding Lines[5]}" XBindingPath="Xpoint" YBindingPath="Ypoint" />
-				<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding Lines[6]}" XBindingPath="Xpoint" YBindingPath="Ypoint" />
-				<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding Lines[7]}" XBindingPath="Xpoint" YBindingPath="Ypoint" />
-				<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding Lines[8]}" XBindingPath="Xpoint" YBindingPath="Ypoint" />
-				<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding Lines[9]}" XBindingPath="Xpoint" YBindingPath="Ypoint" />
+				<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding Lines[0]}" XBindingPath="Xpoint" YBindingPath="Ypoint" IsVisibleOnLegend="False" />
+				<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding Lines[1]}" XBindingPath="Xpoint" YBindingPath="Ypoint" IsVisibleOnLegend="False" />
+				<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding Lines[2]}" XBindingPath="Xpoint" YBindingPath="Ypoint" IsVisibleOnLegend="False" />
+				<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding Lines[3]}" XBindingPath="Xpoint" YBindingPath="Ypoint" IsVisibleOnLegend="False" />
+				<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding Lines[4]}" XBindingPath="Xpoint" YBindingPath="Ypoint" IsVisibleOnLegend="False" />
+				<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding Lines[5]}" XBindingPath="Xpoint" YBindingPath="Ypoint" IsVisibleOnLegend="False" />
+				<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding Lines[6]}" XBindingPath="Xpoint" YBindingPath="Ypoint" IsVisibleOnLegend="False" />
+				<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding Lines[7]}" XBindingPath="Xpoint" YBindingPath="Ypoint" IsVisibleOnLegend="False" />
+				<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding Lines[8]}" XBindingPath="Xpoint" YBindingPath="Ypoint" IsVisibleOnLegend="False" />
+				<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding Lines[9]}" XBindingPath="Xpoint" YBindingPath="Ypoint" IsVisibleOnLegend="False" />
 				<!--      End Line Graph-->
-				<chart:ScatterSeries ItemsSource="{Binding Points}" XBindingPath="Xpoint" YBindingPath="Ypoint">
+				<chart:ScatterSeries ItemsSource="{Binding Points[0]}" XBindingPath="Xpoint" YBindingPath="Ypoint" x:Name="Market0">
 					<chart:ScatterSeries.DataMarker>
-						<chart:ChartDataMarker UseSeriesPalette="False" />
+						<chart:ChartDataMarker UseSeriesPalette="True" />
+					</chart:ScatterSeries.DataMarker>
+				</chart:ScatterSeries>
+				<chart:ScatterSeries ItemsSource="{Binding Points[1]}" XBindingPath="Xpoint" YBindingPath="Ypoint" x:Name="Market1">
+					<chart:ScatterSeries.DataMarker>
+						<chart:ChartDataMarker UseSeriesPalette="True" />
+					</chart:ScatterSeries.DataMarker>
+				</chart:ScatterSeries>
+				<chart:ScatterSeries ItemsSource="{Binding Points[2]}" XBindingPath="Xpoint" YBindingPath="Ypoint" x:Name="Market2">
+					<chart:ScatterSeries.DataMarker>
+						<chart:ChartDataMarker UseSeriesPalette="True" />
+					</chart:ScatterSeries.DataMarker>
+				</chart:ScatterSeries>
+				<chart:ScatterSeries ItemsSource="{Binding Points[3]}" XBindingPath="Xpoint" YBindingPath="Ypoint" x:Name="Market3">
+					<chart:ScatterSeries.DataMarker>
+						<chart:ChartDataMarker UseSeriesPalette="True" />
+					</chart:ScatterSeries.DataMarker>
+				</chart:ScatterSeries>
+				<chart:ScatterSeries ItemsSource="{Binding Points[4]}" XBindingPath="Xpoint" YBindingPath="Ypoint" x:Name="Market4">
+					<chart:ScatterSeries.DataMarker>
+						<chart:ChartDataMarker UseSeriesPalette="True" />
+					</chart:ScatterSeries.DataMarker>
+				</chart:ScatterSeries>
+				<chart:ScatterSeries ItemsSource="{Binding Points[5]}" XBindingPath="Xpoint" YBindingPath="Ypoint" x:Name="Market5">
+					<chart:ScatterSeries.DataMarker>
+						<chart:ChartDataMarker UseSeriesPalette="True" />
 					</chart:ScatterSeries.DataMarker>
 				</chart:ScatterSeries>
 			</chart:SfChart.Series>
