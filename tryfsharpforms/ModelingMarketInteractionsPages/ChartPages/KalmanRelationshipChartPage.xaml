@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="tryfsharpforms.KalmanRelationshipChartPage" xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms">
+	<ContentPage.Content>
+		<chart:SfChart x:Name="Chart">
+			<chart:SfChart.Title>
+				<chart:ChartTitle Text="Market Interactions" />
+			</chart:SfChart.Title>
+			<!--		Primary Axis-->
+			<chart:SfChart.PrimaryAxis>
+				<chart:NumericalAxis LabelRotationAngle="-45">
+					<!--					<chart:CategoryAxis.Title>
+						<chart:ChartAxisTitle Text="Day" />
+					</chart:CategoryAxis.Title>-->
+				</chart:NumericalAxis>
+			</chart:SfChart.PrimaryAxis>
+			<!--		Secondary Axis-->
+			<chart:SfChart.SecondaryAxis>
+				<chart:NumericalAxis>
+					<!--					<chart:CategoryAxis.Title>
+						<chart:ChartAxisTitle Text="Price" />
+					</chart:CategoryAxis.Title>-->
+				</chart:NumericalAxis>
+			</chart:SfChart.SecondaryAxis>
+			<!--			Line Graph, 1st Series-->
+			<chart:SfChart.Series>
+				<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding Lines[0]}" XBindingPath="Xpoint" YBindingPath="Ypoint" />
+				<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding Lines[1]}" XBindingPath="Xpoint" YBindingPath="Ypoint" />
+				<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding Lines[2]}" XBindingPath="Xpoint" YBindingPath="Ypoint" />
+				<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding Lines[3]}" XBindingPath="Xpoint" YBindingPath="Ypoint" />
+				<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding Lines[4]}" XBindingPath="Xpoint" YBindingPath="Ypoint" />
+				<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding Lines[5]}" XBindingPath="Xpoint" YBindingPath="Ypoint" />
+				<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding Lines[6]}" XBindingPath="Xpoint" YBindingPath="Ypoint" />
+				<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding Lines[7]}" XBindingPath="Xpoint" YBindingPath="Ypoint" />
+				<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding Lines[8]}" XBindingPath="Xpoint" YBindingPath="Ypoint" />
+				<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding Lines[9]}" XBindingPath="Xpoint" YBindingPath="Ypoint" />
+				<!--      End Line Graph-->
+				<chart:ScatterSeries ItemsSource="{Binding Points}" XBindingPath="Xpoint" YBindingPath="Ypoint">
+					<chart:ScatterSeries.DataMarker>
+						<chart:ChartDataMarker UseSeriesPalette="False" />
+					</chart:ScatterSeries.DataMarker>
+				</chart:ScatterSeries>
+			</chart:SfChart.Series>
+			<chart:SfChart.Legend>
+				<chart:ChartLegend ToggleSeriesVisibility="true" />
+			</chart:SfChart.Legend>
+		</chart:SfChart>
+	</ContentPage.Content>
+</ContentPage>

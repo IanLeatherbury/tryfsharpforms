@@ -190,7 +190,7 @@ module AnalyzingStockMarkets =
 //        | _ -> printfn "Not converged."
         
         
-        /// Adds implicit X component to data and plots a line chart
+        /// Adds implicit X component to data 
         let simpleLine values = Seq.mapi (fun i v -> i,v) values
 
         // Run the E step using the calculated 'dynamics'
@@ -235,7 +235,7 @@ module AnalyzingStockMarkets =
         member this.LogLikelihood = simpleLine logliks
         member this.OriginalObservedData = simpleLine original
         member this.FittedData = simpleLine fitted
-        member this.IndexPoint = indexPoints
+        member this.IndexPoints = indexPoints
         member this.Lines = lines
 
 

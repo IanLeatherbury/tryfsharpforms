@@ -9,7 +9,8 @@ namespace tryfsharpforms
 	public partial class AnalyzingMarketInteractionsPage : ContentPage
 	{
 		Button plotLogLikelihoodButton = new Button { Text = "Plot Log Likeliehood" };
-		Button plotOberservedDataVersusFittedButton = new Button {Text = "Plot oberserved vs. fitted" };
+		Button plotOberservedDataVersusFittedButton = new Button { Text = "Plot oberserved vs. fitted" };
+		Button plotKalmanRelationshipButton = new Button{ Text = "Plot Kalman Relationship between tickers" };
 		AnalyzingStockMarkets.GetStockMarketIndicators indicators = new AnalyzingStockMarkets.GetStockMarketIndicators ();
 
 		public AnalyzingMarketInteractionsPage ()
@@ -24,12 +25,22 @@ namespace tryfsharpforms
 						FontAttributes = FontAttributes.Bold
 					},
 					plotLogLikelihoodButton,
-					plotOberservedDataVersusFittedButton
+					plotOberservedDataVersusFittedButton,
+					plotKalmanRelationshipButton
 				}
 			};
 
 			plotLogLikelihoodButton.Clicked += PlotLogLikelihoodButton_Clicked;
-			plotOberservedDataVersusFittedButton.Clicked += PlotOberservedDataVersusFittedButton_Clicked;
+			plotOberservedDataVersusFittedButton.Clicked  += PlotOberservedDataVersusFittedButton_Clicked;
+			plotKalmanRelationshipButton.Clicked += PlotKalmanRelationshipButton_Clicked;
+		}
+
+		void PlotKalmanRelationshipButton_Clicked (object sender, EventArgs e)
+		{
+			var indexPoints = indicators.IndexPoints;
+			var lines = indicators.Lines;
+
+			Navigation.PushAsync (new KalmanRelationshipChartPage(indexPoints, lines));
 		}
 
 		void PlotOberservedDataVersusFittedButton_Clicked (object sender, EventArgs e)
