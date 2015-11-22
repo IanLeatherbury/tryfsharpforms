@@ -52,16 +52,6 @@
     <Compile Include="Hello.fs" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\PortableTest\PortableTest\FSharp-Portable78.fsproj">
-      <Project>{110D6522-4D2D-4A70-8720-DD0423D3D81C}</Project>
-      <Name>FSharp-Portable78</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\mathnet-numerics\src\Numerics\Numerics-Portable78.csproj">
-      <Project>{2EBD6F22-9BD6-4AF2-A21B-7198C9C5571F}</Project>
-      <Name>Numerics-Portable78</Name>
-    </ProjectReference>
-  </ItemGroup>
   <PropertyGroup>
     <MinimumVisualStudioVersion Condition="'$(MinimumVisualStudioVersion)' == ''">12</MinimumVisualStudioVersion>
   </PropertyGroup>
@@ -85,4 +75,14 @@
       </Properties>
     </MonoDevelop>
   </ProjectExtensions>
+  <ItemGroup>
+    <ProjectReference Include="..\Fsharp-Portable78\FSharp-Portable78.fsproj">
+      <Project>{110D6522-4D2D-4A70-8720-DD0423D3D81C}</Project>
+      <Name>FSharp-Portable78</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Numerics\Numerics-Portable78.csproj">
+      <Project>{2EBD6F22-9BD6-4AF2-A21B-7198C9C5571F}</Project>
+      <Name>Numerics-Portable78</Name>
+    </ProjectReference>
+  </ItemGroup>
 </Project>
