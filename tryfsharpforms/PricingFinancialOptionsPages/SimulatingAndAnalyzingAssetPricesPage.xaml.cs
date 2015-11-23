@@ -5,6 +5,8 @@ using System.Linq;
 
 using Xamarin.Forms;
 using System.Collections.ObjectModel;
+using Syncfusion.SfBusyIndicator.XForms;
+using System.Threading.Tasks;
 
 namespace tryfsharpforms
 {
@@ -14,8 +16,7 @@ namespace tryfsharpforms
 		Button compareMsftButton = new Button { Text = "Compare" };
 		Button compareMsftHistoricalGbmButton = new Button { Text = "Compare" };
 		StackLayout sl = new StackLayout ();
-
-		ActivityIndicator ai = new ActivityIndicator ();
+		SfBusyIndicator busyIndicator = new SfBusyIndicator ();
 
 		public ObservableCollection<DoubleDataPoint> RandomWalkCollection { get; set; }
 
@@ -23,11 +24,15 @@ namespace tryfsharpforms
 		{
 			InitializeComponent ();
 
-			ai.IsVisible = true;
-			ai.IsEnabled = true;
-			ai.IsRunning = false;
-			ai.HorizontalOptions = LayoutOptions.CenterAndExpand;
-			ai.Color = Color.Black;
+			busyIndicator.ViewBoxWidth = 150;
+			busyIndicator.ViewBoxHeight = 150;
+			busyIndicator.HeightRequest = 50;
+			busyIndicator.WidthRequest = 50;
+			busyIndicator.BackgroundColor = Color.White;
+			busyIndicator.AnimationType = AnimationTypes.DoubleCircle;
+			busyIndicator.TextColor = Color.FromHex ("#958C7B");
+			busyIndicator.IsVisible = false;
+			busyIndicator.IsBusy = false;
 
 			Content = sl;
 			sl.Padding = new Thickness (15);
@@ -37,7 +42,6 @@ namespace tryfsharpforms
 				FontAttributes = FontAttributes.Bold, 
 			});
 			sl.Children.Add (generateButton);
-			sl.Children.Add (ai);
 			sl.Children.Add (
 				new Label { 
 					Text = "Compare Msft against GBM",
@@ -52,6 +56,7 @@ namespace tryfsharpforms
 					FontAttributes = FontAttributes.Bold, 
 				});
 			sl.Children.Add (compareMsftHistoricalGbmButton);
+			sl.Children.Add (busyIndicator);
 
 			generateButton.Clicked += GenerateButton_Clicked;
 			compareMsftButton.Clicked += CompareMsftButton_Clicked;
@@ -67,29 +72,42 @@ namespace tryfsharpforms
 
 		void CompareMsftButton_Clicked (object sender, EventArgs e)
 		{
-			ai.IsRunning = true;
-
+//			this is not properly implemented. needs non optimized drift/vol  
 //			SimulatingAndAnalyzingAssetPrices.RandomWalk rw = new SimulatingAndAnalyzingAssetPrices.RandomWalk (10.0);
-			SimulatingAndAnalyzingAssetPrices.GetMsftCsvData msftData = new SimulatingAndAnalyzingAssetPrices.GetMsftCsvData ();
 
-			ai.IsRunning = false; 
+			busyIndicator.IsBusy = true;
+			busyIndicator.IsVisible = true;
 
-			Navigation.PushAsync (new CompareMsftGbmChartPage (msftData.MsftActual, msftData.MsftSimulated));
+			Task.Run (() => {	
+				SimulatingAndAnalyzingAssetPrices.GetMsftCsvData msftData = new SimulatingAndAnalyzingAssetPrices.GetMsftCsvData ();
+				Device.BeginInvokeOnMainThread (
+					() => {
+						Navigation.PushAsync (new CompareMsftGbmChartPage (msftData.MsftActual, msftData.MsftSimulated));
+						busyIndicator.IsVisible = false;
+						busyIndicator.IsBusy = false;
+					});
+			});
 		}
 
 		void CompareMsftHistoricalGbmButton_Clicked (object sender, EventArgs e)
 		{
-			ai.IsRunning = true;
-			ai.IsVisible = true;
+			busyIndicator.IsBusy = true;
+			busyIndicator.IsVisible = true;
 
-			SimulatingAndAnalyzingAssetPrices.GetMsftCsvData rw = new SimulatingAndAnalyzingAssetPrices.GetMsftCsvData ();
-			var actual = rw.MsftActual;
-			var sim = rw.MsftSimulated;
+			Task.Run (() => {	
+				SimulatingAndAnalyzingAssetPrices.GetMsftCsvData rw = new SimulatingAndAnalyzingAssetPrices.GetMsftCsvData ();
+				SimulatingAndAnalyzingAssetPrices.GetMsftCsvData msftData = new SimulatingAndAnalyzingAssetPrices.GetMsftCsvData ();
 
-			ai.IsRunning = false;
-			ai.IsVisible = false;
+				var actual = rw.MsftActual;
+				var sim = rw.MsftSimulated;
 
-			Navigation.PushAsync (new CompareMsftHistoricalVolDriftChartPage (actual, sim));
+				Device.BeginInvokeOnMainThread (
+					() => {
+						Navigation.PushAsync (new CompareMsftHistoricalVolDriftChartPage (actual, sim));
+						busyIndicator.IsVisible = false;
+						busyIndicator.IsBusy = false;
+					});
+			});
 		}
 	}
 }	

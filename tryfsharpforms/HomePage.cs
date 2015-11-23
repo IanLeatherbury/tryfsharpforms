@@ -34,7 +34,7 @@ namespace tryfsharpforms
 				new TextCell { 
 					Text = "Analyzing Stock Prices",
 					Command = navigateCommand,
-					CommandParameter = typeof(AnalyzingStockPricesPage)
+					CommandParameter = typeof(AnalyzingStockPricesMsftPage)
 				},
 				new TextCell { 
 					Text = "Charting and Comparing Prices",

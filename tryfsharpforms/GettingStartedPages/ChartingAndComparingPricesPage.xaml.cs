@@ -29,7 +29,7 @@ namespace tryfsharpforms
 			busyIndicator.BackgroundColor = Color.White;
 			busyIndicator.AnimationType = AnimationTypes.DoubleCircle;
 			busyIndicator.TextColor = Color.FromHex ("#958C7B");
-			busyIndicator.IsVisible = true;
+			busyIndicator.IsVisible = false;
 			busyIndicator.IsBusy = false;
 
 			Content = new StackLayout { 
@@ -43,14 +43,14 @@ namespace tryfsharpforms
 					stock1,
 					stock2,
 					getDataButton,
-					busyIndicator,
 					new Label { 
 						Text = "Compare a stock vs its Average",
 						HorizontalOptions = LayoutOptions.CenterAndExpand,
 						FontAttributes = FontAttributes.Bold,
 					},
 					avgStock,
-					avgstockButton
+					avgstockButton,
+					busyIndicator
 				}
 			};
 
@@ -58,9 +58,10 @@ namespace tryfsharpforms
 			avgstockButton.Clicked += OnAvgStockButtonClicked;
 		}
 
-		async void OnGetDataButtonClicked (object sender, EventArgs e)
+		void OnGetDataButtonClicked (object sender, EventArgs e)
 		{
 			busyIndicator.IsBusy = true;
+			busyIndicator.IsVisible = true;
 
 			Task.Run (() => {
 				var stockLookup1 = new ChartingAndComparingPrices.ComparingStocks (stock1.Text, new DateTime (2014, 1, 1), DateTime.Now);
@@ -72,22 +73,29 @@ namespace tryfsharpforms
 				Device.BeginInvokeOnMainThread (
 					() => {
 						Navigation.PushAsync (new CompareTwoStocksChartPage (stockList1, stockList2));
+						busyIndicator.IsVisible = false;
+						busyIndicator.IsBusy = false;
 					});
 			});
 		}
 
 		void OnAvgStockButtonClicked (object sender, EventArgs e)
 		{
-			var stockLookup = new ChartingAndComparingPrices.ComparingStocks (avgStock.Text, new DateTime (2014, 1, 1), DateTime.Now);
-			var stock = stockLookup.Stocks;
-			var average = stockLookup.Average;
+			busyIndicator.IsBusy = true;
+			busyIndicator.IsVisible = true;
 
-			Navigation.PushAsync (new ComparePriceVsAvgPage (stock, average));
-		}
+			Task.Run (() => {
+				var stockLookup = new ChartingAndComparingPrices.ComparingStocks (avgStock.Text, new DateTime (2014, 1, 1), DateTime.Now);
+				var stock = stockLookup.Stocks;
+				var average = stockLookup.Average;
 
-		void PushPage ()
-		{
-		
+				Device.BeginInvokeOnMainThread (
+					() => {
+						Navigation.PushAsync (new ComparePriceVsAvgPage (stock, average));
+						busyIndicator.IsVisible = false;
+						busyIndicator.IsBusy = false;
+					});
+			});
 		}
 	}
 }
