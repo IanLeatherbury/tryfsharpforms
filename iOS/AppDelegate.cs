@@ -5,6 +5,7 @@ using System.Linq;
 using Foundation;
 using UIKit;
 using Syncfusion.SfChart.XForms.iOS.Renderers;
+using Syncfusion.SfBusyIndicator.XForms.iOS;
 
 namespace tryfsharpforms.iOS
 {
@@ -16,6 +17,8 @@ namespace tryfsharpforms.iOS
 			global::Xamarin.Forms.Forms.Init ();
 
 			new SfChartRenderer();
+
+			new SfBusyIndicatorRenderer ();
 
 			LoadApplication (new App ());
 

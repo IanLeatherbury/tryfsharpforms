@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using tryfsharplib;
+using Syncfusion.SfBusyIndicator.XForms;
 
 using Xamarin.Forms;
+using System.Threading.Tasks;
 
 namespace tryfsharpforms
 {
@@ -14,10 +16,21 @@ namespace tryfsharpforms
 
 		Entry avgStock = new Entry { Placeholder = "FB", Text = "FB" };
 		Button avgstockButton = new Button{ Text = "Compare!" };
+		SfBusyIndicator busyIndicator = new SfBusyIndicator ();
 
 		public ChartingAndComparingPricesPage ()
 		{
 			InitializeComponent ();
+
+			busyIndicator.ViewBoxWidth = 150;
+			busyIndicator.ViewBoxHeight = 150;
+			busyIndicator.HeightRequest = 50;
+			busyIndicator.WidthRequest = 50;
+			busyIndicator.BackgroundColor = Color.White;
+			busyIndicator.AnimationType = AnimationTypes.DoubleCircle;
+			busyIndicator.TextColor = Color.FromHex ("#958C7B");
+			busyIndicator.IsVisible = true;
+			busyIndicator.IsBusy = false;
 
 			Content = new StackLayout { 
 				Padding = new Thickness (15),
@@ -30,6 +43,7 @@ namespace tryfsharpforms
 					stock1,
 					stock2,
 					getDataButton,
+					busyIndicator,
 					new Label { 
 						Text = "Compare a stock vs its Average",
 						HorizontalOptions = LayoutOptions.CenterAndExpand,
@@ -44,24 +58,36 @@ namespace tryfsharpforms
 			avgstockButton.Clicked += OnAvgStockButtonClicked;
 		}
 
-		void OnGetDataButtonClicked (object sender, EventArgs e)
+		async void OnGetDataButtonClicked (object sender, EventArgs e)
 		{
-			var stockLookup1 = new ChartingAndComparingPrices.ComparingStocks (stock1.Text, new DateTime(2014,1,1), DateTime.Now);
-			var stockList1 = stockLookup1.Stocks;
+			busyIndicator.IsBusy = true;
 
-			var stockLookup2 = new ChartingAndComparingPrices.ComparingStocks (stock2.Text, new DateTime(2014,1,1), DateTime.Now);
-			var stockList2 = stockLookup2.Stocks;
+			Task.Run (() => {
+				var stockLookup1 = new ChartingAndComparingPrices.ComparingStocks (stock1.Text, new DateTime (2014, 1, 1), DateTime.Now);
+				var stockList1 = stockLookup1.Stocks;
 
-			Navigation.PushAsync (new CompareTwoStocksChartPage (stockList1, stockList2));
+				var stockLookup2 = new ChartingAndComparingPrices.ComparingStocks (stock2.Text, new DateTime (2014, 1, 1), DateTime.Now);
+				var stockList2 = stockLookup2.Stocks;	
+
+				Device.BeginInvokeOnMainThread (
+					() => {
+						Navigation.PushAsync (new CompareTwoStocksChartPage (stockList1, stockList2));
+					});
+			});
 		}
 
 		void OnAvgStockButtonClicked (object sender, EventArgs e)
 		{
-			var stockLookup = new ChartingAndComparingPrices.ComparingStocks (avgStock.Text, new DateTime(2014,1,1), DateTime.Now);
+			var stockLookup = new ChartingAndComparingPrices.ComparingStocks (avgStock.Text, new DateTime (2014, 1, 1), DateTime.Now);
 			var stock = stockLookup.Stocks;
 			var average = stockLookup.Average;
 
-			Navigation.PushAsync (new ComparePriceVsAvgPage(stock, average));
+			Navigation.PushAsync (new ComparePriceVsAvgPage (stock, average));
+		}
+
+		void PushPage ()
+		{
+		
 		}
 	}
 }

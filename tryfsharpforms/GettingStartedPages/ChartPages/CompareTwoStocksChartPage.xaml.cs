@@ -5,6 +5,7 @@ using tryfsharplib;
 using Xamarin.Forms;
 using Syncfusion.SfChart.XForms;
 using System.Collections.ObjectModel;
+using Syncfusion.SfBusyIndicator.XForms;
 
 namespace tryfsharpforms
 {
