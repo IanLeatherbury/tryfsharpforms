@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using tryfsharplib;
 
 using Xamarin.Forms;
+using Syncfusion.SfBusyIndicator.XForms;
+using System.Threading.Tasks;
 
 namespace tryfsharpforms
 {
@@ -10,24 +12,36 @@ namespace tryfsharpforms
 	{
 		Button calcBsMsft = new Button{ Text = "Calculate!" };
 		Label msftBsLabel = new Label { 
-				HorizontalOptions = LayoutOptions.CenterAndExpand,
-				FontAttributes = FontAttributes.Bold, 
-			};
+			HorizontalOptions = LayoutOptions.CenterAndExpand,
+			FontAttributes = FontAttributes.Bold, 
+		};
+		SfBusyIndicator busyIndicator = new SfBusyIndicator ();
 
 		public PricingEuropeanOptionsPage ()
 		{
 			InitializeComponent ();
 
+			busyIndicator.ViewBoxWidth = 150;
+			busyIndicator.ViewBoxHeight = 150;
+			busyIndicator.HeightRequest = 50;
+			busyIndicator.WidthRequest = 50;
+			busyIndicator.BackgroundColor = Color.White;
+			busyIndicator.AnimationType = AnimationTypes.DoubleCircle;
+			busyIndicator.TextColor = Color.FromHex ("#958C7B");
+			busyIndicator.IsVisible = false;
+			busyIndicator.IsBusy = false;
+
 			Content = new StackLayout { 
 				Padding = new Thickness (15),
 				Children = {
 					new Label { 
-						Text = "Calcualte Black-Scholes for Msft",
+						Text = "Calculate Black-Scholes for Msft",
 						HorizontalOptions = LayoutOptions.CenterAndExpand,
 						FontAttributes = FontAttributes.Bold, 
 					},
 					calcBsMsft,
-					msftBsLabel
+					msftBsLabel,
+					busyIndicator
 				}
 			};
 
@@ -37,16 +51,19 @@ namespace tryfsharpforms
 
 		void CalcBsMsft_Clicked (object sender, EventArgs e)
 		{
-			
+			busyIndicator.IsBusy = true;
+			busyIndicator.IsVisible = true;
 
-			PricingEuropeanOptions.BlackScholes bs = new PricingEuropeanOptions.BlackScholes ();
-
-//			msftBsLabel.Text = bs
-
-			var x = bs.TimePriceValues;
-
-			Navigation.PushAsync (new BlackScholesChartPage (x));
-		
+			Task.Run (() => {	
+				PricingEuropeanOptions.BlackScholes bs = new PricingEuropeanOptions.BlackScholes ();
+				var x = bs.TimePriceValues;
+				Device.BeginInvokeOnMainThread (
+					() => {
+						Navigation.PushAsync (new BlackScholesChartPage (x));
+						busyIndicator.IsVisible = false;
+						busyIndicator.IsBusy = false;
+					});
+			});
 		}
 	}
 }

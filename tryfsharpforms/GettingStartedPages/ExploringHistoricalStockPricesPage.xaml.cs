@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using tryfsharplib;
 
 using Xamarin.Forms;
+using Syncfusion.SfBusyIndicator.XForms;
+using System.Threading.Tasks;
 
 namespace tryfsharpforms
 {
@@ -11,10 +13,21 @@ namespace tryfsharpforms
 		Entry tickerEntry = new Entry{Placeholder = "MSFT", Text = "MSFT"};
 		Entry startDateEntry = new Entry{Placeholder = "1/1/2014", Text = "1/1/2014"};
 		Button getDataButton = new Button{Text = "Get Data!"};
+		SfBusyIndicator busyIndicator = new SfBusyIndicator ();
 
 		public ExploringHistoricalStockPricesPage ()
 		{
 			InitializeComponent ();
+
+			busyIndicator.ViewBoxWidth = 150;
+			busyIndicator.ViewBoxHeight = 150;
+			busyIndicator.HeightRequest = 50;
+			busyIndicator.WidthRequest = 50;
+			busyIndicator.BackgroundColor = Color.White;
+			busyIndicator.AnimationType = AnimationTypes.DoubleCircle;
+			busyIndicator.TextColor = Color.FromHex ("#958C7B");
+			busyIndicator.IsVisible = false;
+			busyIndicator.IsBusy = false;
 
 			Content = new StackLayout { 
 				Padding = new Thickness (15),
@@ -34,7 +47,8 @@ namespace tryfsharpforms
 						HorizontalOptions = LayoutOptions.CenterAndExpand,
 					},
 					startDateEntry,
-					getDataButton
+					getDataButton,
+					busyIndicator
 				}
 			};
 
@@ -43,9 +57,18 @@ namespace tryfsharpforms
 
 		void GetDataButton_Clicked (object sender, EventArgs e)
 		{
-			var stock = new ChartingAndComparingPrices.ComparingStocks (tickerEntry.Text, DateTime.Parse (startDateEntry.Text), DateTime.Now);
+			busyIndicator.IsBusy = true;
+			busyIndicator.IsVisible = true;
 
-			Navigation.PushAsync (new ExploringHistoricalStockPricesChartPage (stock.Stocks));
+			Task.Run (() => {	
+				var stock = new ChartingAndComparingPrices.ComparingStocks (tickerEntry.Text, DateTime.Parse (startDateEntry.Text), DateTime.Now);
+				Device.BeginInvokeOnMainThread (
+					() => {
+						Navigation.PushAsync (new ExploringHistoricalStockPricesChartPage (stock.Stocks));
+						busyIndicator.IsVisible = false;
+						busyIndicator.IsBusy = false;
+					});
+			});
 		}
 	}
 }
