@@ -2,61 +2,59 @@
 using tryfsharplib;
 
 using Xamarin.Forms;
+using Syncfusion.SfBusyIndicator.XForms;
+using System.Threading.Tasks;
 
 namespace tryfsharpforms
 {
 	public class AnalyzingStockPricesPage : ContentPage
 	{
-		AnalyzingStockPrices.StandardDeviationWithoutUnits pricesNoUnits = new AnalyzingStockPrices.StandardDeviationWithoutUnits();
-		AnalyzingStockPrices.StandardDeviationWithUnits pricesUnits = new AnalyzingStockPrices.StandardDeviationWithUnits();
-		AnalyzingStockPrices.StandardDeviationMath stats = new AnalyzingStockPrices.StandardDeviationMath();
+		SfBusyIndicator busyIndicator = new SfBusyIndicator ();
+		Button getStatsButton = new Button{ Text = "Get stats!" };
+		Entry stockEntry = new Entry{ Placeholder = "MSFT", Text = "MSFT" };
 
 		public AnalyzingStockPricesPage ()
 		{
-			var pricesUnitsRounded = System.Math.Round (pricesUnits.StandardDev, 2);
+			busyIndicator.ViewBoxWidth = 150;
+			busyIndicator.ViewBoxHeight = 150;
+			busyIndicator.HeightRequest = 50;
+			busyIndicator.WidthRequest = 50;
+			busyIndicator.BackgroundColor = Color.White;
+			busyIndicator.AnimationType = AnimationTypes.DoubleCircle;
+			busyIndicator.TextColor = Color.FromHex ("#958C7B");
+			busyIndicator.IsVisible = false;
+			busyIndicator.IsBusy = false;
+
 			Content = new StackLayout { 
+				Padding = new Thickness (15),
 				Children = {
 					new Label { 
-						Text = "Standard Deviation of MSFT over the last 30 days",
+						Text = "Get basics statistics about a stock",
 						HorizontalOptions = LayoutOptions.CenterAndExpand,
-						FontAttributes = FontAttributes.Bold
+						FontAttributes = FontAttributes.Bold,
 					},
-					new Label{
-						Text = pricesNoUnits.StandardDev.ToString(),
-						HorizontalOptions = LayoutOptions.CenterAndExpand
-					},
-					new Label { 
-						Text = "Typed Standard Deviation of MSFT over the last 30 days",
-						HorizontalOptions = LayoutOptions.CenterAndExpand,
-						FontAttributes = FontAttributes.Bold
-					},
-					new Label{
-						Text = "$" + pricesUnitsRounded.ToString(),
-						HorizontalOptions = LayoutOptions.CenterAndExpand
-					},
-					new Label { 
-						Text = "Basic Statistics using Math.Net",
-						HorizontalOptions = LayoutOptions.CenterAndExpand,
-						FontAttributes = FontAttributes.Bold
-					},
-					new Label{
-						Text = "Mean: " + stats.Mean,
-						HorizontalOptions = LayoutOptions.Start
-					},
-					new Label{
-						Text = "Max: " + stats.Max,
-						HorizontalOptions = LayoutOptions.Start
-					},
-					new Label{
-						Text = "Min: " + stats.Min,
-						HorizontalOptions = LayoutOptions.Start
-					},
-					new Label{
-						Text = "StdDev: " + stats.StandardDev,
-						HorizontalOptions = LayoutOptions.Start
-					},
+					stockEntry,
+					getStatsButton,
+					busyIndicator,
 				}
 			};
+
+			getStatsButton.Clicked += GetStatsButton_Clicked;
+		}
+
+		void GetStatsButton_Clicked (object sender, EventArgs e)
+		{
+			busyIndicator.IsBusy = true;
+			busyIndicator.IsVisible = true;
+
+			Task.Run (() => {	
+				Device.BeginInvokeOnMainThread (
+					() => {
+						Navigation.PushAsync (new StockStatsPage (stockEntry.Text));
+						busyIndicator.IsVisible = false;
+						busyIndicator.IsBusy = false;
+					});
+			});
 		}
 	}
 }

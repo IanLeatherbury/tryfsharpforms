@@ -166,7 +166,7 @@ module ChartingAndComparingPrices =
         let stats = 
             DescriptiveStatistics(seq<float> { 
                                       for row in tickerRows do
-                                          if row.Date > System.DateTime.Now.AddDays(-30.0) then yield float row.Close
+                                          if row.Date > startDate then yield float row.Close
                                   })
         
         let avg = 
@@ -176,4 +176,8 @@ module ChartingAndComparingPrices =
             }
         
         member this.Stocks = recentDatePrice 
-        member this.Average = avg                               
+        member this.Average = avg        
+        member this.Mean = stats.Mean        
+        member this.StandardDev = stats.StandardDeviation
+        member this.Min = stats.Minimum
+        member this.Max = stats.Maximum               

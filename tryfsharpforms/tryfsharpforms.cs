@@ -9,7 +9,7 @@ namespace tryfsharpforms
 		public App ()
 		{
 			// The root page of your application
-			MainPage = new NavigationPage(new HomePage());
+			MainPage = new NavigationPage (new HomePage ()){ BarBackgroundColor = Color.FromHex ("#2c3e50") };
 		}
 
 		protected override void OnStart ()

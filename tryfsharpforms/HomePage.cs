@@ -1,93 +1,95 @@
 ﻿using System;
 
 using Xamarin.Forms;
+using System.Collections.ObjectModel;
+using System.Collections.Generic;
 
 namespace tryfsharpforms
 {
 	public class HomePage : ContentPage
 	{
+		ObservableCollection<Sections> sections = new ObservableCollection<Sections> ();
+
 		public HomePage ()
 		{
-			// Define command for the items in the TableView.
-			Command<Type> navigateCommand = 
-				new Command<Type> (async (Type pageType) => {
-					Page page = (Page)Activator.CreateInstance (pageType);
-					await this.Navigation.PushAsync (page);
-				});
+			sections.Add (new Sections{ SectionName = "Basic Financial Calculations" });
+			sections.Add (new Sections{ SectionName = "Units of Measure" });
+			sections.Add (new Sections{ SectionName = "Exploring Historical Stock Prices" });
+			sections.Add (new Sections{ SectionName = "Analyzing Stock Prices" });
+			sections.Add (new Sections{ SectionName = "Charting and Comparing Prices" });
+			sections.Add (new Sections{ SectionName = "Understanding European Options" });
+			sections.Add (new Sections{ SectionName = "Simulating and Analyzing Asset Prices" });
+			sections.Add (new Sections{ SectionName = "Pricing European Options" });
+			sections.Add (new Sections{ SectionName = "Analyzing Stock Markets" });
+			sections.Add (new Sections{ SectionName = "Analyzing Market Interactions" });
 
-			var gettingStartedSection = new TableSection ("Getting Started") {
-				new TextCell { 
-					Text = "Basic Financial Calculations",
-					Command = navigateCommand,
-					CommandParameter = typeof(BasicCalcPage)
-				},
-				new TextCell { 
-					Text = "Units of Measure",
-					Command = navigateCommand,
-					CommandParameter = typeof(UnitsOfMeasurePage)
-				},
-				new TextCell { 
-					Text = "Exploring Historical Stock Prices",
-					Command = navigateCommand,
-					CommandParameter = typeof(ExploringHistoricalStockPricesPage)
-				},
-				new TextCell { 
-					Text = "Analyzing Stock Prices",
-					Command = navigateCommand,
-					CommandParameter = typeof(AnalyzingStockPricesMsftPage)
-				},
-				new TextCell { 
-					Text = "Charting and Comparing Prices",
-					Command = navigateCommand,
-					CommandParameter = typeof(ChartingAndComparingPricesPage)
-				}
-			};
-			var pricingFinancialOptionsSection = new TableSection ("Pricing Financial Options") { 
-				new TextCell { 
-					Text = "Understanding European Options",
-					Command = navigateCommand,
-					CommandParameter = typeof(UnderstandingEuropeanOptionsPage)
-				},
-				new TextCell { 
-					Text = "Simulating and Analyzing Asset Prices",
-					Command = navigateCommand,
-					CommandParameter = typeof(SimulatingAndAnalyzingAssetPricesPage)},
-				new TextCell { 
-					Text = "Pricing European Options",
-					Command = navigateCommand,
-					CommandParameter = typeof(PricingEuropeanOptionsPage)},
+			var listView = new ListView ();
+			listView.ItemTemplate = new DataTemplate (typeof(CustomCell));
+			listView.BackgroundColor = Color.FromHex ("#2c3e50");
+			listView.ItemsSource = sections;
+			listView.ItemSelected += OnSelection;
+
+			Content = listView;
+
+		}
+
+		public class CustomCell : ViewCell
+		{
+			public CustomCell ()
+			{
+				var label = new Label ();
+				label.VerticalOptions = LayoutOptions.CenterAndExpand;
+				var stackLayout = new StackLayout ();
+				stackLayout.Padding = new Thickness (15);
+
+				label.SetBinding (Label.TextProperty, "SectionName");
+				label.TextColor = Color.White;
+
+				stackLayout.Children.Add (label);
+
+				View = stackLayout;
+			}
+		}
+
+		void OnSelection (object sender, SelectedItemChangedEventArgs e)
+		{
+			if (e.SelectedItem == null) {
+				return; //ItemSelected is called on deselection, which results in SelectedItem being set to null
+			}
+
+			Sections s = (Sections)e.SelectedItem;
+
+			switch (s.SectionName) {
+			case "Basic Financial Calculations":
+				Navigation.PushAsync (new BasicCalcPage ());
+				break;
+			case "Units of Measure":
+				Navigation.PushAsync (new UnitsOfMeasurePage ());
+				break;
+			case "Exploring Historical Stock Prices":
+				Navigation.PushAsync (new ExploringHistoricalStockPricesPage ());
+				break;
+			case "Analyzing Stock Prices":
+				Navigation.PushAsync (new AnalyzingStockPricesPage ());
+				break;
+			case "Understanding European Options":
+				Navigation.PushAsync (new UnderstandingEuropeanOptionsPage ());
+				break;
+			case "Simulating and Analyzing Asset Prices":
+				Navigation.PushAsync (new SimulatingAndAnalyzingAssetPricesPage ());
+				break;
+			case "Pricing European Options":
+				Navigation.PushAsync (new PricingEuropeanOptionsPage ());
+				break;
+			case "Analyzing Stock Markets":
+				Navigation.PushAsync (new AnalyzingStockMarketsPage ());
+				break;
+			case "Analyzing Market Interactions":
+				Navigation.PushAsync (new AnalyzingMarketInteractionsPage ());
+				break;
 			};
 
-			var modelingStockMarketInteractionsSection = new TableSection ("Modeling Market Interactions") { 
-				new TextCell { 
-					Text = "Analyzing Stock Markets",
-					Command = navigateCommand,
-					CommandParameter = typeof(AnalyzingStockMarketsPage)
-				},
-				new TextCell { Text = "Implementing the Kalman Filter" },
-				new TextCell { Text = "Training the Model" },
-				new TextCell { 
-					Text = "Analysing Market Interactions",
-					Command = navigateCommand,
-					CommandParameter = typeof(AnalyzingMarketInteractionsPage)}
-			};
-
-			var stressTestingTheBankingSystemSection = new TableSection ("Stress Testing the Banking System") { 
-				new TextCell { Text = "Introduction" },
-				new TextCell { Text = "Understanding Systemic Risk" },
-				new TextCell { Text = "Modeling Systemic Risk" },
-				new TextCell { Text = "Assessing the Mexican Banking System" },
-			};
-
-			Content = new TableView { 
-				Root = new TableRoot {
-					gettingStartedSection,
-					pricingFinancialOptionsSection,
-					modelingStockMarketInteractionsSection,
-					stressTestingTheBankingSystemSection
-				},
-				Intent = TableIntent.Menu	
-			};
+			((ListView)sender).SelectedItem = null; //uncomment line if you want to disable the visual selection state.
 		}
 	}
 }
