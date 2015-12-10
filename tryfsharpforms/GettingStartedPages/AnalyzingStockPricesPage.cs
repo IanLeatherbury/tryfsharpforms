@@ -10,18 +10,19 @@ namespace tryfsharpforms
 	public class AnalyzingStockPricesPage : ContentPage
 	{
 		SfBusyIndicator busyIndicator = new SfBusyIndicator ();
-		Button getStatsButton = new Button{ Text = "Get stats!" };
-		Entry stockEntry = new Entry{ Placeholder = "MSFT", Text = "MSFT" };
+		Button getStatsButton = new Button{ Text = "Get stats!", TextColor = MyColors.Clouds };
+		Entry stockEntry = new Entry{ Placeholder = "MSFT", Text = "SPY", TextColor = MyColors.Clouds, BackgroundColor = MyColors.WetAsphalt };
 
 		public AnalyzingStockPricesPage ()
 		{
+			BackgroundColor = MyColors.MidnightBlue;
 			busyIndicator.ViewBoxWidth = 150;
 			busyIndicator.ViewBoxHeight = 150;
 			busyIndicator.HeightRequest = 50;
 			busyIndicator.WidthRequest = 50;
-			busyIndicator.BackgroundColor = Color.White;
+			busyIndicator.BackgroundColor = MyColors.MidnightBlue;
 			busyIndicator.AnimationType = AnimationTypes.DoubleCircle;
-			busyIndicator.TextColor = Color.FromHex ("#958C7B");
+			busyIndicator.TextColor = MyColors.Turqoise;
 			busyIndicator.IsVisible = false;
 			busyIndicator.IsBusy = false;
 
@@ -31,7 +32,8 @@ namespace tryfsharpforms
 					new Label { 
 						Text = "Get basics statistics about a stock",
 						HorizontalOptions = LayoutOptions.CenterAndExpand,
-						FontAttributes = FontAttributes.Bold,
+						FontAttributes = FontAttributes.Bold, 
+						TextColor = MyColors.Clouds
 					},
 					stockEntry,
 					getStatsButton,

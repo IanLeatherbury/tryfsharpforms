@@ -10,8 +10,17 @@ namespace tryfsharpforms
 {
 	public partial class ExploringHistoricalStockPricesPage : ContentPage
 	{
-		Entry tickerEntry = new Entry{ Placeholder = "MSFT" };
-		Entry startDateEntry = new Entry{ Placeholder = "1/1/2014", Keyboard = Keyboard.Numeric };
+		Entry tickerEntry = new Entry {
+			Placeholder = "MSFT",
+			TextColor = MyColors.Clouds,
+			BackgroundColor = MyColors.WetAsphalt
+		};
+		Entry startDateEntry = new Entry {
+			Placeholder = "1/1/2014",
+			Keyboard = Keyboard.Numeric,
+			TextColor = MyColors.Clouds,
+			BackgroundColor = MyColors.WetAsphalt
+		};
 		Button getDataButton = new Button{ Text = "Get Data!", TextColor = MyColors.Clouds };
 		SfBusyIndicator busyIndicator = new SfBusyIndicator ();
 
@@ -66,7 +75,7 @@ namespace tryfsharpforms
 				var stock = new ChartingAndComparingPrices.ComparingStocks (tickerEntry.Text, DateTime.Parse (startDateEntry.Text), DateTime.Now);
 				Device.BeginInvokeOnMainThread (
 					() => {
-						Navigation.PushAsync (new ExploringHistoricalStockPricesChartPage (stock.Stocks));
+						Navigation.PushAsync (new ExploringHistoricalStockPricesChartPage (stock.Stocks, tickerEntry.Text));
 						busyIndicator.IsVisible = false;
 						busyIndicator.IsBusy = false;
 					});

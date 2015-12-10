@@ -20,6 +20,8 @@ namespace tryfsharpforms
 		public static Color Turqoise { get { return Color.FromHex ("#1abc9c"); } set{ } }
 
 		public static Color GreenSea { get { return Color.FromHex ("#16a085"); } set{ } }
+
+		public static Color Concrete { get { return Color.FromHex ("#7f8c8d"); } set{ } }
 	}
 }
 
