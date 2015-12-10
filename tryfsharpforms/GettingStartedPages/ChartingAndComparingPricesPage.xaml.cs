@@ -12,15 +12,17 @@ namespace tryfsharpforms
 	{
 		Entry stock1 = new Entry{ Placeholder = "MSFT", Text = "MSFT" };
 		Entry stock2 = new Entry{ Placeholder = "TSLA", Text = "AAPL" };
-		Button getDataButton = new Button{ Text = "Get Data!" };
+		Button getDataButton = new Button{ Text = "Get Data!", TextColor = MyColors.Clouds };
 
 		Entry avgStock = new Entry { Placeholder = "FB", Text = "FB" };
-		Button avgstockButton = new Button{ Text = "Compare!" };
+		Button avgstockButton = new Button{ Text = "Compare!", TextColor = MyColors.Clouds };
 		SfBusyIndicator busyIndicator = new SfBusyIndicator ();
 
 		public ChartingAndComparingPricesPage ()
 		{
 			InitializeComponent ();
+
+			BackgroundColor = MyColors.MidnightBlue;
 
 			busyIndicator.ViewBoxWidth = 150;
 			busyIndicator.ViewBoxHeight = 150;
@@ -38,7 +40,8 @@ namespace tryfsharpforms
 					new Label { 
 						Text = "Enter in 2 stock tickers to compare them",
 						HorizontalOptions = LayoutOptions.CenterAndExpand,
-						FontAttributes = FontAttributes.Bold,
+						FontAttributes = FontAttributes.Bold, 
+						TextColor = MyColors.Clouds
 					},
 					stock1,
 					stock2,
@@ -46,7 +49,8 @@ namespace tryfsharpforms
 					new Label { 
 						Text = "Compare a stock vs its Average",
 						HorizontalOptions = LayoutOptions.CenterAndExpand,
-						FontAttributes = FontAttributes.Bold,
+						FontAttributes = FontAttributes.Bold, 
+						TextColor = MyColors.Clouds
 					},
 					avgStock,
 					avgstockButton,

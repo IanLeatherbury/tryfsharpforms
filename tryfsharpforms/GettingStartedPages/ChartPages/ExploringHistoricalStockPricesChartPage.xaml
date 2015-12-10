@@ -12,7 +12,7 @@
 			<chart:SfChart.PrimaryAxis>
 			  <chart:CategoryAxis LabelRotationAngle = "-45">
 			    <chart:CategoryAxis.Title>
-			      <chart:ChartAxisTitle Text ="Date"/>
+			      <chart:ChartAxisTitle Text ="Date" TextColor="White"/>
 			    </chart:CategoryAxis.Title>
 			  </chart:CategoryAxis>
 			</chart:SfChart.PrimaryAxis>
@@ -20,13 +20,13 @@
 			<chart:SfChart.SecondaryAxis>
 			  <chart:NumericalAxis>
 			    <chart:NumericalAxis.Title>
-			      <chart:ChartAxisTitle Text ="Price"/>
+			      <chart:ChartAxisTitle Text ="Price" TextColor="White"/>
 			    </chart:NumericalAxis.Title>
 			  </chart:NumericalAxis>
 			</chart:SfChart.SecondaryAxis>
 <!--			Line Graph-->
       <chart:SfChart.Series>
-        <chart:LineSeries StrokeWidth="3" ItemsSource="{Binding StockData}" XBindingPath="Date" YBindingPath="Close" />
+        <chart:LineSeries StrokeWidth="1" ItemsSource="{Binding StockData}" XBindingPath="Date" YBindingPath="Close" x:Name="series1" />
       </chart:SfChart.Series>
 <!--      End Line Graph-->
 		</chart:SfChart>

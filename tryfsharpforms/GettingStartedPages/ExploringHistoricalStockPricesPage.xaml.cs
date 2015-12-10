@@ -10,24 +10,26 @@ namespace tryfsharpforms
 {
 	public partial class ExploringHistoricalStockPricesPage : ContentPage
 	{
-		Entry tickerEntry = new Entry{Placeholder = "MSFT", Text = "MSFT"};
-		Entry startDateEntry = new Entry{Placeholder = "1/1/2014", Text = "1/1/2014"};
-		Button getDataButton = new Button{Text = "Get Data!"};
+		Entry tickerEntry = new Entry{ Placeholder = "MSFT" };
+		Entry startDateEntry = new Entry{ Placeholder = "1/1/2014", Keyboard = Keyboard.Numeric };
+		Button getDataButton = new Button{ Text = "Get Data!", TextColor = MyColors.Clouds };
 		SfBusyIndicator busyIndicator = new SfBusyIndicator ();
 
 		public ExploringHistoricalStockPricesPage ()
 		{
 			InitializeComponent ();
 
+			BackgroundColor = MyColors.MidnightBlue;
+
 			busyIndicator.ViewBoxWidth = 150;
 			busyIndicator.ViewBoxHeight = 150;
 			busyIndicator.HeightRequest = 50;
 			busyIndicator.WidthRequest = 50;
-			busyIndicator.BackgroundColor = Color.White;
 			busyIndicator.AnimationType = AnimationTypes.DoubleCircle;
-			busyIndicator.TextColor = Color.FromHex ("#958C7B");
+			busyIndicator.TextColor = MyColors.Turqoise;
 			busyIndicator.IsVisible = false;
 			busyIndicator.IsBusy = false;
+			busyIndicator.BackgroundColor = MyColors.MidnightBlue;
 
 			Content = new StackLayout { 
 				Padding = new Thickness (15),
@@ -35,16 +37,16 @@ namespace tryfsharpforms
 					new Label { 
 						Text = "Chart a stock price up until now",
 						HorizontalOptions = LayoutOptions.CenterAndExpand,
-						FontAttributes = FontAttributes.Bold,
+						FontAttributes = FontAttributes.Bold, TextColor = MyColors.Clouds
 					},
 					new Label { 
 						Text = "Enter a stock ticker",
-						HorizontalOptions = LayoutOptions.CenterAndExpand,
+						HorizontalOptions = LayoutOptions.CenterAndExpand, TextColor = MyColors.Clouds
 					},
 					tickerEntry,
 					new Label { 
 						Text = "Enter a start date",
-						HorizontalOptions = LayoutOptions.CenterAndExpand,
+						HorizontalOptions = LayoutOptions.CenterAndExpand, TextColor = MyColors.Clouds
 					},
 					startDateEntry,
 					getDataButton,

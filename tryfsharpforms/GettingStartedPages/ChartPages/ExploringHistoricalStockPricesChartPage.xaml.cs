@@ -13,6 +13,9 @@ namespace tryfsharpforms
 		{
 			InitializeComponent ();
 
+			BackgroundColor = MyColors.MidnightBlue;
+			series1.Color = MyColors.Turqoise;
+
 			BindingContext = new StocksViewModel (list);
 		}
 	}

@@ -8,18 +8,19 @@ namespace tryfsharpforms
 	{
 		Entry rateEntry = new Entry { Placeholder = "79.8" };
 		Entry valueEntry = new Entry { Placeholder = "1000" };
-		Button calculateButton = new Button { Text = "Calculate!" };
-		Label amountLabel = new Label { HorizontalOptions = LayoutOptions.CenterAndExpand };
+		Button calculateButton = new Button { Text = "Calculate!", TextColor = MyColors.Clouds };
+		Label amountLabel = new Label { HorizontalOptions = LayoutOptions.CenterAndExpand, TextColor = MyColors.Clouds };
 
 		public BasicCalcPage ()
 		{
+			BackgroundColor = MyColors.MidnightBlue;
 			Content = new StackLayout { 
 				Padding = new Thickness(15),
 				Children = {
-					new Label { Text = "Currency Converter" },
-					new Label { Text = "Rate" },
+					new Label { Text = "Currency Converter", TextColor = MyColors.Clouds},
+					new Label { Text = "Rate", TextColor = MyColors.Clouds },
 					rateEntry,
-					new Label { Text = "Value" },
+					new Label { Text = "Value", TextColor = MyColors.Clouds },
 					valueEntry,
 					calculateButton,
 					amountLabel

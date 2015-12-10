@@ -12,6 +12,7 @@ namespace tryfsharpforms
 
 		public HomePage ()
 		{
+			Title = "Try F#!"; 
 			sections.Add (new Sections{ SectionName = "Basic Financial Calculations" });
 			sections.Add (new Sections{ SectionName = "Units of Measure" });
 			sections.Add (new Sections{ SectionName = "Exploring Historical Stock Prices" });
@@ -25,7 +26,7 @@ namespace tryfsharpforms
 
 			var listView = new ListView ();
 			listView.ItemTemplate = new DataTemplate (typeof(CustomCell));
-			listView.BackgroundColor = Color.FromHex ("#2c3e50");
+			listView.BackgroundColor = MyColors.WetAsphalt;
 			listView.ItemsSource = sections;
 			listView.ItemSelected += OnSelection;
 
@@ -69,6 +70,9 @@ namespace tryfsharpforms
 			case "Exploring Historical Stock Prices":
 				Navigation.PushAsync (new ExploringHistoricalStockPricesPage ());
 				break;
+			case "Charting and Comparing Prices":
+				Navigation.PushAsync (new ChartingAndComparingPricesPage ());
+				break;
 			case "Analyzing Stock Prices":
 				Navigation.PushAsync (new AnalyzingStockPricesPage ());
 				break;
@@ -89,7 +93,7 @@ namespace tryfsharpforms
 				break;
 			};
 
-			((ListView)sender).SelectedItem = null; //uncomment line if you want to disable the visual selection state.
+			((ListView)sender).SelectedItem = null; 
 		}
 	}
 }
