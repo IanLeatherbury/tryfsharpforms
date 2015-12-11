@@ -18,6 +18,9 @@ namespace tryfsharpforms.iOS
 
 			new SfChartRenderer();
 
+			App.ScreenWidth = (int)UIScreen.MainScreen.Bounds.Width;
+			App.ScreenHeight = (int)UIScreen.MainScreen.Bounds.Height;
+
 			new SfBusyIndicatorRenderer ();
 
 			LoadApplication (new App ());

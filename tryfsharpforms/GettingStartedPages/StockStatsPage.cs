@@ -10,6 +10,8 @@ namespace tryfsharpforms
 
 		public StockStatsPage (string stockTicker)
 		{
+
+
 			var stock = new ChartingAndComparingPrices.ComparingStocks (stockTicker, new DateTime (2014, 1, 1), DateTime.Now);
 
 			RelativeLayout relativeLayout = new RelativeLayout ();
@@ -24,7 +26,7 @@ namespace tryfsharpforms
 				HeightRequest = 25
 			};
 
-			var standDev = new Label { 
+			var standDevLabel = new Label { 
 				Text = "Standard Deviation",
 				HorizontalOptions = LayoutOptions.CenterAndExpand,
 				FontAttributes = FontAttributes.Bold, TextColor = MyColors.Clouds
@@ -61,6 +63,20 @@ namespace tryfsharpforms
 				HorizontalOptions = LayoutOptions.Start, TextColor = MyColors.Clouds
 			};
 
+			Func<RelativeLayout, double> standDevLabelWidth = (p) => standDevLabel.GetSizeRequest(relativeLayout.Width, relativeLayout.Height).Request.Width;
+			//dashboard is rel layout
+			//			dashboard.Children.Add(
+			//				reportName,
+			//				xConstraint: Constraint.Constant(10),
+			//				yConstraint: Constraint.Constant(10),
+			//				widthConstraint: Constraint.RelativeToParent(p=>p.Width * 0.6 - 10)
+			//			);
+
+			var boxView = new BoxView ();
+			boxView.HeightRequest = 1;
+			boxView.WidthRequest = App.ScreenWidth;
+			boxView.Color = MyColors.Clouds;
+
 			BackgroundColor = MyColors.MidnightBlue;
 
 			relativeLayout.Children.Add (
@@ -68,9 +84,14 @@ namespace tryfsharpforms
 				Constraint.RelativeToParent ((parent) => {
 					return (parent.Width * .5 - 25);
 				}),
-				Constraint.Constant(20),
-				Constraint.Constant(100),
-				Constraint.Constant(25)
+				Constraint.Constant (20),
+				Constraint.Constant (100),
+				Constraint.Constant (25)
+			);
+
+			relativeLayout.Children.Add (boxView,
+				Constraint.Constant (0),
+				Constraint.Constant(30)
 			);
 
 			Content = relativeLayout;
