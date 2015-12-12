@@ -63,35 +63,31 @@ namespace tryfsharpforms
 				HorizontalOptions = LayoutOptions.Start, TextColor = MyColors.Clouds
 			};
 
-			Func<RelativeLayout, double> standDevLabelWidth = (p) => standDevLabel.GetSizeRequest(relativeLayout.Width, relativeLayout.Height).Request.Width;
-			//dashboard is rel layout
-			//			dashboard.Children.Add(
-			//				reportName,
-			//				xConstraint: Constraint.Constant(10),
-			//				yConstraint: Constraint.Constant(10),
-			//				widthConstraint: Constraint.RelativeToParent(p=>p.Width * 0.6 - 10)
-			//			);
-
 			var boxView = new BoxView ();
 			boxView.HeightRequest = 1;
-			boxView.WidthRequest = App.ScreenWidth;
+			boxView.WidthRequest = App.ScreenWidth - App.ScreenWidth*.05;
 			boxView.Color = MyColors.Clouds;
+
+			Func<RelativeLayout, double> standDevLabelWidth = (p) => standDevLabel.GetSizeRequest (relativeLayout.Width, relativeLayout.Height).Request.Width;
+			Func<RelativeLayout, double> largeTickerWidth = (p) => largeTicker.GetSizeRequest (relativeLayout.Width, relativeLayout.Height).Request.Width;
+			Func<RelativeLayout, double> largeTickerHeight = (p) => largeTicker.GetSizeRequest (relativeLayout.Width, relativeLayout.Height).Request.Height;
+			Func<RelativeLayout, double> boxViewWidth = (p) => boxView.GetSizeRequest (relativeLayout.Width, relativeLayout.Height).Request.Width;
+
+
 
 			BackgroundColor = MyColors.MidnightBlue;
 
 			relativeLayout.Children.Add (
 				largeTicker, 
-				Constraint.RelativeToParent ((parent) => {
-					return (parent.Width * .5 - 25);
-				}),
-				Constraint.Constant (20),
-				Constraint.Constant (100),
-				Constraint.Constant (25)
+				xConstraint: Constraint.RelativeToParent(p=>(p.Width * 0.5 - largeTickerWidth(p)*.5)),
+				yConstraint: Constraint.Constant (10),
+				widthConstraint: Constraint.RelativeToParent(p=>(p.Width * 0.5 - largeTickerWidth(p)*.5))
 			);
 
-			relativeLayout.Children.Add (boxView,
-				Constraint.Constant (0),
-				Constraint.Constant(30)
+			relativeLayout.Children.Add (
+				boxView,
+				xConstraint: Constraint.RelativeToParent(p=>(p.Width * 0.5 - boxViewWidth(p)*.5)),
+				yConstraint: Constraint.RelativeToParent(p=> (largeTicker.Y + largeTickerHeight(p) + 10))
 			);
 
 			Content = relativeLayout;
