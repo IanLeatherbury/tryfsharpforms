@@ -19,7 +19,13 @@ namespace tryfsharpforms
 			Keyboard = Keyboard.Numeric,
 			TextColor = MyColors.Clouds,
 		};
-		Button getDataButton = new Button{ Text = "Get The Data!", TextColor = MyColors.Clouds };
+		GetDataButton getDataButton = new GetDataButton (Borders.Thin, 1) {
+			Text = "Get The Data!",
+			TextColor = MyColors.Clouds
+		};
+		Label nullLabel = new Label {HorizontalOptions = LayoutOptions.CenterAndExpand,
+			FontAttributes = FontAttributes.Bold, TextColor = MyColors.Clouds,
+		};
 		SfBusyIndicator busyIndicator = new SfBusyIndicator ();
 
 		public ExploringHistoricalStockPricesPage ()
@@ -46,6 +52,7 @@ namespace tryfsharpforms
 						HorizontalOptions = LayoutOptions.CenterAndExpand,
 						FontAttributes = FontAttributes.Bold, TextColor = MyColors.Clouds,
 					},
+					new BoxView { HeightRequest = 10, Opacity = 0 },
 					new Label { 
 						Text = "Enter a stock ticker",
 						HorizontalOptions = LayoutOptions.CenterAndExpand, TextColor = MyColors.Clouds
@@ -56,8 +63,11 @@ namespace tryfsharpforms
 						HorizontalOptions = LayoutOptions.CenterAndExpand, TextColor = MyColors.Clouds
 					},
 					startDateEntry,
+					new BoxView { HeightRequest = 10, Opacity = 0 },
 					getDataButton,
-					busyIndicator
+					new BoxView { HeightRequest = 10, Opacity = 0 },
+					busyIndicator,
+					nullLabel
 				}
 			};
 
@@ -66,18 +76,24 @@ namespace tryfsharpforms
 
 		void GetDataButton_Clicked (object sender, EventArgs e)
 		{
-			busyIndicator.IsBusy = true;
-			busyIndicator.IsVisible = true;
+			nullLabel.Text = "";
 
-			Task.Run (() => {	
-				var stock = new ChartingAndComparingPrices.ComparingStocks (tickerEntry.Text, DateTime.Parse (startDateEntry.Text), DateTime.Now);
-				Device.BeginInvokeOnMainThread (
-					() => {
-						Navigation.PushAsync (new ExploringHistoricalStockPricesChartPage (stock.Stocks, tickerEntry.Text));
-						busyIndicator.IsVisible = false;
-						busyIndicator.IsBusy = false;
-					});
-			});
+			if ((tickerEntry.Text == null) || (startDateEntry.Text == null)) {
+				nullLabel.Text = "Don't forget to enter a stock ticker and a start date!";
+			} else {
+				busyIndicator.IsBusy = true;
+				busyIndicator.IsVisible = true;
+
+				Task.Run (() => {	
+					var stock = new ChartingAndComparingPrices.ComparingStocks (tickerEntry.Text, DateTime.Parse (startDateEntry.Text), DateTime.Now);
+					Device.BeginInvokeOnMainThread (
+						() => {
+							Navigation.PushAsync (new ExploringHistoricalStockPricesChartPage (stock.Stocks, tickerEntry.Text));
+							busyIndicator.IsVisible = false;
+							busyIndicator.IsBusy = false;
+						});
+				});
+			}
 		}
 	}
 }

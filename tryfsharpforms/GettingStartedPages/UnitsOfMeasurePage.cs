@@ -9,7 +9,7 @@ namespace tryfsharpforms
 	{
 		LoginEntry rateEntryEur = new LoginEntry { Placeholder = ".91" };
 		LoginEntry valueEntryUsd = new LoginEntry { Placeholder = "1000" };
-		Button calculateButton = new Button { Text = "Calculate!", TextColor = MyColors.Clouds };
+		GetDataButton calculateButton = new GetDataButton(Borders.Thin, 1) { Text = "Calculate!", TextColor = MyColors.Clouds };
 		Label amountLabel = new Label { HorizontalOptions = LayoutOptions.CenterAndExpand, TextColor = MyColors.Clouds };
 
 		public UnitsOfMeasurePage ()
@@ -22,7 +22,8 @@ namespace tryfsharpforms
 					new Label { 
 						Text = "Strongly Typed Currency Converter",
 						HorizontalOptions = LayoutOptions.CenterAndExpand, 
-						TextColor = MyColors.Clouds
+						TextColor = MyColors.Clouds,
+						FontAttributes = FontAttributes.Bold
 					},
 					new Label { 
 						Text = "USD to EUR", 
@@ -30,6 +31,7 @@ namespace tryfsharpforms
 					},
 					rateEntryEur,
 					valueEntryUsd,
+					new BoxView{ HeightRequest = 10, Opacity = 0 },
 					calculateButton,
 					amountLabel
 				}

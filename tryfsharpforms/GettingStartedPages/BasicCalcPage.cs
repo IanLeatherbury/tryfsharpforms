@@ -8,19 +8,24 @@ namespace tryfsharpforms
 	{
 		LoginEntry rateEntry = new LoginEntry { Placeholder = "Rate" };
 		LoginEntry valueEntry = new LoginEntry { Placeholder = "Amount" };
-		Button calculateButton = new Button { Text = "Calculate!", TextColor = MyColors.Clouds };
+		GetDataButton calculateButton = new GetDataButton (Borders.Thin, 1) {
+			Text = "Calculate!",
+			TextColor = MyColors.Clouds
+		};
 		Label amountLabel = new Label { HorizontalOptions = LayoutOptions.CenterAndExpand, TextColor = MyColors.Clouds };
 
 		public BasicCalcPage ()
 		{
 			BackgroundColor = MyColors.MidnightBlue;
 			Content = new StackLayout { 
-				Padding = new Thickness(15),
+				Padding = new Thickness (15),
 				Children = {
-					new Label { Text = "Currency Converter", TextColor = MyColors.Clouds},
+					new Label { Text = "Currency Converter", TextColor = MyColors.Clouds },
 					rateEntry,
 					valueEntry,
+					new BoxView{ HeightRequest = 10, Opacity = 0 },
 					calculateButton,
+					new BoxView{ HeightRequest = 10, Opacity = 0 },
 					amountLabel
 				}
 			};
