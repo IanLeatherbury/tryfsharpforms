@@ -6,8 +6,8 @@ namespace tryfsharpforms
 {
 	public class BasicCalcPage : ContentPage
 	{
-		Entry rateEntry = new Entry { Placeholder = "79.8" };
-		Entry valueEntry = new Entry { Placeholder = "1000" };
+		LoginEntry rateEntry = new LoginEntry { Placeholder = "Rate" };
+		LoginEntry valueEntry = new LoginEntry { Placeholder = "Amount" };
 		Button calculateButton = new Button { Text = "Calculate!", TextColor = MyColors.Clouds };
 		Label amountLabel = new Label { HorizontalOptions = LayoutOptions.CenterAndExpand, TextColor = MyColors.Clouds };
 
@@ -18,9 +18,7 @@ namespace tryfsharpforms
 				Padding = new Thickness(15),
 				Children = {
 					new Label { Text = "Currency Converter", TextColor = MyColors.Clouds},
-					new Label { Text = "Rate", TextColor = MyColors.Clouds },
 					rateEntry,
-					new Label { Text = "Value", TextColor = MyColors.Clouds },
 					valueEntry,
 					calculateButton,
 					amountLabel

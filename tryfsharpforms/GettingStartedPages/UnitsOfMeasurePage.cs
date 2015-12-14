@@ -7,8 +7,8 @@ namespace tryfsharpforms
 {
 	public class UnitsOfMeasurePage : ContentPage
 	{
-		Entry rateEntryEur = new Entry { Placeholder = ".91 Eur/Usd" };
-		Entry valueEntryUsd = new Entry { Placeholder = "1000 Usd" };
+		LoginEntry rateEntryEur = new LoginEntry { Placeholder = ".91" };
+		LoginEntry valueEntryUsd = new LoginEntry { Placeholder = "1000" };
 		Button calculateButton = new Button { Text = "Calculate!", TextColor = MyColors.Clouds };
 		Label amountLabel = new Label { HorizontalOptions = LayoutOptions.CenterAndExpand, TextColor = MyColors.Clouds };
 
@@ -29,10 +29,6 @@ namespace tryfsharpforms
 						TextColor = MyColors.Clouds
 					},
 					rateEntryEur,
-					new Label { 
-						Text = "Value", 
-						TextColor = MyColors.Clouds
-					},
 					valueEntryUsd,
 					calculateButton,
 					amountLabel

@@ -10,18 +10,16 @@ namespace tryfsharpforms
 {
 	public partial class ExploringHistoricalStockPricesPage : ContentPage
 	{
-		Entry tickerEntry = new Entry {
+		LoginEntry tickerEntry = new LoginEntry {
 			Placeholder = "MSFT",
 			TextColor = MyColors.Clouds,
-			BackgroundColor = MyColors.WetAsphalt
 		};
-		Entry startDateEntry = new Entry {
+		LoginEntry startDateEntry = new LoginEntry {
 			Placeholder = "1/1/2014",
 			Keyboard = Keyboard.Numeric,
 			TextColor = MyColors.Clouds,
-			BackgroundColor = MyColors.WetAsphalt
 		};
-		Button getDataButton = new Button{ Text = "Get Data!", TextColor = MyColors.Clouds };
+		Button getDataButton = new Button{ Text = "Get The Data!", TextColor = MyColors.Clouds };
 		SfBusyIndicator busyIndicator = new SfBusyIndicator ();
 
 		public ExploringHistoricalStockPricesPage ()
@@ -46,7 +44,7 @@ namespace tryfsharpforms
 					new Label { 
 						Text = "Chart a stock price up until now",
 						HorizontalOptions = LayoutOptions.CenterAndExpand,
-						FontAttributes = FontAttributes.Bold, TextColor = MyColors.Clouds
+						FontAttributes = FontAttributes.Bold, TextColor = MyColors.Clouds,
 					},
 					new Label { 
 						Text = "Enter a stock ticker",
@@ -54,7 +52,7 @@ namespace tryfsharpforms
 					},
 					tickerEntry,
 					new Label { 
-						Text = "Enter a start date",
+						Text = "And a start date",
 						HorizontalOptions = LayoutOptions.CenterAndExpand, TextColor = MyColors.Clouds
 					},
 					startDateEntry,
