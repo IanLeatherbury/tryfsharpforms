@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 
 namespace tryfsharpforms
 {
@@ -7,4 +8,3 @@ namespace tryfsharpforms
 		public string SectionName { get; set; }
 	}
 }
-

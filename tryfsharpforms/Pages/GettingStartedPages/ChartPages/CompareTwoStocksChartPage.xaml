@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="tryfsharpforms.CompareTwoStocksChartPage" xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms">
+	<ContentPage.Content>
+		<chart:SfChart x:Name="Chart">
+			<!--		Primary Axis-->
+			<chart:SfChart.PrimaryAxis>
+				<chart:CategoryAxis LabelRotationAngle="-45">
+					<chart:CategoryAxis.Title>
+						<chart:ChartAxisTitle Text="Date" TextColor="White" />
+					</chart:CategoryAxis.Title>
+				</chart:CategoryAxis>
+			</chart:SfChart.PrimaryAxis>
+			<!--		Secondary Axis-->
+			<chart:SfChart.SecondaryAxis>
+				<chart:NumericalAxis>
+					<chart:NumericalAxis.Title>
+						<chart:ChartAxisTitle Text="Price" TextColor="White" />
+					</chart:NumericalAxis.Title>
+				</chart:NumericalAxis>
+			</chart:SfChart.SecondaryAxis>
+			<!--			Line Graph-->
+			<chart:SfChart.Series>
+				<chart:LineSeries StrokeWidth="2" ItemsSource="{Binding StockData1}" XBindingPath="Date" YBindingPath="Close" x:Name="series1" />
+				<chart:LineSeries StrokeWidth="2" ItemsSource="{Binding StockData2}" XBindingPath="Date" YBindingPath="Close" x:Name="series2" />
+				<!--      End Line Graph-->
+			</chart:SfChart.Series>
+			<chart:SfChart.Legend>
+				<chart:ChartLegend ToggleSeriesVisibility="true">
+					<chart:ChartLegend.LabelStyle>
+						<chart:ChartLegendLabelStyle TextColor="White" />
+					</chart:ChartLegend.LabelStyle>
+				</chart:ChartLegend>
+			</chart:SfChart.Legend>
+		</chart:SfChart>
+	</ContentPage.Content>
+</ContentPage>

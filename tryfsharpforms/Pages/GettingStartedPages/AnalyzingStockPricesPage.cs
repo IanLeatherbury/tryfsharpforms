@@ -17,7 +17,7 @@ namespace tryfsharpforms
 			BorderRadius = 3,
 			BorderWidth = 1
 		};
-		LoginEntry stockEntry = new LoginEntry{ Placeholder = "MSFT", Text = "SPY" };
+		LoginEntry stockEntry = new LoginEntry{ Placeholder = "SPY" };
 
 		public AnalyzingStockPricesPage ()
 		{

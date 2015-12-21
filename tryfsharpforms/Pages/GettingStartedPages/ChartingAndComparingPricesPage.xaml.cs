@@ -10,12 +10,12 @@ namespace tryfsharpforms
 {
 	public partial class ChartingAndComparingPricesPage : ContentPage
 	{
-		Entry stock1 = new Entry{ Placeholder = "MSFT", Text = "MSFT" };
-		Entry stock2 = new Entry{ Placeholder = "TSLA", Text = "AAPL" };
-		Button getDataButton = new Button{ Text = "Get Data!", TextColor = MyColors.Clouds };
+		LoginEntry stock1 = new LoginEntry{ Placeholder = "MSFT", Text = "MSFT" };
+		LoginEntry stock2 = new LoginEntry{ Placeholder = "TSLA", Text = "AAPL" };
+		GetDataButton getDataButton = new GetDataButton (Borders.Thin, 1){ Text = "Get Data!", TextColor = MyColors.Clouds };
 
-		Entry avgStock = new Entry { Placeholder = "FB", Text = "FB" };
-		Button avgstockButton = new Button{ Text = "Compare!", TextColor = MyColors.Clouds };
+		LoginEntry avgStock = new LoginEntry { Placeholder = "FB", Text = "FB" };
+		GetDataButton avgstockButton = new GetDataButton (Borders.Thin, 1){ Text = "Compare!", TextColor = MyColors.Clouds };
 		SfBusyIndicator busyIndicator = new SfBusyIndicator ();
 
 		public ChartingAndComparingPricesPage ()
@@ -28,9 +28,9 @@ namespace tryfsharpforms
 			busyIndicator.ViewBoxHeight = 150;
 			busyIndicator.HeightRequest = 50;
 			busyIndicator.WidthRequest = 50;
-			busyIndicator.BackgroundColor = Color.White;
+			busyIndicator.BackgroundColor = MyColors.MidnightBlue;
 			busyIndicator.AnimationType = AnimationTypes.DoubleCircle;
-			busyIndicator.TextColor = Color.FromHex ("#958C7B");
+			busyIndicator.TextColor = MyColors.Turqoise;
 			busyIndicator.IsVisible = false;
 			busyIndicator.IsBusy = false;
 
@@ -45,7 +45,9 @@ namespace tryfsharpforms
 					},
 					stock1,
 					stock2,
+					new BoxView{ HeightRequest = 10, Opacity = 0 },
 					getDataButton,
+					new BoxView{ HeightRequest = 20, Opacity = 0 },
 					new Label { 
 						Text = "Compare a stock vs its Average",
 						HorizontalOptions = LayoutOptions.CenterAndExpand,
@@ -53,7 +55,9 @@ namespace tryfsharpforms
 						TextColor = MyColors.Clouds
 					},
 					avgStock,
+					new BoxView{ HeightRequest = 10, Opacity = 0 },
 					avgstockButton,
+					new BoxView{ HeightRequest = 10, Opacity = 0 },
 					busyIndicator
 				}
 			};
@@ -76,7 +80,7 @@ namespace tryfsharpforms
 
 				Device.BeginInvokeOnMainThread (
 					() => {
-						Navigation.PushAsync (new CompareTwoStocksChartPage (stockList1, stockList2));
+						Navigation.PushAsync (new CompareTwoStocksChartPage (stockList1, stockList2, stock1.Text, stock2.Text));
 						busyIndicator.IsVisible = false;
 						busyIndicator.IsBusy = false;
 					});
@@ -95,7 +99,7 @@ namespace tryfsharpforms
 
 				Device.BeginInvokeOnMainThread (
 					() => {
-						Navigation.PushAsync (new ComparePriceVsAvgPage (stock, average));
+						Navigation.PushAsync (new ComparePriceVsAvgPage (stock, average, avgStock.Text));
 						busyIndicator.IsVisible = false;
 						busyIndicator.IsBusy = false;
 					});

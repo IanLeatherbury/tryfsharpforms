@@ -240,7 +240,6 @@
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <Compile Include="MenuTableViewRenderer.cs" />
-    <Compile Include="MenuTextCellRenderer.cs" />
     <Compile Include="LoginEntryRenderer.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

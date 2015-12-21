@@ -22,6 +22,10 @@ namespace tryfsharpforms
 		public static Color GreenSea { get { return Color.FromHex ("#16a085"); } set{ } }
 
 		public static Color Concrete { get { return Color.FromHex ("#7f8c8d"); } set{ } }
+
+		public static Color Wisteria { get { return Color.FromHex ("#8e44ad"); } set{ } }
+
+		public static Color Carrot { get { return Color.FromHex ("#e67e22"); } set{ } }
 	}
 }
 

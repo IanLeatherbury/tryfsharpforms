@@ -6,7 +6,7 @@
 			<chart:SfChart.PrimaryAxis>
 				<chart:CategoryAxis LabelRotationAngle="-45">
 					<chart:CategoryAxis.Title>
-						<chart:ChartAxisTitle Text="Actual Price" />
+						<chart:ChartAxisTitle Text="Actual Price" TextColor="White" />
 					</chart:CategoryAxis.Title>
 				</chart:CategoryAxis>
 			</chart:SfChart.PrimaryAxis>
@@ -14,17 +14,13 @@
 			<chart:SfChart.SecondaryAxis>
 				<chart:NumericalAxis>
 					<chart:NumericalAxis.Title>
-						<chart:ChartAxisTitle Text="Option Price" />
+						<chart:ChartAxisTitle Text="Option Price" TextColor="White" />
 					</chart:NumericalAxis.Title>
 				</chart:NumericalAxis>
 			</chart:SfChart.SecondaryAxis>
-			<!--			Toggle Legend-->
-			<chart:SfChart.Legend>
-				<chart:ChartLegend ToggleSeriesVisibility="true" />
-			</chart:SfChart.Legend>
 			<!--			Line Graph, 1st Series-->
 			<chart:SfChart.Series>
-				<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding PriceData1}" Label="Call" XBindingPath="ActualPrice" YBindingPath="OptionPrice">
+				<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding PriceData1}" Label="Call" XBindingPath="ActualPrice" YBindingPath="OptionPrice" x:Name="callSeries">
 					<chart:LineSeries.DataMarker>
 						<chart:ChartDataMarker>
 							<chart:ChartDataMarker.LabelStyle>
@@ -34,7 +30,7 @@
 					</chart:LineSeries.DataMarker>
 				</chart:LineSeries>
 				<!--				Line Graph 2nd Series-->
-				<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding PriceData2}" Label="Put" XBindingPath="ActualPrice" YBindingPath="OptionPrice">
+				<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding PriceData2}" Label="Put" XBindingPath="ActualPrice" YBindingPath="OptionPrice" x:Name="putSeries">
 					<chart:LineSeries.DataMarker>
 						<chart:ChartDataMarker>
 							<chart:ChartDataMarker.LabelStyle>
@@ -45,6 +41,13 @@
 				</chart:LineSeries>
 				<!--      End Line Graph-->
 			</chart:SfChart.Series>
+			<chart:SfChart.Legend>
+				<chart:ChartLegend ToggleSeriesVisibility="true">
+					<chart:ChartLegend.LabelStyle>
+						<chart:ChartLegendLabelStyle TextColor="White" />
+					</chart:ChartLegend.LabelStyle>
+				</chart:ChartLegend>
+			</chart:SfChart.Legend>
 		</chart:SfChart>
 	</ContentPage.Content>
 </ContentPage>

@@ -11,6 +11,11 @@ namespace tryfsharpforms
 		{
 			InitializeComponent ();
 
+			BackgroundColor = MyColors.MidnightBlue;
+
+			callSeries.Color = MyColors.Turqoise;
+			putSeries.Color = MyColors.BelizeHole;
+
 			BindingContext = new PriceViewModel (call, put);
 		}
 	}
