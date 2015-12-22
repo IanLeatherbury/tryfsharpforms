@@ -3,13 +3,13 @@
 	<ContentPage.Content>
 	<chart:SfChart x:Name="Chart">
 			<chart:SfChart.Title>
-				<chart:ChartTitle Text="Butterfly Spread" />
+				<chart:ChartTitle Text="Butterfly Spread" TextColor="White" />
 			</chart:SfChart.Title>
 			<!--		Primary Axis-->
 			<chart:SfChart.PrimaryAxis>
 				<chart:CategoryAxis LabelRotationAngle="-45">
 					<chart:CategoryAxis.Title>
-						<chart:ChartAxisTitle Text="Actual Price" />
+						<chart:ChartAxisTitle Text="Actual Price" TextColor="White" />
 					</chart:CategoryAxis.Title>
 				</chart:CategoryAxis>
 			</chart:SfChart.PrimaryAxis>
@@ -17,13 +17,13 @@
 			<chart:SfChart.SecondaryAxis>
 				<chart:NumericalAxis>
 					<chart:NumericalAxis.Title>
-						<chart:ChartAxisTitle Text="Option Price" />
+						<chart:ChartAxisTitle Text="Option Price" TextColor="White" />
 					</chart:NumericalAxis.Title>
 				</chart:NumericalAxis>
 			</chart:SfChart.SecondaryAxis>
 			<!--			Line Graph, 1st Series-->
 			<chart:SfChart.Series>
-				<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding PriceData}" XBindingPath="ActualPrice" YBindingPath="OptionPrice">
+				<chart:LineSeries StrokeWidth="2" ItemsSource="{Binding PriceData}" XBindingPath="ActualPrice" YBindingPath="OptionPrice" x:Name="butterflySeries">
 					<chart:LineSeries.DataMarker>
 						<chart:ChartDataMarker>
 							<chart:ChartDataMarker.LabelStyle>

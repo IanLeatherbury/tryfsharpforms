@@ -9,14 +9,6 @@ namespace tryfsharpforms
 {
 	public partial class UnderstandingEuropeanOptionsPage : ContentPage
 	{
-		LoginEntry callValueEntry = new LoginEntry { Placeholder = "Call value. e.g. '30'", Keyboard = Keyboard.Numeric };
-		LoginEntry putValueEntry = new LoginEntry { Placeholder = "Put value e.g. '70'", Keyboard = Keyboard.Numeric };
-		LoginEntry bottomStraddleEntry = new LoginEntry { Placeholder = "Enter a value. e.g. '30'", Keyboard = Keyboard.Numeric };
-		LoginEntry butterflyLowPriceEntry = new LoginEntry { Placeholder = "Enter a low price. e.g. '20'", Keyboard = Keyboard.Numeric };
-		LoginEntry butterflyHighPriceEntry = new LoginEntry { Placeholder = "Enter a high price. e.g. '80'", Keyboard = Keyboard.Numeric };
-		GetDataButton calcuatePayoffButton = new GetDataButton (Borders.Thin, 1) { Text = "Calculate Call Payoff!" };
-		GetDataButton calculateBottomStraddleButton = new GetDataButton (Borders.Thin, 1) { Text = "Calculate Bottom Straddle!" };
-		GetDataButton calculateButterflySpreadButton = new GetDataButton (Borders.Thin, 1) { Text = "Calculate Butterfly Spread!" };
 
 		ObservableCollection<Sections> sections = new ObservableCollection<Sections> ();
 
@@ -73,10 +65,10 @@ namespace tryfsharpforms
 				Navigation.PushAsync (new CallPutPage ());
 				break;
 			case "Bottom Straddle":
-				Navigation.PushAsync (new UnitsOfMeasurePage ());
+				Navigation.PushAsync (new BottomStraddlePage ());
 				break;
 			case "Butterfly":
-				Navigation.PushAsync (new ExploringHistoricalStockPricesPage ());
+				Navigation.PushAsync (new ButterflyPage ());
 				break;
 			};
 

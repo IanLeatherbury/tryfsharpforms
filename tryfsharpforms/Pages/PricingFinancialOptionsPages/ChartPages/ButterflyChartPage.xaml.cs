@@ -11,6 +11,9 @@ namespace tryfsharpforms
 		{
 			InitializeComponent ();
 
+			BackgroundColor = MyColors.MidnightBlue;
+			butterflySeries.Color = MyColors.Turqoise;
+
 			BindingContext = new PriceViewModel (bfList);
 		}
 	}
