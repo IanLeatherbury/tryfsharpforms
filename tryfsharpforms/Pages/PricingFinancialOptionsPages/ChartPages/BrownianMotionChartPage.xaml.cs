@@ -14,6 +14,11 @@ namespace tryfsharpforms
 			InitializeComponent ();
 
 			BindingContext = new PriceViewModel (data, data1, data2);
+
+			BackgroundColor = MyColors.MidnightBlue;
+			series1.Color = MyColors.Turqoise;
+			series2.Color = MyColors.Carrot;
+			series3.Color = MyColors.Concrete;
 		}
 	}
 }

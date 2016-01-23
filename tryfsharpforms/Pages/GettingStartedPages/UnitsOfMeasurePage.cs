@@ -1,21 +1,23 @@
 ﻿using System;
 
 using Xamarin.Forms;
+
 using tryfsharplib;
 
 namespace tryfsharpforms
 {
-	public class UnitsOfMeasurePage : ContentPage
+	public class UnitsOfMeasurePage : BasePage
 	{
-		LoginEntry rateEntryEur = new LoginEntry { Placeholder = ".91" };
-		LoginEntry valueEntryUsd = new LoginEntry { Placeholder = "1000" };
-		GetDataButton calculateButton = new GetDataButton(Borders.Thin, 1) { Text = "Calculate!", TextColor = MyColors.Clouds };
+		DataEntry rateEntryEur = new DataEntry { Placeholder = ".91" };
+		DataEntry valueEntryUsd = new DataEntry { Placeholder = "1000" };
+		GetDataButton calculateButton = new GetDataButton (Borders.Thin, 1) {
+			Text = "Calculate!",
+			TextColor = MyColors.Clouds
+		};
 		Label amountLabel = new Label { HorizontalOptions = LayoutOptions.CenterAndExpand, TextColor = MyColors.Clouds };
 
 		public UnitsOfMeasurePage ()
 		{
-			BackgroundColor = MyColors.MidnightBlue;
-
 			Content = new StackLayout { 
 				Padding = new Thickness (15),
 				Children = {

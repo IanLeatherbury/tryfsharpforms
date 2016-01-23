@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace tryfsharpforms
 {
-	public partial class PricingEuropeanOptionsPage : ContentPage
+	public partial class PricingEuropeanOptionsPage : BasePage
 	{
 		Button calcBsMsft = new Button{ Text = "Calculate!" };
 		Label msftBsLabel = new Label { 
@@ -19,8 +19,6 @@ namespace tryfsharpforms
 
 		public PricingEuropeanOptionsPage ()
 		{
-			InitializeComponent ();
-
 			busyIndicator.ViewBoxWidth = 150;
 			busyIndicator.ViewBoxHeight = 150;
 			busyIndicator.HeightRequest = 50;

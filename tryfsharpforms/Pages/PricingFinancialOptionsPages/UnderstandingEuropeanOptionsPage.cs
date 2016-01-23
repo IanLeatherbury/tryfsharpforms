@@ -1,23 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
-using tryfsharplib;
+using System.Collections.ObjectModel;
 
 using Xamarin.Forms;
-using System.Collections.ObjectModel;
+
+using tryfsharplib;
 
 namespace tryfsharpforms
 {
-	public partial class UnderstandingEuropeanOptionsPage : ContentPage
+	public partial class UnderstandingEuropeanOptionsPage : BasePage
 	{
 
 		ObservableCollection<Sections> sections = new ObservableCollection<Sections> ();
 
 		public UnderstandingEuropeanOptionsPage ()
 		{
-			InitializeComponent ();
-
-			BackgroundColor = MyColors.MidnightBlue;
-
 			Title = "Try F#!"; 
 
 			sections.Add (new Sections{ SectionName = "Call/Put" });
@@ -31,7 +28,6 @@ namespace tryfsharpforms
 			listView.ItemSelected += OnSelection;
 
 			Content = listView;
-
 		}
 
 		public class CustomCell : ViewCell
@@ -70,7 +66,8 @@ namespace tryfsharpforms
 			case "Butterfly":
 				Navigation.PushAsync (new ButterflyPage ());
 				break;
-			};
+			}
+			;
 
 			((ListView)sender).SelectedItem = null; 
 		}

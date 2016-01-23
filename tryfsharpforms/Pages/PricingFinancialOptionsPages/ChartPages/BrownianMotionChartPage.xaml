@@ -3,7 +3,7 @@
 	<ContentPage.Content>
 		<chart:SfChart x:Name="Chart">
 			<chart:SfChart.Title>
-				<chart:ChartTitle Text="Brownian Motion" />
+				<chart:ChartTitle Text="Brownian Motion" TextColor="White" />
 			</chart:SfChart.Title>
 			<!--		Primary Axis-->
 			<chart:SfChart.PrimaryAxis>
@@ -14,19 +14,19 @@
 			<chart:SfChart.SecondaryAxis>
 				<chart:NumericalAxis>
 					<chart:CategoryAxis.Title>
-						<chart:ChartAxisTitle Text="Price" />
+						<chart:ChartAxisTitle Text="Price" TextColor="White"/>
 					</chart:CategoryAxis.Title>
 				</chart:NumericalAxis>
 			</chart:SfChart.SecondaryAxis>
 			<!--			Line Graph, 1st Series-->
 			<chart:SfChart.Series>
-				<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding PriceData1}" XBindingPath="ActualPrice" YBindingPath="OptionPrice">
+				<chart:LineSeries StrokeWidth="2" ItemsSource="{Binding PriceData1}" XBindingPath="ActualPrice" YBindingPath="OptionPrice" x:Name="series1">
 				</chart:LineSeries>
 				<!--				Line Graph 2nd Series-->
-				<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding PriceData2}" XBindingPath="ActualPrice" YBindingPath="OptionPrice">
+				<chart:LineSeries StrokeWidth="2" ItemsSource="{Binding PriceData2}" XBindingPath="ActualPrice" YBindingPath="OptionPrice" x:Name="series2">
 				</chart:LineSeries>
 				<!--				Line Graph 3rd Series-->
-				<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding PriceData3}" XBindingPath="ActualPrice" YBindingPath="OptionPrice">
+				<chart:LineSeries StrokeWidth="2" ItemsSource="{Binding PriceData3}" XBindingPath="ActualPrice" YBindingPath="OptionPrice" x:Name="series3">
 				</chart:LineSeries>
 				<!--      End Line Graph-->
 			</chart:SfChart.Series>

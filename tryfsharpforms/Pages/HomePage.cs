@@ -1,8 +1,8 @@
 ﻿using System;
-
-using Xamarin.Forms;
 using System.Collections.ObjectModel;
 using System.Collections.Generic;
+
+using Xamarin.Forms;
 
 namespace tryfsharpforms
 {
@@ -13,6 +13,7 @@ namespace tryfsharpforms
 		public HomePage ()
 		{
 			Title = "Try F#!"; 
+
 			sections.Add (new Sections{ SectionName = "Basic Financial Calculations" });
 			sections.Add (new Sections{ SectionName = "Units of Measure" });
 			sections.Add (new Sections{ SectionName = "Exploring Historical Stock Prices" });

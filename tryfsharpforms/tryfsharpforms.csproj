@@ -35,9 +35,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\DataPoints.cs" />
     <Compile Include="ViewModels\StocksViewModel.cs" />
-    <Compile Include="Models\DecimalDataPoint.cs" />
     <Compile Include="ViewModels\PriceViewModel.cs" />
-    <Compile Include="Models\FloatingPointData.cs" />
     <Compile Include="Models\DoubleDataPoint.cs" />
     <Compile Include="Models\DoubleIntDataPoint.cs" />
     <Compile Include="ViewModels\BrownianMotionViewModel.cs" />
@@ -55,9 +53,6 @@
     <Compile Include="Models\KalmanRelationshipModel.cs" />
     <Compile Include="Pages\GettingStartedPages\AnalyzingStockPricesPage.cs" />
     <Compile Include="Pages\GettingStartedPages\BasicCalcPage.cs" />
-    <Compile Include="Pages\GettingStartedPages\ChartingAndComparingPricesPage.xaml.cs">
-      <DependentUpon>..\..\GettingStartedPages\ChartingAndComparingPricesPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Pages\GettingStartedPages\ChartPages\ComparePriceVsAvgPage.xaml.cs">
       <DependentUpon>..\..\..\GettingStartedPages\ChartPages\ComparePriceVsAvgChartPage.xaml</DependentUpon>
     </Compile>
@@ -66,9 +61,6 @@
     </Compile>
     <Compile Include="Pages\GettingStartedPages\ChartPages\ExploringHistoricalStockPricesChartPage.xaml.cs">
       <DependentUpon>..\..\..\GettingStartedPages\ChartPages\ExploringHistoricalStockPricesChartPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\GettingStartedPages\ExploringHistoricalStockPricesPage.xaml.cs">
-      <DependentUpon>..\..\GettingStartedPages\ExploringHistoricalStockPricesPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\GettingStartedPages\StockStatsPage.cs" />
     <Compile Include="Pages\GettingStartedPages\UnitsOfMeasurePage.cs" />
@@ -96,18 +88,6 @@
     <Compile Include="Pages\PricingFinancialOptionsPages\ChartPages\CompareMsftHistoricalVolDriftChartPage.xaml.cs">
       <DependentUpon>..\..\..\PricingFinancialOptionsPages\ChartPages\CompareMsftHistoricalVolDriftChartPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\PricingFinancialOptionsPages\PricingEuropeanOptionsPage.xaml.cs">
-      <DependentUpon>..\..\PricingFinancialOptionsPages\PricingEuropeanOptionsPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\PricingFinancialOptionsPages\SimulatingAndAnalyzingAssetPricesPage.xaml.cs">
-      <DependentUpon>..\..\PricingFinancialOptionsPages\SimulatingAndAnalyzingAssetPricesPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\PricingFinancialOptionsPages\UnderstandingEuropeanOptionsPage.xaml.cs">
-      <DependentUpon>..\..\PricingFinancialOptionsPages\UnderstandingEuropeanOptionsPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\ModelingMarketInteractionsPages\AnalyzingMarketInteractionsPage.xaml.cs">
-      <DependentUpon>..\..\ModelingMarketInteractionsPages\AnalyzingMarketInteractionsPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Pages\ModelingMarketInteractionsPages\AnalyzingStockMarketsPage.cs" />
     <Compile Include="Pages\ModelingMarketInteractionsPages\ChartPages\AnalyzingMarketInteractionsChartPage.xaml.cs">
       <DependentUpon>..\..\..\ModelingMarketInteractionsPages\ChartPages\AnalyzingMarketInteractionsChartPage.xaml</DependentUpon>
@@ -120,7 +100,6 @@
     </Compile>
     <Compile Include="Views\GetDataButton.cs" />
     <Compile Include="Pages\HomePage.cs" />
-    <Compile Include="Views\LoginEntry.cs" />
     <Compile Include="Views\MenuTableView.cs" />
     <Compile Include="Views\MenuTextCell.cs" />
     <Compile Include="Colors\MyColors.cs" />
@@ -128,6 +107,14 @@
     <Compile Include="Pages\PricingFinancialOptionsPages\CallPutPage.cs" />
     <Compile Include="Pages\PricingFinancialOptionsPages\BottomStraddlePage.cs" />
     <Compile Include="Pages\PricingFinancialOptionsPages\ButterflyPage.cs" />
+    <Compile Include="Pages\BasePage.cs" />
+    <Compile Include="Pages\PricingFinancialOptionsPages\SimulatingAndAnalyzingAssetPricesPage.cs" />
+    <Compile Include="Views\DataEntry.cs" />
+    <Compile Include="Pages\GettingStartedPages\ExploringHistoricalStockPricesPage.cs" />
+    <Compile Include="Pages\GettingStartedPages\ChartingAndComparingPricesPage.cs" />
+    <Compile Include="Pages\ModelingMarketInteractionsPages\AnalyzingMarketInteractionsPage.cs" />
+    <Compile Include="Pages\PricingFinancialOptionsPages\PricingEuropeanOptionsPage.cs" />
+    <Compile Include="Pages\PricingFinancialOptionsPages\UnderstandingEuropeanOptionsPage.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.2.0.0.6490\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.0.0.6490\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
@@ -158,9 +145,6 @@
     <Compile Include="tryfsharpforms.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Pages\GettingStartedPages\ChartingAndComparingPricesPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Include="Pages\GettingStartedPages\ChartPages\ComparePriceVsAvgChartPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -168,9 +152,6 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\GettingStartedPages\ChartPages\ExploringHistoricalStockPricesChartPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Pages\GettingStartedPages\ExploringHistoricalStockPricesPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\PricingFinancialOptionsPages\ChartPages\AnalyzingStockMarketsChartPage.xaml">
@@ -195,18 +176,6 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\PricingFinancialOptionsPages\ChartPages\CompareMsftHistoricalVolDriftChartPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Pages\PricingFinancialOptionsPages\PricingEuropeanOptionsPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Pages\PricingFinancialOptionsPages\SimulatingAndAnalyzingAssetPricesPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Pages\PricingFinancialOptionsPages\UnderstandingEuropeanOptionsPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Pages\ModelingMarketInteractionsPages\AnalyzingMarketInteractionsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\ModelingMarketInteractionsPages\ChartPages\AnalyzingMarketInteractionsChartPage.xaml">

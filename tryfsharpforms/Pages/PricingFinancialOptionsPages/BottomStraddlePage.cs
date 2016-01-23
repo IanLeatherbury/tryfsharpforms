@@ -7,7 +7,7 @@ namespace tryfsharpforms
 {
 	public class BottomStraddlePage : ContentPage
 	{
-		LoginEntry bottomStraddleEntry = new LoginEntry { Placeholder = "Enter a value. e.g. '30'", Keyboard = Keyboard.Numeric };
+		DataEntry bottomStraddleEntry = new DataEntry { Placeholder = "Enter a value. e.g. '30'", Keyboard = Keyboard.Numeric };
 		GetDataButton calculateBottomStraddleButton = new GetDataButton (Borders.Thin, 1) { Text = "Calculate Bottom Straddle!" };
 		Label nullCheckLabel = new Label {TextColor = MyColors.Clouds, HorizontalOptions = LayoutOptions.CenterAndExpand};
 

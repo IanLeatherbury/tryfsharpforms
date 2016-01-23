@@ -7,8 +7,8 @@ namespace tryfsharpforms
 {
 	public class ButterflyPage : ContentPage
 	{
-		LoginEntry butterflyLowPriceEntry = new LoginEntry { Placeholder = "Enter a low price. e.g. '20'", Keyboard = Keyboard.Numeric };
-		LoginEntry butterflyHighPriceEntry = new LoginEntry { Placeholder = "Enter a high price. e.g. '80'", Keyboard = Keyboard.Numeric };
+		DataEntry butterflyLowPriceEntry = new DataEntry { Placeholder = "Enter a low price. e.g. '20'", Keyboard = Keyboard.Numeric };
+		DataEntry butterflyHighPriceEntry = new DataEntry { Placeholder = "Enter a high price. e.g. '80'", Keyboard = Keyboard.Numeric };
 		GetDataButton calculateButterflySpreadButton = new GetDataButton (Borders.Thin, 1) { Text = "Calculate Butterfly Spread!" };
 
 		public ButterflyPage ()

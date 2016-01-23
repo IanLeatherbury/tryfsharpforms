@@ -1,13 +1,15 @@
 ﻿using System;
+
 using tryfsharplib;
+
 using Xamarin.Forms;
 
 namespace tryfsharpforms
 {
-	public class BasicCalcPage : ContentPage
+	public class BasicCalcPage : BasePage
 	{
-		LoginEntry rateEntry = new LoginEntry { Placeholder = "Rate" };
-		LoginEntry valueEntry = new LoginEntry { Placeholder = "Amount" };
+		DataEntry rateEntry = new DataEntry { Placeholder = "Rate" };
+		DataEntry valueEntry = new DataEntry { Placeholder = "Amount" };
 		GetDataButton calculateButton = new GetDataButton (Borders.Thin, 1) {
 			Text = "Calculate!",
 			TextColor = MyColors.Clouds
@@ -16,7 +18,6 @@ namespace tryfsharpforms
 
 		public BasicCalcPage ()
 		{
-			BackgroundColor = MyColors.MidnightBlue;
 			Content = new StackLayout { 
 				Padding = new Thickness (15),
 				Children = {

@@ -1,15 +1,19 @@
 ﻿using System;
-using tryfsharplib;
+using System.Threading.Tasks;
 
 using Xamarin.Forms;
+
+using tryfsharplib;
+
 using Syncfusion.SfBusyIndicator.XForms;
-using System.Threading.Tasks;
+
 
 namespace tryfsharpforms
 {
-	public class AnalyzingStockPricesPage : ContentPage
+	public class AnalyzingStockPricesPage : BasePage
 	{
 		SfBusyIndicator busyIndicator = new SfBusyIndicator ();
+
 		Button getStatsButton = new Button {
 			Text = "Get stats!",
 			TextColor = MyColors.Clouds,
@@ -17,11 +21,10 @@ namespace tryfsharpforms
 			BorderRadius = 3,
 			BorderWidth = 1
 		};
-		LoginEntry stockEntry = new LoginEntry{ Placeholder = "SPY" };
+		DataEntry stockEntry = new DataEntry{ Placeholder = "SPY" };
 
 		public AnalyzingStockPricesPage ()
 		{
-			BackgroundColor = MyColors.MidnightBlue;
 			busyIndicator.ViewBoxWidth = 150;
 			busyIndicator.ViewBoxHeight = 150;
 			busyIndicator.HeightRequest = 50;

@@ -7,8 +7,8 @@ namespace tryfsharpforms
 {
 	public class CallPutPage : ContentPage
 	{
-		LoginEntry callValueEntry = new LoginEntry { Placeholder = "Call value. e.g. '30'", Keyboard = Keyboard.Numeric };
-		LoginEntry putValueEntry = new LoginEntry { Placeholder = "Put value e.g. '70'", Keyboard = Keyboard.Numeric };
+		DataEntry callValueEntry = new DataEntry { Placeholder = "Call value. e.g. '30'", Keyboard = Keyboard.Numeric };
+		DataEntry putValueEntry = new DataEntry { Placeholder = "Put value e.g. '70'", Keyboard = Keyboard.Numeric };
 
 		GetDataButton calcuatePayoffButton = new GetDataButton (Borders.Thin, 1) { Text = "Calculate Call Payoff!" };
 

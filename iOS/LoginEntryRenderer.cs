@@ -11,7 +11,7 @@ using Foundation;
 using tryfsharpforms;
 using tryfsharpforms.iOS.Renderers;
 
-[assembly: ExportRenderer(typeof(LoginEntry), typeof(LoginEntryRenderer))]
+[assembly: ExportRenderer(typeof(DataEntry), typeof(LoginEntryRenderer))]
 
 namespace tryfsharpforms.iOS.Renderers
 {
@@ -38,7 +38,7 @@ namespace tryfsharpforms.iOS.Renderers
 			base.OnElementChanged (e);
 
 			if (e.NewElement != null && !isInitialized) {
-				var formsEntry = e.NewElement as LoginEntry;
+				var formsEntry = e.NewElement as DataEntry;
 				nativeTextField = Control as UITextField;
 				nativeTextField.Font = UIFont.FromName ("AppleSDGothicNeo-Light", 18);
 				nativeTextField.TextColor = UIColor.White;

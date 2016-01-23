@@ -4,9 +4,9 @@ using Xamarin.Forms;
 
 namespace tryfsharpforms
 {
-	public class LoginEntry : Entry
+	public class DataEntry : Entry
 	{
-		public LoginEntry ()
+		public DataEntry ()
 		{
 			BackgroundColor = Color.Transparent;
 			HeightRequest = 40;

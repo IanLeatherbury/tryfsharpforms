@@ -6,7 +6,7 @@ using Xamarin.Forms;
 
 namespace tryfsharpforms
 {
-	public partial class AnalyzingMarketInteractionsPage : ContentPage
+	public partial class AnalyzingMarketInteractionsPage : BasePage
 	{
 		Button plotLogLikelihoodButton = new Button { Text = "Plot Log Likeliehood" };
 		Button plotOberservedDataVersusFittedButton = new Button { Text = "Plot oberserved vs. fitted" };
@@ -15,7 +15,6 @@ namespace tryfsharpforms
 
 		public AnalyzingMarketInteractionsPage ()
 		{
-			InitializeComponent ();
 			Content = new StackLayout { 
 				Padding = new Thickness (15),
 				Children = {
@@ -57,7 +56,7 @@ namespace tryfsharpforms
 
 			Navigation.PushAsync (new AnalyzingMarketInteractionsChartPage (logliks));
 		}
-			
+
 	}
 }
 

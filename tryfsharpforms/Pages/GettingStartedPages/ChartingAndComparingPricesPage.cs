@@ -8,22 +8,18 @@ using System.Threading.Tasks;
 
 namespace tryfsharpforms
 {
-	public partial class ChartingAndComparingPricesPage : ContentPage
+	public partial class ChartingAndComparingPricesPage : BasePage
 	{
-		LoginEntry stock1 = new LoginEntry{ Placeholder = "MSFT", Text = "MSFT" };
-		LoginEntry stock2 = new LoginEntry{ Placeholder = "TSLA", Text = "AAPL" };
+		DataEntry stock1 = new DataEntry{ Placeholder = "MSFT", Text = "MSFT" };
+		DataEntry stock2 = new DataEntry{ Placeholder = "TSLA", Text = "AAPL" };
 		GetDataButton getDataButton = new GetDataButton (Borders.Thin, 1){ Text = "Get Data!", TextColor = MyColors.Clouds };
 
-		LoginEntry avgStock = new LoginEntry { Placeholder = "FB", Text = "FB" };
+		DataEntry avgStock = new DataEntry { Placeholder = "FB", Text = "FB" };
 		GetDataButton avgstockButton = new GetDataButton (Borders.Thin, 1){ Text = "Compare!", TextColor = MyColors.Clouds };
 		SfBusyIndicator busyIndicator = new SfBusyIndicator ();
 
 		public ChartingAndComparingPricesPage ()
 		{
-			InitializeComponent ();
-
-			BackgroundColor = MyColors.MidnightBlue;
-
 			busyIndicator.ViewBoxWidth = 150;
 			busyIndicator.ViewBoxHeight = 150;
 			busyIndicator.HeightRequest = 50;

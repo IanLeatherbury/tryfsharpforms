@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace tryfsharpforms
 {
-	public partial class ExploringHistoricalStockPricesPage : ContentPage
+	public partial class ExploringHistoricalStockPricesPage : BasePage
 	{
-		LoginEntry tickerEntry = new LoginEntry {
+		DataEntry tickerEntry = new DataEntry {
 			Placeholder = "MSFT",
 			TextColor = MyColors.Clouds,
 		};
-		LoginEntry startDateEntry = new LoginEntry {
+		DataEntry startDateEntry = new DataEntry {
 			Placeholder = "1/1/2014",
 			Keyboard = Keyboard.Numeric,
 			TextColor = MyColors.Clouds,
@@ -30,9 +30,6 @@ namespace tryfsharpforms
 
 		public ExploringHistoricalStockPricesPage ()
 		{
-			InitializeComponent ();
-
-			BackgroundColor = MyColors.MidnightBlue;
 
 			busyIndicator.ViewBoxWidth = 150;
 			busyIndicator.ViewBoxHeight = 150;
