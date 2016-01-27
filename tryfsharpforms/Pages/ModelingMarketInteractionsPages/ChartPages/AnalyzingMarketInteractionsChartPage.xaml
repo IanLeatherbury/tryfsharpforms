@@ -4,7 +4,7 @@
 		<RelativeLayout x:Name="relativeLayout">
 			<chart:SfChart x:Name="Chart">
 				<chart:SfChart.Title>
-					<chart:ChartTitle Text="Market Indicators" />
+					<chart:ChartTitle Text="Market Indicators" TextColor="White"/>
 				</chart:SfChart.Title>
 				<!--		Primary Axis-->
 				<chart:SfChart.PrimaryAxis>
@@ -15,13 +15,13 @@
 				<chart:SfChart.SecondaryAxis>
 					<chart:NumericalAxis>
 						<chart:CategoryAxis.Title>
-							<chart:ChartAxisTitle Text="Day" />
+							<chart:ChartAxisTitle Text="Day" TextColor="White"/>
 						</chart:CategoryAxis.Title>
 					</chart:NumericalAxis>
 				</chart:SfChart.SecondaryAxis>
 				<!--			Line Graph, 1st Series-->
 				<chart:SfChart.Series>
-					<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding Data}" XBindingPath="Day" YBindingPath="Price" />
+					<chart:LineSeries StrokeWidth="2" ItemsSource="{Binding Data}" XBindingPath="Day" YBindingPath="Price" />
 					<!--      End Line Graph-->
 				</chart:SfChart.Series>
 				<chart:SfChart.Legend>

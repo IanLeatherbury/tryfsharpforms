@@ -46,9 +46,7 @@ namespace tryfsharpforms
 
 		void PlotLogLikelihoodButton_Clicked (object sender, EventArgs e)
 		{
-//			var logliks = indicators.LogLikelihood;
-//
-//			Navigation.PushAsync (new AnalyzingMarketInteractionsChartPage (logliks));
+			Navigation.PushAsync (new AnalyzingMarketInteractionsChartPage ());
 		}
 
 		void PlotKalmanRelationshipButton_Clicked (object sender, EventArgs e)
