@@ -1,49 +1,51 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="tryfsharpforms.BlackScholesChartPage" xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms">
 	<ContentPage.Content>
-		<chart:SfChart x:Name="Chart">
-			<chart:SfChart.Title>
-				<chart:ChartTitle Text="Black-Scholes Equation for Msft" />
-			</chart:SfChart.Title>
-			<!--		Primary Axis-->
-			<chart:SfChart.PrimaryAxis>
-				<chart:CategoryAxis LabelRotationAngle="-45" >
-				<chart:CategoryAxis.Title>
-						<chart:ChartAxisTitle Text="Exercise Price" />
-					</chart:CategoryAxis.Title>
-				</chart:CategoryAxis>
-			</chart:SfChart.PrimaryAxis>
-			<!--		Secondary Axis-->
-			<chart:SfChart.SecondaryAxis>
-				<chart:NumericalAxis>
-					<chart:CategoryAxis.Title>
-						<chart:ChartAxisTitle Text="Option Price" />
-					</chart:CategoryAxis.Title>
-				</chart:NumericalAxis>
-			</chart:SfChart.SecondaryAxis>
-			<!--			Line Graph, 1st Series-->
-			<chart:SfChart.Series>
-				<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding DataArray[1] }" XBindingPath="Price1" YBindingPath="Price2" />
-				<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding DataArray[2] }" XBindingPath="Price1" YBindingPath="Price2" />
-				<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding DataArray[3] }" XBindingPath="Price1" YBindingPath="Price2" />
-				<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding DataArray[4] }" XBindingPath="Price1" YBindingPath="Price2" />
-				<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding DataArray[5] }" XBindingPath="Price1" YBindingPath="Price2" />
-				<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding DataArray[6] }" XBindingPath="Price1" YBindingPath="Price2" />
-				<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding DataArray[7] }" XBindingPath="Price1" YBindingPath="Price2" />
-				<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding DataArray[8] }" XBindingPath="Price1" YBindingPath="Price2" />
-				<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding DataArray[9] }" XBindingPath="Price1" YBindingPath="Price2" />
-				<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding DataArray[10]}" XBindingPath="Price1" YBindingPath="Price2" />
-				<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding DataArray[11]}" XBindingPath="Price1" YBindingPath="Price2" />
-				<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding DataArray[12]}" XBindingPath="Price1" YBindingPath="Price2" />
-				<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding DataArray[13]}" XBindingPath="Price1" YBindingPath="Price2" />
-				<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding DataArray[14]}" XBindingPath="Price1" YBindingPath="Price2" />
-				<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding DataArray[15]}" XBindingPath="Price1" YBindingPath="Price2" />
-				<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding DataArray[16]}" XBindingPath="Price1" YBindingPath="Price2" />
-				<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding DataArray[17]}" XBindingPath="Price1" YBindingPath="Price2" />
-				<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding DataArray[18]}" XBindingPath="Price1" YBindingPath="Price2" />
-				<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding DataArray[19]}" XBindingPath="Price1" YBindingPath="Price2" />
-				<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding DataArray[20]}" XBindingPath="Price1" YBindingPath="Price2" />
-			</chart:SfChart.Series>
-		</chart:SfChart>
+		<RelativeLayout x:Name="relativeLayout">
+			<chart:SfChart x:Name="Chart">
+				<chart:SfChart.Title>
+					<chart:ChartTitle Text="Black-Scholes Equation for Msft" TextColor="White" />
+				</chart:SfChart.Title>
+				<!--		Primary Axis-->
+				<chart:SfChart.PrimaryAxis>
+					<chart:CategoryAxis LabelRotationAngle="-45">
+						<chart:CategoryAxis.Title>
+							<chart:ChartAxisTitle Text="Exercise Price" TextColor="White" />
+						</chart:CategoryAxis.Title>
+					</chart:CategoryAxis>
+				</chart:SfChart.PrimaryAxis>
+				<!--		Secondary Axis-->
+				<chart:SfChart.SecondaryAxis>
+					<chart:NumericalAxis>
+						<chart:CategoryAxis.Title>
+							<chart:ChartAxisTitle Text="Option Price" TextColor="White" />
+						</chart:CategoryAxis.Title>
+					</chart:NumericalAxis>
+				</chart:SfChart.SecondaryAxis>
+				<!--			Line Graph, 1st Series-->
+				<chart:SfChart.Series>
+					<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding DataArray[1] }" XBindingPath="Price1" YBindingPath="Price2" />
+					<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding DataArray[2] }" XBindingPath="Price1" YBindingPath="Price2" />
+					<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding DataArray[3] }" XBindingPath="Price1" YBindingPath="Price2" />
+					<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding DataArray[4] }" XBindingPath="Price1" YBindingPath="Price2" />
+					<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding DataArray[5] }" XBindingPath="Price1" YBindingPath="Price2" />
+					<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding DataArray[6] }" XBindingPath="Price1" YBindingPath="Price2" />
+					<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding DataArray[7] }" XBindingPath="Price1" YBindingPath="Price2" />
+					<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding DataArray[8] }" XBindingPath="Price1" YBindingPath="Price2" />
+					<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding DataArray[9] }" XBindingPath="Price1" YBindingPath="Price2" />
+					<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding DataArray[10]}" XBindingPath="Price1" YBindingPath="Price2" />
+					<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding DataArray[11]}" XBindingPath="Price1" YBindingPath="Price2" />
+					<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding DataArray[12]}" XBindingPath="Price1" YBindingPath="Price2" />
+					<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding DataArray[13]}" XBindingPath="Price1" YBindingPath="Price2" />
+					<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding DataArray[14]}" XBindingPath="Price1" YBindingPath="Price2" />
+					<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding DataArray[15]}" XBindingPath="Price1" YBindingPath="Price2" />
+					<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding DataArray[16]}" XBindingPath="Price1" YBindingPath="Price2" />
+					<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding DataArray[17]}" XBindingPath="Price1" YBindingPath="Price2" />
+					<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding DataArray[18]}" XBindingPath="Price1" YBindingPath="Price2" />
+					<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding DataArray[19]}" XBindingPath="Price1" YBindingPath="Price2" />
+					<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding DataArray[20]}" XBindingPath="Price1" YBindingPath="Price2" />
+				</chart:SfChart.Series>
+			</chart:SfChart>
+		</RelativeLayout>
 	</ContentPage.Content>
 </ContentPage>

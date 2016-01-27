@@ -8,9 +8,10 @@ namespace tryfsharpforms
 {
 	public partial class AnalyzingMarketInteractionsPage : BasePage
 	{
-		Button plotLogLikelihoodButton = new Button { Text = "Plot Log Likeliehood" };
-		Button plotOberservedDataVersusFittedButton = new Button { Text = "Plot oberserved vs. fitted" };
-		Button plotKalmanRelationshipButton = new Button{ Text = "Plot Kalman Relationship between tickers" };
+		GetDataButton plotLogLikelihoodButton = new GetDataButton(Borders.Thin,1) { Text = "Plot Log Likeliehood" };
+		GetDataButton plotOberservedDataVersusFittedButton = new GetDataButton(Borders.Thin,1) { Text = "Plot oberserved vs. fitted" };
+		GetDataButton plotKalmanRelationshipButton = new GetDataButton(Borders.Thin,1){ Text = "Plot Kalman Relationship between tickers" };
+
 		AnalyzingStockMarkets.GetStockMarketIndicators indicators = new AnalyzingStockMarkets.GetStockMarketIndicators ();
 
 		public AnalyzingMarketInteractionsPage ()
@@ -21,10 +22,14 @@ namespace tryfsharpforms
 					new Label { 
 						Text = "Analyze Market Interactions",
 						HorizontalOptions = LayoutOptions.CenterAndExpand,
-						FontAttributes = FontAttributes.Bold
+						FontAttributes = FontAttributes.Bold,
+						TextColor = MyColors.Clouds
 					},
+					new BoxView(){Opacity = 0, HeightRequest=15},
 					plotLogLikelihoodButton,
+					new BoxView(){Opacity = 0, HeightRequest=15},
 					plotOberservedDataVersusFittedButton,
+					new BoxView(){Opacity = 0, HeightRequest=15},
 					plotKalmanRelationshipButton
 				}
 			};

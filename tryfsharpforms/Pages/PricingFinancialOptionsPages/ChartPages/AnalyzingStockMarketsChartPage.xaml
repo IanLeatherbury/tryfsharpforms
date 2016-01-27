@@ -1,36 +1,45 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="tryfsharpforms.AnalyzingStockMarketsChartPage" xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms">
 	<ContentPage.Content>
-		<chart:SfChart x:Name="Chart">
-			<chart:SfChart.Title>
-				<chart:ChartTitle Text="Market Indicators" />
-			</chart:SfChart.Title>
-			<!--		Primary Axis-->
-			<chart:SfChart.PrimaryAxis>
+		<RelativeLayout x:Name="relativeLayout">
+			<chart:SfChart x:Name="Chart">
+				<chart:SfChart.Title>
+					<chart:ChartTitle Text="Market Indicators" TextColor="White"/>
+				</chart:SfChart.Title>
+				<!--		Primary Axis-->
+				<chart:SfChart.PrimaryAxis>
 				<chart:CategoryAxis LabelRotationAngle="-45">
+					<chart:CategoryAxis.Title>
+						<chart:ChartAxisTitle Text="Day" TextColor="White" />
+					</chart:CategoryAxis.Title>
 				</chart:CategoryAxis>
 			</chart:SfChart.PrimaryAxis>
-			<!--		Secondary Axis-->
-			<chart:SfChart.SecondaryAxis>
-				<chart:NumericalAxis>
-					<chart:CategoryAxis.Title>
-						<chart:ChartAxisTitle Text="Day" />
-					</chart:CategoryAxis.Title>
-				</chart:NumericalAxis>
-			</chart:SfChart.SecondaryAxis>
-			<!--			Line Graph, 1st Series-->
-			<chart:SfChart.Series>
-				<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding DataArray[0]}" XBindingPath="Day" YBindingPath="Price" x:Name="first"/>
-				<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding DataArray[1]}" XBindingPath="Day" YBindingPath="Price" x:Name="second"/>
-				<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding DataArray[2]}" XBindingPath="Day" YBindingPath="Price" x:Name="third"/>
-				<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding DataArray[3]}" XBindingPath="Day" YBindingPath="Price" x:Name="fourth"/>
-				<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding DataArray[4]}" XBindingPath="Day" YBindingPath="Price" x:Name="fifth"/>
-				<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding DataArray[5]}" XBindingPath="Day" YBindingPath="Price" x:Name="sixth"/>
-				<!--      End Line Graph-->
-			</chart:SfChart.Series>
-			<chart:SfChart.Legend>
-				<chart:ChartLegend ToggleSeriesVisibility="true"  />
+				<!--		Secondary Axis-->
+				<chart:SfChart.SecondaryAxis>
+					<chart:NumericalAxis>
+						<chart:CategoryAxis.Title>
+							<chart:ChartAxisTitle Text="Price" TextColor="White"/>
+						</chart:CategoryAxis.Title>
+					</chart:NumericalAxis>
+				</chart:SfChart.SecondaryAxis>
+				<!--			Line Graph, 1st Series-->
+				<chart:SfChart.Series>
+					<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding DataArray[0]}" XBindingPath="Day" YBindingPath="Price" x:Name="first" />
+					<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding DataArray[1]}" XBindingPath="Day" YBindingPath="Price" x:Name="second" />
+					<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding DataArray[2]}" XBindingPath="Day" YBindingPath="Price" x:Name="third" />
+					<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding DataArray[3]}" XBindingPath="Day" YBindingPath="Price" x:Name="fourth" />
+					<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding DataArray[4]}" XBindingPath="Day" YBindingPath="Price" x:Name="fifth" />
+					<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding DataArray[5]}" XBindingPath="Day" YBindingPath="Price" x:Name="sixth" />
+					<!--      End Line Graph-->
+				</chart:SfChart.Series>
+				<chart:SfChart.Legend>
+				<chart:ChartLegend ToggleSeriesVisibility="true">
+					<chart:ChartLegend.LabelStyle>
+						<chart:ChartLegendLabelStyle TextColor="White" />
+					</chart:ChartLegend.LabelStyle>
+				</chart:ChartLegend>
 			</chart:SfChart.Legend>
-		</chart:SfChart>
+			</chart:SfChart>
+		</RelativeLayout>
 	</ContentPage.Content>
 </ContentPage>

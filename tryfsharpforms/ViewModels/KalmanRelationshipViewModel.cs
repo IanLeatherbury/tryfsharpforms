@@ -13,7 +13,7 @@ namespace tryfsharpforms
 
 		public KalmanRelationshipViewModel (Tuple<double,double>[] indexPoints, Tuple<Tuple<double,double>, Tuple<double, double>>[] lines)
 		{
-			ObservableCollection<KalmanRelationshipModel>[] linesArray = new ObservableCollection<KalmanRelationshipModel>[10];
+			ObservableCollection<KalmanRelationshipModel>[] linesArray = new ObservableCollection<KalmanRelationshipModel>[20];
 			ObservableCollection<KalmanRelationshipModel>[] pointsArray = new ObservableCollection<KalmanRelationshipModel>[9];
 			markets [0] = "AORD";
 			markets [1] = "FCHI";

@@ -1,31 +1,33 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="tryfsharpforms.AnalyzingMarketInteractionsChartPage" xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms">
 	<ContentPage.Content>
+		<RelativeLayout x:Name="relativeLayout">
 			<chart:SfChart x:Name="Chart">
-			<chart:SfChart.Title>
-				<chart:ChartTitle Text="Market Indicators" />
-			</chart:SfChart.Title>
-			<!--		Primary Axis-->
-			<chart:SfChart.PrimaryAxis>
-				<chart:CategoryAxis LabelRotationAngle="-45">
-				</chart:CategoryAxis>
-			</chart:SfChart.PrimaryAxis>
-			<!--		Secondary Axis-->
-			<chart:SfChart.SecondaryAxis>
-				<chart:NumericalAxis>
-					<chart:CategoryAxis.Title>
-						<chart:ChartAxisTitle Text="Day" />
-					</chart:CategoryAxis.Title>
-				</chart:NumericalAxis>
-			</chart:SfChart.SecondaryAxis>
-			<!--			Line Graph, 1st Series-->
-			<chart:SfChart.Series>
-				<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding Data}" XBindingPath="Day" YBindingPath="Price"/>
-				<!--      End Line Graph-->
-			</chart:SfChart.Series>
-			<chart:SfChart.Legend>
-				<chart:ChartLegend ToggleSeriesVisibility="true"  />
-			</chart:SfChart.Legend>
-		</chart:SfChart>
+				<chart:SfChart.Title>
+					<chart:ChartTitle Text="Market Indicators" />
+				</chart:SfChart.Title>
+				<!--		Primary Axis-->
+				<chart:SfChart.PrimaryAxis>
+					<chart:CategoryAxis LabelRotationAngle="-45">
+					</chart:CategoryAxis>
+				</chart:SfChart.PrimaryAxis>
+				<!--		Secondary Axis-->
+				<chart:SfChart.SecondaryAxis>
+					<chart:NumericalAxis>
+						<chart:CategoryAxis.Title>
+							<chart:ChartAxisTitle Text="Day" />
+						</chart:CategoryAxis.Title>
+					</chart:NumericalAxis>
+				</chart:SfChart.SecondaryAxis>
+				<!--			Line Graph, 1st Series-->
+				<chart:SfChart.Series>
+					<chart:LineSeries StrokeWidth="3" ItemsSource="{Binding Data}" XBindingPath="Day" YBindingPath="Price" />
+					<!--      End Line Graph-->
+				</chart:SfChart.Series>
+				<chart:SfChart.Legend>
+					<chart:ChartLegend ToggleSeriesVisibility="true" />
+				</chart:SfChart.Legend>
+			</chart:SfChart>
+		</RelativeLayout>
 	</ContentPage.Content>
 </ContentPage>

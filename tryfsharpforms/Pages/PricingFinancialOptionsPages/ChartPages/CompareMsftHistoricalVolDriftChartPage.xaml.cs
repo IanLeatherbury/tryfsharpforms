@@ -46,14 +46,15 @@ namespace tryfsharpforms
 						actual = msftData.MsftActual;
 						sim = msftData.MsftSimulated;
 
-						//turn of busy indicator
+						//TODO: Nullcheck
+						BindingContext = new DateTimeDoubleViewModel (actual, sim);
+
+						//turn off busy indicator
 						busyIndicator.IsVisible = false;
 						busyIndicator.IsBusy = false;
 
-						//set binding context
-						//TODO: Nullcheck
 						Chart.FadeTo(1, 500, Easing.CubicIn);
-						BindingContext = new DateTimeDoubleViewModel (actual, sim);
+
 					});
 				
 			});

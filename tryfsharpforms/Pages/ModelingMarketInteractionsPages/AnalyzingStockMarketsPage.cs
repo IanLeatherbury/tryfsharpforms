@@ -7,11 +7,11 @@ using System.Collections.Generic;
 
 namespace tryfsharpforms
 {
-	public class AnalyzingStockMarketsPage : ContentPage
+	public class AnalyzingStockMarketsPage : BasePage
 	{
-		Button obtainListOfIndicatorsButton = new Button{Text = "Obtain Indicators" };
+		GetDataButton obtainListOfIndicatorsButton = new GetDataButton(Borders.Thin,1){ Text = "Obtain Indicators" };
 
-		public AnalyzingStockMarketsPage()
+		public AnalyzingStockMarketsPage ()
 		{
 			Content = new StackLayout { 
 				Padding = new Thickness (15),
@@ -19,7 +19,8 @@ namespace tryfsharpforms
 					new Label { 
 						Text = "Obtain list of global market indicators",
 						HorizontalOptions = LayoutOptions.CenterAndExpand,
-						FontAttributes = FontAttributes.Bold
+						FontAttributes = FontAttributes.Bold,
+						TextColor = MyColors.Clouds
 					},
 					obtainListOfIndicatorsButton
 				}
@@ -30,12 +31,7 @@ namespace tryfsharpforms
 
 		void ObtainListOfIndicatorsButton_Clicked (object sender, EventArgs e)
 		{
-			var indicators = new AnalyzingStockMarkets.GetStockMarketIndicators ();
-
-			var cd = indicators.ChartData;
-			var hd = indicators.HistoricalData;
-
-			Navigation.PushAsync (new AnalyzingStockMarketsChartPage (cd));
+			Navigation.PushAsync (new AnalyzingStockMarketsChartPage ());
 		}
 	}
 }
