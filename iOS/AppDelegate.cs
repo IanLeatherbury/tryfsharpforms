@@ -6,6 +6,7 @@ using Foundation;
 using UIKit;
 using Syncfusion.SfChart.XForms.iOS.Renderers;
 using Syncfusion.SfBusyIndicator.XForms.iOS;
+using Xamarin;
 
 namespace tryfsharpforms.iOS
 {
